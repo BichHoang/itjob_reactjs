@@ -28,7 +28,6 @@ class Companies extends Component {
                     <div className="right side-content stickybar hidden-xs hidden-sm" id="right_side">
                         <h3>Company Spotlight</h3>
                         <div className="inside">
-                            {/* Last updated: "2018-10-23 10:28:35 +0700"*/}
                             <div className="photos">
                                 <div className="headline-photo">
                                     <img alt="FPT Software Headline Photo" src="https://cdn.itviec.com/photos/33899/tiny_headline_photo/fpt-software-tiny_headline_photo.jpg?6rAvo1Rp6H5WJr88a3VpuJFQ" width={256} height={125} />
