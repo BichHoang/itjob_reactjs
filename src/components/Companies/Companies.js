@@ -1,9 +1,85 @@
 import React, { Component } from 'react';
+import { getAllJobsAPI } from '../../actions';
+import { connect } from 'react-redux';
+import callApi from '../../utils/apiCaller';
+import Axios from 'axios';
 
 class Companies extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            jobs: []
+        }
+    }
+    componentDidMount() {
+        callApi('admin_post', 'GET', null).then(res => {
+            this.setState({ jobs: res.data })
+        })
+    }
+
+    // componentDidMount() {
+    //     Axios.get("http://itjob-heroku.herokuapp.com/public/api/admin_post", {}).then((res) => {
+    //         //on success
+    //         this.setState({
+    //             jobs: res.data
+    //         });
+    //     }).catch((error) => {
+    //         //on error
+    //         alert("There is an error in API call.");
+    //     });
+    // }
+
     render() {
+        let { jobs } = this.state;
+        let job = jobs.map((job, index) => {
+            return (
+                <div className="company" id="company_374">
+                    <div className="logo">
+                        <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
+                            <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions"><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="company__description">
+                        <div className="company__body">
+                            <div className="details">
+                                <div className="title-info">
+                                    <div className="title">
+                                        <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions">${job.Title}</a>
+                                    </div>
+                                    <div className="info">
+                                        <span className="gear-icon">
+                                            Product
+                                                    </span>
+                                        <span className="group-icon">
+                                            301-500
+                                                    </span>
+                                        <span className="globe-icon">
+                                            Germany
+                                                    </span>
+                                    </div>
+                                </div>
+                                <div className="city">
+                                    <div className="text">Ho Chi Minh</div>
+                                    <div className="text">Tan Binh</div>
+                                </div>
+                            </div>
+                            <div className="tag-list">
+                                <div className="tag">Java</div>
+                                <div className="tag">SAP</div>
+                                <div className="tag">.NET</div>
+                            </div>
+                        </div>
+                        <div className="current-jobs">
+                            <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions#our-jobs">9 Job</a>
+                            <i className="fa fa-caret-right" />
+                        </div>
+                    </div>
+                </div>
+            )
+        });
         return (
-            <div>
+            <div className="paddingTop">
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow">
                     </div>
@@ -69,49 +145,7 @@ class Companies extends Component {
                             2,062 IT companies in Vietnam for you
                         </h1>
                         <div className="first-group">
-                            <div className="company" id="company_374">
-                                <div className="logo">
-                                    <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
-                                        <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions"><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="company__description">
-                                    <div className="company__body">
-                                        <div className="details">
-                                            <div className="title-info">
-                                                <div className="title">
-                                                    <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions">Robert Bosch Engineering And Business Solutions</a>
-                                                </div>
-                                                <div className="info">
-                                                    <span className="gear-icon">
-                                                        Product
-                                                    </span>
-                                                    <span className="group-icon">
-                                                        301-500
-                                                    </span>
-                                                    <span className="globe-icon">
-                                                        Germany
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="city">
-                                                <div className="text">Ho Chi Minh</div>
-                                                <div className="text">Tan Binh</div>
-                                            </div>
-                                        </div>
-                                        <div className="tag-list">
-                                            <div className="tag">Java</div>
-                                            <div className="tag">SAP</div>
-                                            <div className="tag">.NET</div>
-                                        </div>
-                                    </div>
-                                    <div className="current-jobs">
-                                        <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions#our-jobs">9 Job</a>
-                                        <i className="fa fa-caret-right" />
-                                    </div>
-                                </div>
-                            </div>
+                            {job}
                         </div>
                         <div id="show-more-wrapper">
                             <div id="show_more">
@@ -130,4 +164,17 @@ class Companies extends Component {
         );
     }
 }
-export default Companies;
+const mapStateToProps = (state) => {
+    return {
+        jobs: state.jobs
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllJobs: () => {
+            dispatch(getAllJobsAPI());
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Companies);

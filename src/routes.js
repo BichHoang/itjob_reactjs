@@ -5,6 +5,7 @@ import CadidateProfile from './components/Cadidate/CadidateProfile';
 import SigninCadidate from './components/Cadidate/SigninCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
 import SignupCompany from './components/Companies/SignupCompany';
+import SearchCompanies from './components/Companies/SearchCompanies/SearchCompanies';
 
 const routes = [
     {
@@ -13,7 +14,7 @@ const routes = [
         main: ({match}) => <Index match = {match} />
     },
     {
-        path: '/jobs',
+        path: '/admin_post',
         exact: true,
         main: ({match}) => <Companies match = {match} />
     },
@@ -36,6 +37,11 @@ const routes = [
         path: '/company-signup',
         exact: true,
         main: ({match}) => <SignupCompany match = {match} />
+    },
+    {
+        path: '/companies',
+        exact: true,
+        main: ({match}) => <SearchCompanies match = {match} />
     },
 ];
 

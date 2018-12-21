@@ -7,9 +7,6 @@ class DetailCompany extends Component {
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
-                <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
-                </div>
                 <div className="company-content">
                     <div className="company-page">
                         {/* Headline Photo */} {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
@@ -32,14 +29,16 @@ class DetailCompany extends Component {
                                     Ho Chi Minh, Ha Noi, Da Nang
                                 </span> {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
                                 <div className="company-info">
-                                    <span className="gear-icon">
-                                        Outsourcing
-                                </span>
-                                    <span className="group-icon">
-                                        1000+
-                                </span>
+                                    <span>
+                                    <i className="fa fa-cog" />
+                                          Outsourcing
+                                    </span>
+                                    <span>
+                                    <i className="fa fa-users" />
+                                          1000+
+                                    </span>
                                     <div className="country">
-                                        <i className="flag flag-vn" />
+                                        <i className="flag-icon flag-icon-vn" />
                                         <span className="name">Viet Nam</span>
                                     </div>
                                 </div>
@@ -57,7 +56,7 @@ class DetailCompany extends Component {
                                 </div>
                             </div>
                             <div className="headers__actions text-right">
-                                <a className="full-width button ibutton ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href>
+                                <a className="full-width button ibutton ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >
                                     Add a review
                                 </a>                                
                                 
@@ -66,31 +65,31 @@ class DetailCompany extends Component {
                     </div>
                     <div className="row company-container">
                         <div className="col-md-8 col-left">
-                            <div id="employer-page-wrapper">
-                                {/* Navigation */}
-                                <ul className="navigation">
-                                    <li className="active navigation__item">
-                                        <a href="/companies/fpt-software">Overview</a>
-                                        <div className="corner-bottom-right-overlay" />
-                                        <div className="corner-bottom-right-curve" />
-                                    </li>
-                                    <li className="navigation__item review-tab">
-                                        <a href="/companies/fpt-software/review">569 Reviews</a>
-                                        <div className="corner-bottom-right-overlay" />
-                                        <div className="corner-bottom-right-curve" />
-                                        <div className="corner-bottom-left-overlay" />
-                                        <div className="corner-bottom-left-curve" />
-                                    </li>
-                                    <li className="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
-                                        <a target="_blank" title="Go to Facebook" rel="nofollow" v-tooltip="true" href="https://www.facebook.com/FPTSoftwareCareers/"><i className="fa fa-facebook-official fa-2x" />
-                                        </a>
-                                    </li>
-                                    <li className="ionicon navigation__item navigation__item--right hidden-sm hidden-xs">
-                                        <a target="_blank" title="Go to website" className="ion-android-open" rel="nofollow" v-tooltip="true" href="https://career.fpt-software.com/vi/" />
-                                    </li>
-                                </ul>
-                            </div>
-                            {/* Description - Tech stack */} {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
+                            
+                                
+                            <ul className="active navigation">
+                                <li className="navigation__item">
+                                    <a href="/nha-tuyen-dung/fpt-software">Tổng quan</a>
+                                    <div className="corner-bottom-right-overlay" />
+                                    <div className="corner-bottom-right-curve" />
+                                </li>
+                                <li className="navigation__item">
+                                    <a href="/nha-tuyen-dung/fpt-software/danh-gia">615 Đánh giá</a>
+                                    <div className="corner-bottom-right-overlay" />
+                                    <div className="corner-bottom-right-curve" />
+                                    <div className="corner-bottom-left-overlay" />
+                                    <div className="corner-bottom-left-curve" />
+                                </li>
+                                <li className="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
+                                    <a target="_blank" title="Đến Facebook" rel="nofollow" v-tooltip="true" href="https://www.facebook.com/FPTSoftwareCareers/"><i className="fab fa-facebook fa-2x" />
+                                    </a>
+                                </li>
+                                <li className="ionicon navigation__item navigation__item--right hidden-sm hidden-xs">
+                                    <a target="_blank" title="Đến trang web" className="fas fa-external-link-square-alt fa-2x" rel="nofollow" v-tooltip="true" href="https://career.fpt-software.com/vi/" />
+                                </li>
+                            </ul>
+                           
+                
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                     <h3 className="panel-title headline">
@@ -145,10 +144,10 @@ class DetailCompany extends Component {
                                                         </h4>
                                                         <div className="salary not-signed-in">
                                                             <span className="salary-icon-stack">
-                                                                <i className="ion-ios-circle-outline" />
-                                                                <i className="ion-social-usd" />
+                                                                
+                                                                <i className="fas fa-dollar-sign" />
                                                             </span>
-                                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Sign in to view</a>
+                                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Sign in to view</a>
                                                             <div className="address__arrow" />
                                                         </div>
                                                         <div className="hidden-xs">
@@ -411,7 +410,7 @@ class DetailCompany extends Component {
                                 <div className="panel-body disable-user-select">
                                     {/* Last updated: "2018-10-22 22:20:23 +0700"*/}
                                     <div className="review featured">
-                                        <a className="title" href="/companies/fpt-software/review">''Sếp tốt, Lead giỏi học hỏi được nhiều kinh nghiệm ''</a>
+                                        <a className="title" href="/companies/fpt-software/review">''Sếp tốt, Lead giỏi học hỏi được nhiều kinh nghiệm ''</a><br/>
                                         <span className="round-rate-rating-stars-box">
                                             <span className="fa-stack">
                                                 <i className="fa fa-square fa-stack-2x" />
@@ -439,7 +438,7 @@ class DetailCompany extends Component {
                                         </div>
                                     </div>
                                     <br />
-                                    <a className="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href>Add a review</a>
+                                    <a className="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >Add a review</a>
                                 </div>
                             </div>
                         </div>

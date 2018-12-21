@@ -38,7 +38,7 @@ class Modal_Fade extends Component {
                                     </a>
                                 </div>
                                 <div className="sign-in-button facebook button">
-                                    <a id="facebook-signin" rel="nofollow" onclick="Login(this); return false;" href>
+                                    <a id="facebook-signin" rel="nofollow" onClick={()=> "Login(this); return false;"} >
                                         <div className="icon">
                                             <i className="fa fa-facebook" />
                                         </div>
@@ -59,7 +59,7 @@ class Modal_Fade extends Component {
                                     <div className="form-error text-left" data-target="users--sign-up.error" />
                                 </div>
                                 <div className="form-group">
-                                    <input maxLength={50} autofocus="autofocus" className="form-control" placeholder="Name" size={50} type="text" name="user[name]" id="user_name" />
+                                    <input maxLength={50} autoFocus="autofocus" className="form-control" placeholder="Name" size={50} type="text" name="user[name]" id="user_name" />
                                 </div>
                                 <div className="form-group">
                                     <input className="form-control" placeholder="Email" required="required" data-rule-email="true" data-msg-email="Please correct the email address" data-msg="Please add email" data-rule-noplus="true" data-msg-noplus="Please correct the email address" type="email" defaultValue name="user[email]" id="user_email" />
@@ -89,7 +89,7 @@ class Modal_Fade extends Component {
                                 </a>
                             </div>
                             <div className="sign-in-button facebook button">
-                                <a id="facebook-signin" rel="nofollow" onclick="Login(this); return false;" href>
+                                <a id="facebook-signin" rel="nofollow" onClick={()=> "Login(this); return false;"} >
                                     <div className="icon">
                                         <i className="fa fa-facebook" />
                                     </div>

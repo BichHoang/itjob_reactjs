@@ -3,12 +3,9 @@ import React, { Component } from 'react';
 class SearchCompanies extends Component {
     render() {
         return (
-            <div>
+            <div className="paddingTop">
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
-                </div>
-                <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
                 </div>
                 <h1 className="slogan">
                     7,013 Company Reviews for You
@@ -70,7 +67,134 @@ class SearchCompanies extends Component {
                                         <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
                                         <span className="company__footer-jobs">
                                             10 jobs
-                        <i className="fa fa-caret-right" />
+                                            <i className="fa fa-caret-right" />
+                                        </span>
+                                    </footer>
+                                </div>
+                            </a>
+                            <a className="featured-company" target="_blank" href="/companies/evolable-asia">
+                                <div className="company__banner">
+                                    <img width={326} height={160} alt="Evolable Asia Headline Photo" src="https://cdn.itviec.com/photos/16/processed_headline_photo/evolable-asia-headline_photo.png?BmS8YwtFg8oWhgzar2vwtgv6" />
+                                </div>
+                                <div className="company__info">
+                                    <header className="company__header">
+                                        <div className="company__logo">
+                                            <img width={64} height={62} alt="Evolable Asia Vietnam Small Logo" src="https://cdn.itviec.com/employers/evolable-asia/logo/s65/bkc9yP9U8EjRwsRgnjjDebGy/evolable-asia-logo.png" />
+                                        </div>
+                                        <div className="company__name">Evolable Asia</div>
+                                        <div className="company__star">
+                                            <i className="blue icon ion-ios-star small" />
+                                            <span className="company__star-rate">4.1</span>
+                                        </div>
+                                    </header>
+                                    <div className="company__desc">EVOLABLE ASIA – To build the Top global Service for a better World.</div>
+                                    <footer className="company__footer">
+                                        <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
+                                        <span className="company__footer-jobs">
+                                            10 jobs
+                                            <i className="fa fa-caret-right" />
+                                        </span>
+                                    </footer>
+                                </div>
+                            </a>
+                            <a className="featured-company" target="_blank" href="/companies/evolable-asia">
+                                <div className="company__banner">
+                                    <img width={326} height={160} alt="Evolable Asia Headline Photo" src="https://cdn.itviec.com/photos/16/processed_headline_photo/evolable-asia-headline_photo.png?BmS8YwtFg8oWhgzar2vwtgv6" />
+                                </div>
+                                <div className="company__info">
+                                    <header className="company__header">
+                                        <div className="company__logo">
+                                            <img width={64} height={62} alt="Evolable Asia Vietnam Small Logo" src="https://cdn.itviec.com/employers/evolable-asia/logo/s65/bkc9yP9U8EjRwsRgnjjDebGy/evolable-asia-logo.png" />
+                                        </div>
+                                        <div className="company__name">Evolable Asia</div>
+                                        <div className="company__star">
+                                            <i className="blue icon ion-ios-star small" />
+                                            <span className="company__star-rate">4.1</span>
+                                        </div>
+                                    </header>
+                                    <div className="company__desc">EVOLABLE ASIA – To build the Top global Service for a better World.</div>
+                                    <footer className="company__footer">
+                                        <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
+                                        <span className="company__footer-jobs">
+                                            10 jobs
+                                            <i className="fa fa-caret-right" />
+                                        </span>
+                                    </footer>
+                                </div>
+                            </a>
+                        </div>
+                        <div className="companies" data-target="popular-companies.body">
+                            <a className="featured-company" target="_blank" href="/companies/evolable-asia">
+                                <div className="company__banner">
+                                    <img width={326} height={160} alt="Evolable Asia Headline Photo" src="https://cdn.itviec.com/photos/16/processed_headline_photo/evolable-asia-headline_photo.png?BmS8YwtFg8oWhgzar2vwtgv6" />
+                                </div>
+                                <div className="company__info">
+                                    <header className="company__header">
+                                        <div className="company__logo">
+                                            <img width={64} height={62} alt="Evolable Asia Vietnam Small Logo" src="https://cdn.itviec.com/employers/evolable-asia/logo/s65/bkc9yP9U8EjRwsRgnjjDebGy/evolable-asia-logo.png" />
+                                        </div>
+                                        <div className="company__name">Evolable Asia</div>
+                                        <div className="company__star">
+                                            <i className="blue icon ion-ios-star small" />
+                                            <span className="company__star-rate">4.1</span>
+                                        </div>
+                                    </header>
+                                    <div className="company__desc">EVOLABLE ASIA – To build the Top global Service for a better World.</div>
+                                    <footer className="company__footer">
+                                        <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
+                                        <span className="company__footer-jobs">
+                                            10 jobs
+                                            <i className="fa fa-caret-right" />
+                                        </span>
+                                    </footer>
+                                </div>
+                            </a>
+                            <a className="featured-company" target="_blank" href="/companies/evolable-asia">
+                                <div className="company__banner">
+                                    <img width={326} height={160} alt="Evolable Asia Headline Photo" src="https://cdn.itviec.com/photos/16/processed_headline_photo/evolable-asia-headline_photo.png?BmS8YwtFg8oWhgzar2vwtgv6" />
+                                </div>
+                                <div className="company__info">
+                                    <header className="company__header">
+                                        <div className="company__logo">
+                                            <img width={64} height={62} alt="Evolable Asia Vietnam Small Logo" src="https://cdn.itviec.com/employers/evolable-asia/logo/s65/bkc9yP9U8EjRwsRgnjjDebGy/evolable-asia-logo.png" />
+                                        </div>
+                                        <div className="company__name">Evolable Asia</div>
+                                        <div className="company__star">
+                                            <i className="blue icon ion-ios-star small" />
+                                            <span className="company__star-rate">4.1</span>
+                                        </div>
+                                    </header>
+                                    <div className="company__desc">EVOLABLE ASIA – To build the Top global Service for a better World.</div>
+                                    <footer className="company__footer">
+                                        <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
+                                        <span className="company__footer-jobs">
+                                            10 jobs
+                                            <i className="fa fa-caret-right" />
+                                        </span>
+                                    </footer>
+                                </div>
+                            </a>
+                            <a className="featured-company" target="_blank" href="/companies/evolable-asia">
+                                <div className="company__banner">
+                                    <img width={326} height={160} alt="Evolable Asia Headline Photo" src="https://cdn.itviec.com/photos/16/processed_headline_photo/evolable-asia-headline_photo.png?BmS8YwtFg8oWhgzar2vwtgv6" />
+                                </div>
+                                <div className="company__info">
+                                    <header className="company__header">
+                                        <div className="company__logo">
+                                            <img width={64} height={62} alt="Evolable Asia Vietnam Small Logo" src="https://cdn.itviec.com/employers/evolable-asia/logo/s65/bkc9yP9U8EjRwsRgnjjDebGy/evolable-asia-logo.png" />
+                                        </div>
+                                        <div className="company__name">Evolable Asia</div>
+                                        <div className="company__star">
+                                            <i className="blue icon ion-ios-star small" />
+                                            <span className="company__star-rate">4.1</span>
+                                        </div>
+                                    </header>
+                                    <div className="company__desc">EVOLABLE ASIA – To build the Top global Service for a better World.</div>
+                                    <footer className="company__footer">
+                                        <span className="company__footer-city" data-target="popular-companies.city">Ho Chi Minh</span>
+                                        <span className="company__footer-jobs">
+                                            10 jobs
+                                            <i className="fa fa-caret-right" />
                                         </span>
                                     </footer>
                                 </div>
@@ -83,6 +207,7 @@ class SearchCompanies extends Component {
                             </a>
                         </div>
                     </div>
+                    <br />
                     <div className="main-content container-fluid jobs-by-company">
                         <div className="row">
                             <div className="col-xs-12">

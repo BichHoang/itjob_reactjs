@@ -12,9 +12,9 @@ class DetailJob extends Component {
                     <div className="content">
                         {/* Last updated: "2018-12-18 07:19:25 +0700"*/}
                         <div className="jd-photos-container">
-                            <div className="jd-photos" data-index={0} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23045/jd_photo_thumbnail/jd_photo_thumbnail.jpg?mASV41byC3BgwXUD4pxbW4hg)' }} title />
-                            <div className="jd-photos" data-index={1} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23047/jd_photo_thumbnail/jd_photo_thumbnail.jpg?zWqd1YccwTBTP7rM7S4wLqfw)' }} title />
-                            <div className="jd-photos" data-index={2} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23048/jd_photo_thumbnail/jd_photo_thumbnail.jpg?CPbxTT6kZLxzwZ2c4tGk1gv4)' }} title />
+                            <div className="jd-photos" data-index={0} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23045/jd_photo_thumbnail/jd_photo_thumbnail.jpg?mASV41byC3BgwXUD4pxbW4hg)' }}  />
+                            <div className="jd-photos" data-index={1} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23047/jd_photo_thumbnail/jd_photo_thumbnail.jpg?zWqd1YccwTBTP7rM7S4wLqfw)' }}  />
+                            <div className="jd-photos" data-index={2} style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/23048/jd_photo_thumbnail/jd_photo_thumbnail.jpg?CPbxTT6kZLxzwZ2c4tGk1gv4)' }}  />
                         </div>
                         <div className="main-entity">
                             <div className="side_bar">
@@ -32,15 +32,17 @@ class DetailJob extends Component {
                                             <div className="short">
                                                 AXON
                                     </div>
-                                            <p className="gear-icon">
-                                                Product
+                                    <p>
+                                            <i className="fa fa-cog"/>
+                                                <span>  Product</span>
                                     </p>
-                                            <p className="group-icon">
-                                                301-500
+                                    <p>
+                                            <i className="fa fa-users" />
+                                                <span>  301-500</span>
                                     </p>
                                             <div className="country-icon">
-                                                <i className="flag flag-us" />
-                                                <span className="country-name">United States</span>
+                                                <i className="flag-icon flag-icon-vn" />
+                                                <span className="country-name">Vietnam</span>
                                             </div>
                                             <div className="working-date">
                                                 <i className="fa fa-calendar" />
@@ -71,7 +73,7 @@ class DetailJob extends Component {
                                 <div className="outside-jr">
                                     <div className="saved-wrapper">
                                         <div className="saved-body">
-                                            <a data-toggle="modal" data-target="#sign-in-modal" href>
+                                            <a data-toggle="modal" data-target="#sign-in-modal" >
                                                 <div className="big saved saved-default" />
                                                 <div className="saved-text saved-text-default">
                                                     <span className="save-job">Save Job</span>
@@ -102,16 +104,16 @@ class DetailJob extends Component {
                                         <div className="clearfix" />
                                         <div className="salary not-signed-in">
                                             <span className="salary-icon-stack">
-                                                <i className="ion-ios-circle-outline" />
-                                                <i className="ion-social-usd" />
+                                                
+                                                <i className="fas fa-dollar-sign" />
                                             </span>
-                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Sign in to view</a>
+                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Sign in to view</a>
                                             <div className="address__arrow" />
                                         </div>
                                         <div className="address">
-                                            <div className="address__icon" />
+                                            <div className="fas fa-map-marker-alt" />
                                             <div className="address__full-address">
-                                                <span>Doan Van Bo, District 4, Ho Chi Minh</span>
+                                                <span>     Doan Van Bo, District 4, Ho Chi Minh</span>
                                             </div>
                                             <a target="_blank" className="address__map" href="https://www.google.com/maps?q=11 Doan Van Bo District 4 Ho Chi Minh">
                                                 <div className="address__text">See map</div>
@@ -255,13 +257,7 @@ class DetailJob extends Component {
                 </div>
             </div>
             <div id="job-robot-slidein">
-                <div className="hidden-xs" id="job-mail-link">
-                    <div className="jr-slidein-close text-right">
-                        <i className="fa fa-times" />
-                    </div>
-                    <i className="fa fa-bell-o bell triggerable" />
-                    <a className="subscribe-link" data-toggle="modal" data-target="#job-mail-subscribe-modal" data-source="jdpage_bottomslidein" href>Get similar jobs by email</a>
-                </div>
+                
                 <div className="waiting-icon">
                     <i className="fa fa-spinner fa-spin" />
                 </div>

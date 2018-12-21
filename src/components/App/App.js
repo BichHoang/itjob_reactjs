@@ -14,8 +14,8 @@ class App extends Component {
                 <div>
                     <div className="container">
                         <Header />
-                        {this.showContent(routes)}
                     </div>
+                    {this.showContent(routes)}
                     <Footer/>
                 </div>
             </Router>

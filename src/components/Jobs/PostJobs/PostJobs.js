@@ -7,9 +7,6 @@ class PostJobs extends Component {
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
-                <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
-                </div>
                 <div className="post-jobs-content">
                     <div className="block" id="post-job-title">
                         <div className="pull-right right-column">
@@ -17,7 +14,7 @@ class PostJobs extends Component {
                                 Already a customer?
                 </div>
                             <div className="sign-in">
-                                <i className="fa fa-caret-right" />
+                                <i className="fas fa-caret-right" />
                                 <a href="/admin/login">Sign in</a>
                             </div>
                         </div>
@@ -154,7 +151,7 @@ class PostJobs extends Component {
                                                 <label className="col-sm-4 control-label" htmlFor="CITY">City</label>
                                                 <div className="col-sm-8">
                                                     <select name="CITY" id="CITY" className="form-control" data-msg="can't be blank">
-                                                        <option selected="selected" value="Ho Chi Minh">Ho Chi Minh</option>
+                                                        <option value="Ho Chi Minh">Ho Chi Minh</option>
                                                         <option value="Ha Noi">Ha Noi</option>
                                                         <option value="Da Nang">Da Nang</option>
                                                         <option value="Others">Others</option>

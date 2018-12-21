@@ -7,9 +7,6 @@ class CompanyRating extends Component {
     <div className="hidden-xs" id="scrolltop">
         <div className="top-arrow" />
     </div>
-    <div className="hidden-xs hidden-sm" id="feedback">
-        <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">PHẢN HỒI</a>
-    </div>
     <div className="company-content">
         <div className="company-review">
             {/* Headline Photo */} {/* Header Information */}
@@ -28,14 +25,18 @@ class CompanyRating extends Component {
             Ho Chi Minh, Ha Noi, Da Nang
           </span> {/* Last updated: "2018-12-18 13:45:53 +0700"*/}
                     <div className="company-info">
-                        <span className="gear-icon">
-              Dịch vụ
-            </span>
-                        <span className="group-icon">
-              1000+
-            </span>
+                        <span>
+                            <i className="fa fa-cog" />
+                              Dịch vụ
+                            
+                        </span>
+                        <span>
+                            <i className="fa fa-users" />
+                              1000+
+                            
+                        </span>
                         <div className="country">
-                            <i className="flag flag-vn" />
+                            <i className="flag-icon flag-icon-vn" />
                             <span className="name">Viet Nam</span>
                         </div>
                     </div>
@@ -53,7 +54,7 @@ class CompanyRating extends Component {
                     </div>
                 </div>
                 <div className="headers__actions text-right">
-                    <a className="full-width button ibutton ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href>Thêm đánh giá</a>
+                    <a className="full-width button ibutton ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >Thêm đánh giá</a>
                     
                 </div>
             </div>
@@ -74,11 +75,11 @@ class CompanyRating extends Component {
                             <div className="corner-bottom-left-curve" />
                         </li>
                         <li className="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
-                            <a target="_blank" title="Đến Facebook" rel="nofollow" v-tooltip="true" href="https://www.facebook.com/FPTSoftwareCareers/"><i className="fa fa-facebook-official fa-2x" />
+                            <a target="_blank" title="Đến Facebook" rel="nofollow" v-tooltip="true" href="https://www.facebook.com/FPTSoftwareCareers/"><i className="fab fa-facebook fa-2x" />
                             </a>
                         </li>
                         <li className="ionicon navigation__item navigation__item--right hidden-sm hidden-xs">
-                            <a target="_blank" title="Đến trang web" className="ion-android-open" rel="nofollow" v-tooltip="true" href="https://career.fpt-software.com/vi/" />
+                            <a target="_blank" title="Đến trang web" className="fas fa-external-link-square-alt fa-2x" rel="nofollow" v-tooltip="true" href="https://career.fpt-software.com/vi/" />
                         </li>
                     </ul>
                     {/* Details Review Calculation */}
@@ -259,22 +260,14 @@ class CompanyRating extends Component {
                                 <div className="paragraph float">
                                     Đánh giá FPT Software ngay
                                 </div>
-                                <a className="button ibutton full-width big ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href>Thêm đánh giá</a>
+                                <a className="button ibutton full-width big ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >Thêm đánh giá</a>
                             </div>
                         </div>
                     </div>
                     {/* Details Content of Review */}
                     <div className="panel panel-default">
                         <div className="panel-body content-review disable-user-select">
-                            <div className="filter-box">
-                                Tìm kiếm
-                                <span>
-                  <button className="btn btn-filter">
-                    <span className="hidden filtered-mark">x</span>
-                                <span className="text">OT</span>
-                                </button>
-                                </span>
-                            </div>
+                            
                             <div className="total-reviews-headline">
                                 <h3>615 Đánh giá</h3>
                             </div>
@@ -309,7 +302,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -366,7 +359,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -426,7 +419,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -483,7 +476,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -511,8 +504,8 @@ class CompanyRating extends Component {
                                     </div>
                                 </div>
                                 <div className="box-action-blur-reviews">
-                                    <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập  </a>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -545,7 +538,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -602,7 +595,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -631,7 +624,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -664,7 +657,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -721,7 +714,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -750,7 +743,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -783,7 +776,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -840,7 +833,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -869,7 +862,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -902,7 +895,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -959,7 +952,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -988,7 +981,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1021,7 +1014,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1078,7 +1071,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1107,7 +1100,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1140,7 +1133,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1197,8 +1190,8 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
-                        </span> Khuyến khích
+                                                  <i className="fas fa-thumbs-up" />
+                                                </span> Khuyến khích
                                             </div>
                                         </div>
                                         <div className="date">
@@ -1226,7 +1219,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1259,7 +1252,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1316,7 +1309,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1345,7 +1338,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1378,7 +1371,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1435,7 +1428,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1464,7 +1457,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1497,7 +1490,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1554,7 +1547,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1583,7 +1576,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1616,7 +1609,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1702,7 +1695,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1735,7 +1728,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1792,7 +1785,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1821,7 +1814,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1854,7 +1847,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -1911,7 +1904,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -1940,7 +1933,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -1973,7 +1966,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2030,7 +2023,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2059,7 +2052,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -2092,7 +2085,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2149,7 +2142,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2178,7 +2171,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -2211,7 +2204,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2268,7 +2261,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2297,7 +2290,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -2330,7 +2323,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2387,7 +2380,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2416,7 +2409,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -2449,7 +2442,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2506,7 +2499,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2535,7 +2528,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="content-of-review">
@@ -2568,7 +2561,7 @@ class CompanyRating extends Component {
                             <i className="ion-ios-star fa-stack-1x fa-inverse" />
                           </span>
                                                 </span>
-                                                <i className="rating-dropdown small ion-arrow-down-b" />
+                                                <i className="rating-dropdown small fas fa-arrow-down" />
                                                 <div className="arrow-up" />
                                                 <ul className="hidden-sm hidden-xs detail-rating-tooltip">
                                                     <li>
@@ -2625,7 +2618,7 @@ class CompanyRating extends Component {
                                             </div>
                                             <div className="recommend">
                                                 <span className="yes">
-                          <i className="fa fa-thumbs-o-up" />
+                          <i className="fas fa-thumbs-up" />
                         </span> Khuyến khích
                                             </div>
                                         </div>
@@ -2654,7 +2647,7 @@ class CompanyRating extends Component {
                                 </div>
                                 <div className="box-action-blur-reviews">
                                     <a className="sign-in-link" data-target="#sign-in-modal" data-toggle="modal">Đăng nhập</a>
-                                    <span>để xem đánh giá này.</span>
+                                    <span> để xem đánh giá này.</span>
                                 </div>
                             </div>
                             <div className="div text-center">
@@ -2672,7 +2665,7 @@ class CompanyRating extends Component {
                                         <a href="/nha-tuyen-dung/fpt-software/danh-gia?locale=vi&page=31">31</a>
                                     </li>
                                     <li>
-                                        <a rel="next" href="/nha-tuyen-dung/fpt-software/danh-gia?locale=vi&page=2">&gt;</a>
+                                        <a rel="next" href="/nha-tuyen-dung/fpt-software/danh-gia?locale=vi">></a>
                                     </li>
                                 </ul>
                             </div>
@@ -2690,7 +2683,7 @@ class CompanyRating extends Component {
                                 <div className="paragraph float">
                                     Đánh giá FPT Software ngay
                                 </div>
-                                <a className="button ibutton full-width big ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" href>Thêm đánh giá</a>
+                                <a className="button ibutton full-width big ibutton-red add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >Thêm đánh giá</a>
                             </div>
                         </div>
                     </div>
@@ -2709,10 +2702,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2735,10 +2728,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2764,10 +2757,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2793,10 +2786,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2822,10 +2815,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2851,10 +2844,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2880,10 +2873,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2909,10 +2902,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                      
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">
@@ -2938,10 +2931,10 @@ class CompanyRating extends Component {
                   </h2>
                                     <div className="salary not-signed-in">
                                         <span className="salary-icon-stack">
-                      <i className="ion-ios-circle-outline" />
-                      <i className="ion-social-usd" />
+                     
+                      <i className="fas fa-dollar-sign" />
                     </span>
-                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" href>Đăng nhập để xem mức lương</a>
+                                        <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Đăng nhập để xem mức lương</a>
                                         <div className="address__arrow" />
                                     </div>
                                     <div className="address">

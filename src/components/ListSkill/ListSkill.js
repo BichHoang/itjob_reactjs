@@ -7,9 +7,7 @@ class ListSkill extends Component {
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
-                <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
-                </div>
+                
                 <br />
                 <br />
                 <div className="main-content container-fluid" id="homepage">
