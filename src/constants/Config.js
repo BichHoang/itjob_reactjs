@@ -1,1 +1,1 @@
-export const API_URL = 'http://itjob-heroku.herokuapp.com/public/api';
+export const API_URL = 'http://localhost/it_job_admin/public/api';
