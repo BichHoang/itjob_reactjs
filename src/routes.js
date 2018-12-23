@@ -1,6 +1,5 @@
 import React from 'react';
 import Index from './components/Index/Index'
-import Companies from './components/Companies/Companies';
 import CadidateProfile from './components/Cadidate/CadidateProfile';
 import SigninCadidate from './components/Cadidate/SigninCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
@@ -9,18 +8,13 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
-import DetailJob from './components/Jobs/DetailJob/DetailJob';
+import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
 
 const routes = [
     {
         path: '/',
         exact: true,
         main: ({match}) => <Index match = {match} />
-    },
-    {
-        path: '/jobss',
-        exact: true,
-        main: ({match}) => <Companies match = {match} />
     },
     {
         path: '/cadidate-profile',
@@ -63,9 +57,9 @@ const routes = [
         main: ({match}) => <JobsList match = {match} />
     },
     {
-        path: '/detailjob',
+        path: '/companies/axon',
         exact: true,
-        main: ({match}) => <DetailJob match = {match} />
+        main: ({match}) => <DetailCompany match = {match} />
     },
 ];
 
