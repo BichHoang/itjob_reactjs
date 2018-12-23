@@ -6,6 +6,9 @@ import SigninCadidate from './components/Cadidate/SigninCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
 import SignupCompany from './components/Companies/SignupCompany';
 import SearchCompanies from './components/Companies/SearchCompanies/SearchCompanies';
+import ListSkill from './components/ListSkill/ListSkill';
+import DetailJob from './components/Jobs/DetailJob/DetailJob';
+import NewJob from './components/Companies/CompanyPost/NewJob';
 
 const routes = [
     {
@@ -14,9 +17,14 @@ const routes = [
         main: ({match}) => <Index match = {match} />
     },
     {
-        path: '/admin_post',
+        path: '/jobs',
         exact: true,
         main: ({match}) => <Companies match = {match} />
+    },
+    {
+        path :'/jobs/:id',
+        exact: true,
+        main: ({match}) => <DetailJob match = {match} />
     },
     {
         path: '/cadidate-profile',
@@ -39,10 +47,21 @@ const routes = [
         main: ({match}) => <SignupCompany match = {match} />
     },
     {
+        path: '/company/new-post',
+        exact: true,
+        main: ({match}) => <NewJob match = {match} />
+    },
+    {
         path: '/companies',
         exact: true,
         main: ({match}) => <SearchCompanies match = {match} />
     },
+    {
+        path: '/jobs-skill-index',
+        exact: true,
+        main: ({match}) => <ListSkill match = {match} />
+    },
+    
 ];
 
 export default routes;

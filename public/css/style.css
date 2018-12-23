@@ -65,7 +65,6 @@ a img {
 a:link,
 a:visited {
   text-decoration:none;
-  color:#ea1e30;
 }
 
 a:hover,
@@ -1009,8 +1008,7 @@ div.navigation nav.pagination .nav-links ul li span.dots {
 }
 
 #footer {
-  margin-top:31px;
-  margin-right:365px;
+  background: black;
 }
 
 #body .gform_wrapper {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getAllJobsAPI } from '../../actions';
 import { connect } from 'react-redux';
 import callApi from '../../utils/apiCaller';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 class Companies extends Component {
@@ -12,13 +13,13 @@ class Companies extends Component {
         }
     }
     componentDidMount() {
-        callApi('admin_post', 'GET', null).then(res => {
+        callApi('posts', 'GET', null).then(res => {
             this.setState({ jobs: res.data })
         })
     }
 
     // componentDidMount() {
-    //     Axios.get("http://itjob-heroku.herokuapp.com/public/api/admin_post", {}).then((res) => {
+    //     Axios.get("http://itjob-heroku.herokuapp.com/public/api/admin_post_api", {}).then((res) => {
     //         //on success
     //         this.setState({
     //             jobs: res.data
@@ -31,13 +32,17 @@ class Companies extends Component {
 
     render() {
         let { jobs } = this.state;
-        let job = jobs.map((job, index) => {
+        let { match } = this.props;
+        let url = match.url;
+        let rs = jobs.map((job, index) => {
+            let idName = "company_" + job.id;
             return (
-                <div className="company" id="company_374">
+                <div className="company" id={idName}>
                     <div className="logo">
                         <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
-                            <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions"><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} />
-                            </a>
+                        <a target="_blank" href="/">
+                            <img alt="img" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} />
+                        </a>
                         </div>
                     </div>
                     <div className="company__description">
@@ -45,18 +50,18 @@ class Companies extends Component {
                             <div className="details">
                                 <div className="title-info">
                                     <div className="title">
-                                        <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions">${job.Title}</a>
+                                    <Link to={`${url}/${job.id}`} >{job.title}</Link>
                                     </div>
                                     <div className="info">
                                         <span className="gear-icon">
-                                            Product
-                                                    </span>
+                                            {job.description}
+                                        </span>
                                         <span className="group-icon">
-                                            301-500
-                                                    </span>
+                                            {job.salary}$
+                                        </span>
                                         <span className="globe-icon">
                                             Germany
-                                                    </span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="city">
@@ -91,7 +96,7 @@ class Companies extends Component {
                             <div className="search_text_wrapper">
                                 <div className="ion-ios-search" />
                                 <div className="search_field_wrapper">
-                                    <input type="text" name="query" id="search_companies_text" defaultValue className="search_text hide" />
+                                    <input type="text" name="query" id="search_companies_text" defaultValue className="search_text" />
                                 </div>
                             </div>
                         </div>
@@ -142,10 +147,10 @@ class Companies extends Component {
                     </div>
                     <div className="col-xs-12" id="jobs">
                         <h1>
-                            2,062 IT companies in Vietnam for you
+                            2,062 IT jobs in Vietnam for you
                         </h1>
                         <div className="first-group">
-                            {job}
+                            {rs}
                         </div>
                         <div id="show-more-wrapper">
                             <div id="show_more">

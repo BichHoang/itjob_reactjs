@@ -18004,11 +18004,6 @@ body.users_show #jobrobot-tab .jobrobots .empty-message .popover .search_compani
   width:100%;
 }
 
-#footer {
-  margin:100px 0 40px;
-  padding-top:1px;
-}
-
 @media (max-width:768px) {
   #footer {
     margin-top:80px;

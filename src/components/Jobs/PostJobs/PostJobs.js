@@ -12,7 +12,7 @@ class PostJobs extends Component {
                         <div className="pull-right right-column">
                             <div className="is-customer">
                                 Already a customer?
-                </div>
+                            </div>
                             <div className="sign-in">
                                 <i className="fas fa-caret-right" />
                                 <a href="/admin/login">Sign in</a>
@@ -22,10 +22,10 @@ class PostJobs extends Component {
                     <div className="block" id="contact-me">
                         <div className="title">
                             Want great IT candidates?
-            </div>
+                        </div>
                         <div className="description">
                             Give us your details and our Customer Love team will contact you about our service!
-            </div>
+                        </div>
                         <button className="contact-us ibutton ibutton-red" data-target="#contact-form-modal" data-toggle="modal">
                             Yes, I want great IT candidates!
             </button>
@@ -33,7 +33,7 @@ class PostJobs extends Component {
                     <div className="block" id="call-us">
                         <div className="title">
                             Call us today
-            </div>
+                        </div>
                         <table>
                             <tbody>
                                 <tr>
@@ -50,7 +50,7 @@ class PostJobs extends Component {
                     <div className="block">
                         <div className="title">
                             Great IT companies choose ITviec
-            </div>
+                        </div>
                         <div className="company-logo">
                             <div className="logo">
                                 <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions"><img src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/w170/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" />
@@ -124,10 +124,10 @@ class PostJobs extends Component {
                                 </button>
                                 <div className="modal-body__message">
                                     Contact us!
-                    </div>
+                                </div>
                                 <div className="modal-body__message">
                                     We love meeting new people. :)
-                    </div>
+                                </div>
                                 <div className="content">
                                     <div className="post-form">
                                         <form className="info form-horizontal" id="post_job_form" action="https://service.capsulecrm.com/service/newlead" acceptCharset="UTF-8" data-remote="true" method="post">
