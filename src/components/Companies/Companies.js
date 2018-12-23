@@ -12,7 +12,7 @@ class Companies extends Component {
         }
     }
     componentDidMount() {
-        callApi('admin_post', 'GET', null).then(res => {
+        callApi('admin_post_api', 'GET', null).then(res => {
             this.setState({ jobs: res.data })
         })
     }
