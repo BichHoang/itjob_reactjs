@@ -15,7 +15,7 @@ class Index extends Component {
                                 <div className="search_text_wrapper">
                                     <div className="ion-ios-search" />
                                     <div className="search_field_wrapper">
-                                        <input type="text" name="query" id="search_text" defaultValue className="search_text hide" />
+                                        <input type="text" name="query" id="search_text" className="search_text" placeholder="key word..." />
                                     </div>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@ class Index extends Component {
                                 <div className="city_select_wrapper">
                                     <div className="ion-ios-location-outline" />
                                     <div className="city_field_wrapper">
-                                        <select name="city" id="city" className="search_city hide" data-cities="{&quot;ho-chi-minh-hcm&quot;:&quot;Ho Chi Minh&quot;,&quot;ha-noi&quot;:&quot;Ha Noi&quot;,&quot;da-nang&quot;:&quot;Da Nang&quot;,&quot;others&quot;:&quot;Others&quot;}" data-preload="false">
+                                        <select name="city" id="city" className="search_city">
                                             <option value>City</option>
                                             <option value="ho-chi-minh-hcm">Ho Chi Minh</option>
                                             <option value="ha-noi">Ha Noi</option>

@@ -499,9 +499,9 @@ function disableSelection(target) {
         target.style.cursor = "default";
     }
     //Calling the JS function directly just after body load
-window.onload = function() {
-    disableSelection(document.body);
-};
+// window.onload = function() {
+//     disableSelection(document.body);
+// };
 document.ondragstart = function() {
         return false;
     }
