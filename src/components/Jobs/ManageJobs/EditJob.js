@@ -11,8 +11,8 @@ class EditJob extends Component {
             requirement: "",
             salary: "",
             amount_of_people: 0,
-            start_date: "",
-            end_date: "",
+            start_day: "",
+            end_day: "",
             isSuccess: 0,
         }
     }
@@ -21,11 +21,13 @@ class EditJob extends Component {
         let { match } = this.props
         const id = match.params.id;
         console.log(id)
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + id;
+        const path = 'http://localhost/it_job_admin/public/api/posts/' + id;
         console.log(path);
+        try {
         Axios.get(path)
         .then(res => {
             const post = res.data;
+            console.log(post);
             this.setState({
                 id: post.id,
                 title: post.title,
@@ -33,10 +35,14 @@ class EditJob extends Component {
                 requirement: post.requirement,
                 salary: post.salary,
                 amount_of_people: post.amount_of_people,
-                start_date: post.start_date,
-                end_date: post.end_date
+                start_day: post.start_day,
+                end_day: post.end_day
             });
-        })
+        }) }
+        catch (error) {
+            console.log(error);
+        }
+        console.log(this.state);
     }
 
     handleChange = event => {
@@ -45,22 +51,21 @@ class EditJob extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + this.state.id + '/'
+        const path = 'http://localhost/it_job_admin/public/api/employers/edit/' + this.state.id;
         const post = {
             title: this.state.title,
             description: this.state.description,
             requirement: this.state.requirement,
             salary: this.state.salary,
             amount_of_people: this.state.amount_of_people,
-            start_date: this.start_date,
-            end_date: this.state.end_date
+            start_day: this.state.start_day,
+            end_day: this.state.end_day
         }
 
         console.log(post)
-        Axios.put(path,post)
+        Axios.put(path, post)
         .then(res => {
             console.log(res);
-            console.log(res.data);
             this.setState({
                 isSuccess: res.status
             })
@@ -101,11 +106,11 @@ class EditJob extends Component {
                         </div>
                         <div>
                             <label>Start day</label>
-                            <input type="text" name="start_day" value = {this.state.start_date} onChange={this.handleChange} />
+                            <input type="text" name="start_day" value = {this.state.start_day} onChange={this.handleChange} />
                         </div>
                         <div>
                             <label>End day</label>
-                            <input type="text" name="end_day" value = {this.state.end_date} onChange={this.handleChange} />
+                            <input type="text" name="end_day" value = {this.state.end_day} onChange={this.handleChange} />
                         </div>
                         <div>
                             <button type="submit">Update</button>
