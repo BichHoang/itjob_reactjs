@@ -15,3 +15,14 @@ export const getAllJobs = (jobs) => {
         jobs
     }
 }
+
+export const openTab = () => {
+    return {
+        type : Types.OPEN_TAB
+    }
+}
+export const closeTab = () => {
+    return {
+        type : Types.CLOSE_TAB
+    }
+}
