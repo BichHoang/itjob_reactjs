@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import callApi from '../../../utils/apiCaller';
 
 class ListCompany extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            companies: []
+        }
+    }
+
+    componentDidMount() {
+        callApi('admin_employer_api', 'GET', null).then(res => {
+            this.setState({companies: res.data})
+        })
+    }
     render() {
         return (
             <div>
