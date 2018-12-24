@@ -8,8 +8,11 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
+import ListSkill from './components/ListSkill/ListSkill';
+import DetailJob from './components/Jobs/DetailJob/DetailJob';
+import NewJob from './components/Companies/CompanyPost/NewJob';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
-import NewJob from './components/Jobs/NewJob/NewJob';
+
 
 const routes = [
     {
@@ -58,7 +61,7 @@ const routes = [
         main: ({match}) => <JobsList match = {match} />
     },
     {
-        path: '/companies/axon',
+        path: '/jobs-skill-index',
         exact: true,
         main: ({match}) => <DetailCompany match = {match} />
     },
@@ -67,6 +70,11 @@ const routes = [
         exact: true,
         main: ({match}) => <NewJob match = {match} />
     },
+    {
+        path: '/jobs/:skill/:location',
+        exact: true,
+        main: ({match}) => <JobsList match = {match} />
+    }
 ];
 
 export default routes;

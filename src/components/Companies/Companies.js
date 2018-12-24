@@ -15,6 +15,10 @@ class Companies extends Component {
 
     componentDidMount() {
         callApi('admin_post_api', 'GET', null).then(res => {
+<<<<<<< HEAD
+            this.setState({ jobs: res.data })
+=======
+>>>>>>> 60a43d9f5fa9638d03135dcc54e552bc8a29a91a
             this.setState({jobs: res.data})
         })
     }
