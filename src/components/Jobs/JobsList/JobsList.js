@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import { getJobsAPI } from '../../../actions';
+import callApi from '../../../utils/apiCaller';
 import { Link } from 'react-router-dom';
 
 class JobsList extends Component {
@@ -11,8 +13,7 @@ class JobsList extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://5c0e9da8e1498a00133648b9.mockapi.io/posts/')
-        .then(res => {
+        callApi('posts', 'GET', null).then(res => {
             const jobs = res.data;
             this.setState({jobs});
         })
@@ -159,4 +160,13 @@ class JobsList extends Component {
     }
 }
 
-export default JobsList;
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getJobs: () => {
+            dispatch(getJobsAPI());
+        }
+    }
+}
+
+export default connect(mapDispatchToProps)(JobsList);

@@ -5,7 +5,7 @@ export default function callApi(endpoint, method = 'GET', body) {
     return axios({
         method,
         // url: `${Config.API_URL}/${endpoint}`,
-        url: `${Config.API_URL_FAKE}/${endpoint}`,
+        url: `${Config.MY_API}/${endpoint}`,
         data: body
     }).catch(err => {
         console.log(err);

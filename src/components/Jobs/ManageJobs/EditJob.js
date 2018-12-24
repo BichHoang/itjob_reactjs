@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import callApi from '../../../utils/apiCaller';
+import { editJobAPI, getJobsAPI } from '../../../actions';
 
 class EditJob extends Component {
     constructor(props){
@@ -21,10 +23,9 @@ class EditJob extends Component {
         let { match } = this.props
         const id = match.params.id;
         console.log(id)
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + id;
+        const path = 'posts/' + id;
         console.log(path);
-        Axios.get(path)
-        .then(res => {
+        callApi(path, 'GET', null).then(res => {
             const post = res.data;
             this.setState({
                 id: post.id,
@@ -45,7 +46,7 @@ class EditJob extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + this.state.id + '/'
+        const path = 'posts/' + this.state.id + '/'
         const post = {
             title: this.state.title,
             description: this.state.description,
@@ -57,8 +58,7 @@ class EditJob extends Component {
         }
 
         console.log(post)
-        Axios.put(path,post)
-        .then(res => {
+        callApi(path, 'PUT', post).then(res => {
             console.log(res);
             console.log(res.data);
             this.setState({
@@ -122,4 +122,15 @@ class EditJob extends Component {
     }
 }
 
-export default EditJob;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        editJob: () => {
+            dispatch(editJobAPI());
+        },
+        getJobs: () => {
+            dispatch(getJobsAPI());
+        }
+    }
+}
+
+export default connect(mapDispatchToProps)(EditJob);

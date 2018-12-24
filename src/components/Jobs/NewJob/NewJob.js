@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import callApi from '../../../utils/apiCaller';
+import { newJobAPI } from '../../../actions';
 
 class NewJob extends Component {
     constructor(props){
@@ -22,7 +24,7 @@ class NewJob extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/'
+        const path = 'posts/'
         const post = {
             title: this.state.title,
             description: this.state.description,
@@ -34,8 +36,7 @@ class NewJob extends Component {
         }
 
         console.log(post)
-        Axios.post(path,post)
-        .then(res => {
+        callApi(path, 'POST', post).then(res => {
             console.log(res);
             console.log(res.data);
             this.setState({
@@ -98,4 +99,12 @@ class NewJob extends Component {
     }
 }
 
-export default NewJob;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        newJob: () => {
+            dispatch(newJobAPI());
+        }
+    }
+}
+
+export default connect(mapDispatchToProps)(NewJob);
