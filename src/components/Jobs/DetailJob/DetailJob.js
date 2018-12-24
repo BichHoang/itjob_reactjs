@@ -5,25 +5,46 @@ class DetailJob extends Component {
     constructor(props){
         super(props);
         this.state = {
-            job : ''
+            job : '',
+            company: '',
+            detailCompany: '',
         }
 
     }
     componentDidMount(){
         let { match } = this.props;
         let id = match.params.id;
-        let url = 'posts/' + id;
+        let url = 'admin_post_api/' + id;
         callApi(url, 'GET', null).then(res => {
             this.setState({ job: res.data })
         })
+        console.log(url)
+        url = 'admin_employer_api/' + this.state.job.id_employer;
+        callApi(url, 'GET', null).then(res => {
+            this.setState({ company: res.data })
+        })
+        console.log(this.state.job)
+        console.log("ok")
+        url = 'admin_employer_detail_api/' + this.state.company.id_employer_detail;
+        callApi(url, 'GET', null).then(res => {
+            this.setState({ detailCompany: url })
+        })
     }
     render() {
+        if(this.state.company === ''){
+            let url = 'admin_employer_api/' + this.state.job.id_employer;
+            callApi(url, 'GET', null).then(res => {
+                this.setState({ company: res.data })
+            })
+            console.log(url)
+        }
         let { job } = this.state;
-        let imgURL = job.img;
+        let {company} = this.state;
+        let {detailCompany} = this.state;
         let jobDetail = <div className="job-detail">
         <div className="header">
             <div className="job_info">
-                <h1 className="job_title">{job.title}</h1>
+                <h1 className="job_title">{job.Title}</h1>
                 <div className="tag-list">
                     <a className="big ilabel mkt-track" href="/it-jobs/html5">
                         <span>HTML5</span>
@@ -48,7 +69,7 @@ class DetailJob extends Component {
                 <div className="address">
                     <div className="fas fa-map-marker-alt" />
                     <div className="address__full-address">
-                        <span> Doan Van Bo, District 4, Ho Chi Minh</span>
+                        <span>{detailCompany.address}</span>
                     </div>
                     <a target="_blank" className="address__map" href="https://www.google.com/maps?q=11 Doan Van Bo District 4 Ho Chi Minh">
                         <div className="address__text">See map</div>
@@ -165,7 +186,7 @@ class DetailJob extends Component {
                                     <div className="inside">
                                         <div className="logo">
                                             <a href="/companies/axon">
-                                                <img alt="AXON Vietnam Big Logo" src={imgURL} />
+                                                <img alt="AXON Vietnam Big Logo" src={company.url_avatar} />
                                             </a>
                                         </div>
                                         <div className="employer-info">

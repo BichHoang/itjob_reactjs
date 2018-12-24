@@ -20,15 +20,6 @@ const routes = [
         main: ({match}) => <Index match = {match} />
     },
     {
-<<<<<<< HEAD
-        path: '/jobss',
-=======
-        path: '/jobs',
->>>>>>> dd0ff1fe80ff139afa7c0dad9cac58613e6a380e
-        exact: true,
-        main: ({match}) => <Companies match = {match} />
-    },
-    {
         path :'/jobs/:id',
         exact: true,
         main: ({match}) => <DetailJob match = {match} />
@@ -64,7 +55,6 @@ const routes = [
         main: ({match}) => <SearchCompanies match = {match} />
     },
     {
-<<<<<<< HEAD
         path: '/jobs/:id',
         exact: true,
         main: ({match}) => <JobDetails match = {match} />
@@ -79,13 +69,11 @@ const routes = [
         exact: true,
         main: ({match}) => <JobsList match = {match} />
     },
-=======
+    {
         path: '/jobs-skill-index',
         exact: true,
         main: ({match}) => <ListSkill match = {match} />
-    },
-    
->>>>>>> dd0ff1fe80ff139afa7c0dad9cac58613e6a380e
+    }  
 ];
 
 export default routes;

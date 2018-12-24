@@ -2,20 +2,23 @@
 
 
 /*Login Signup Page*/
-a:focus,a:hover,a{
-    outline:none;
+a:focus, a:hover, a {
+    outline: none;
     text-decoration: none;
 }
-li,ul{
+
+li, ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .header-top i {
     font-size: 18px;
 }
+
 .bg-image {
-    background: url(../images/background-login.jpg) no-repeat 0 0 / cover;
+/ / background: url(../images/background-login.jpg) no-repeat 0 0 / cover;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -104,7 +107,6 @@ li,ul{
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border-color: -moz-use-text-color -moz-use-text-color #d4d9e3;
     border-image: none;
     border-style: none none solid;
     border-width: medium medium 1px;
@@ -120,18 +122,6 @@ li,ul{
 .login-form label {
     margin-bottom: 30px;
     width: 100%;
-}
-
-.user input {
-    background: rgba(0, 0, 0, 0) url("../images/user.png") no-repeat scroll 7px 12px;
-}
-
-.pass input {
-    background: rgba(0, 0, 0, 0) url("../images/password.png") no-repeat scroll 7px 12px;
-}
-
-.mail input {
-    background: rgba(0, 0, 0, 0) url("../images/mail.png") no-repeat scroll 4px 12px;
 }
 
 .login-signup .tab-content {
@@ -213,6 +203,7 @@ li,ul{
 .v-align {
     vertical-align: top;
 }
+
 .logo img {
     max-width: 180px;
     padding: 16px 0 17px;
@@ -247,9 +238,7 @@ li,ul{
 }
 
 .add-project::before {
-    background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;
-    content: "";
-    ;
+    content: "";;
     height: 12px;
     left: 17px;
     position: absolute;
@@ -268,9 +257,11 @@ li,ul{
 .icon-info {
     position: relative;
 }
+
 .navi i {
     font-size: 20px;
 }
+
 .label.label-primary {
     border-radius: 50%;
     font-size: 9px;
@@ -300,6 +291,7 @@ li,ul{
     left: -85px;
     padding: 17px;
 }
+
 .view {
     background: #5584ff none repeat scroll 0 0;
     border-radius: 100px;
@@ -319,18 +311,19 @@ li,ul{
 .img-responsive {
     width: 100%;
 }
-#navigation{
+
+#navigation {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+
 .search input {
     border: none;
     font-size: 15px;
     padding: 15px 9px;
     width: 100%;
-    background: rgba(0, 0, 0, 0) url("../images/search.png") no-repeat scroll 99% 12px;
     color: #8492af;
 }
 
@@ -404,7 +397,8 @@ header {
     max-width: 30px !important;
     text-align: center;
 }
-.hidden-xs{
+
+.hidden-xs {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -422,6 +416,7 @@ header {
     margin: 0;
     padding: 21px 0;
 }
+
 .sales {
     background: #ffffff none repeat scroll 0 0;
     border: 1px solid #d4d9e3;
@@ -429,6 +424,7 @@ header {
     padding: 15px;
     width: 100%;
 }
+
 .sales button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #dadee7;
@@ -446,9 +442,11 @@ header {
     right: 12px;
     top: 11px;
 }
-.sales  .btn-group {
+
+.sales .btn-group {
     float: right;
 }
+
 .sales h2 {
     color: #8492af;
     float: left;
@@ -457,12 +455,14 @@ header {
     margin: 0;
     padding: 9px 0 0;
 }
+
 .btn.btn-secondary.btn-lg.dropdown-toggle > span {
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-.sales .dropdown-menu{
+
+.sales .dropdown-menu {
     margin: 0px;
     padding: 0px;
     border: 0px;
@@ -470,9 +470,11 @@ header {
     width: 100%;
     color: #0e1a35;
 }
-.sales .btn-group.open .dropdown-toggle, .btn.active, .btn:active{
+
+.sales .btn-group.open .dropdown-toggle, .btn.active, .btn:active {
     box-shadow: none;
 }
+
 .sales .dropdown-menu > a {
     color: #0e1a35;
     display: inline-block;
@@ -481,20 +483,25 @@ header {
     text-align: center;
     width: 100%;
 }
+
 #my-cool-chart svg {
     width: 100%;
 }
-.sales .dropdown-menu > a:hover{
-    color: #5584FF;   
+
+.sales .dropdown-menu > a:hover {
+    color: #5584FF;
 }
+
 .shield-buttons {
     display: none;
 }
+
 .close, .close:focus, .close:hover {
     color: #fff;;
     opacity: 1;
     text-shadow: none;
 }
+
 .modal-body input {
     border: 1px solid #d4d9e3;
     font-size: 14px;
@@ -504,6 +511,7 @@ header {
     width: 100%;
     color: #8492af;
 }
+
 .modal-body textarea {
     border: 1px solid #d4d9e3;
     font-size: 14px;
@@ -514,9 +522,11 @@ header {
     width: 100%;
     color: #8492af;
 }
+
 .modal-header.login-header h4 {
     color: #ffffff;
 }
+
 .modal-footer .add-project {
     background: #5584ff none repeat scroll 0 0;
     border: medium none;
@@ -527,14 +537,19 @@ header {
     padding: 10px 30px;
     position: relative;
 }
-.modal-footer .add-project::before{display: none;}
+
+.modal-footer .add-project::before {
+    display: none;
+}
+
 .modal-footer {
     border: 0 none;
     padding: 10px 15px 26px;
     text-align: right;
 }
+
 .cancel {
-    background: #0E1A35     ;
+    background: #0E1A35;
     border: medium none;
     border-radius: 100px;
     color: #ffffff;
@@ -542,69 +557,73 @@ header {
     font-weight: 600;
     padding: 10px 30px;
     position: relative;
-    
+
 }
-.modal{
-    top: 20%; 
+
+.modal {
+    top: 20%;
 }
+
 .modal-header .close {
     margin-top: 2px;
 }
-.search input:focus{
+
+.search input:focus {
     border-bottom: 1px solid #BDC4D4;
-    line-height:22px;
+    line-height: 22px;
     transition: 0.1s all;
 }
-.modal-header.login-header {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-/*Main CSS*/
-
-
-
-
-
 
 @media only screen and (max-device-width: 767px) {
     .login-logo img {
         margin: 0 auto;
     }
+
     .login-details .nav-tabs > li {
         text-align: center;
         width: 50%;
     }
+
     .login-signup .login-inner h1 {
         font-size: 26px;
         margin-bottom: 0;
         margin-top: 10px;
     }
+
     .login-inner .login-form input {
         font-size: 15px;
         max-width: 100%;
         padding: 15px 45px;
     }
+
     .login-inner .form-details {
         padding: 25px;
     }
+
     .login-inner .login-form label {
         margin-bottom: 20px;
         width: 100%;
     }
+
     .login-inner .form-btn {
         margin: 0;
         max-width: 180px;
     }
+
     .tab-content .tab-pane {
         padding: 20px 0;
     }
+
     #navigation .navi a {
         font-size: 14px;
         padding: 20px;
         text-align: center;
     }
+
     #navigation .navi i {
         margin-right: 0px;
     }
+
     #navigation .navi a:hover,
     #navigation .navi .active a {
         background: #122143 none repeat scroll 0 0;
@@ -612,31 +631,38 @@ header {
         display: block;
         padding-left: 20px;
     }
+
     header .header-top img {
         max-width: 38px !important;
     }
+
     .v-align header {
         padding: 12px 15px;
     }
+
     header .header-top li {
         padding-left: 13px;
         padding-right: 6px;
     }
+
     .navbar-default .navbar-toggle {
         border-color: rgba(0, 0, 0, 0);
     }
+
     .navbar-header .navbar-toggle {
         float: left;
         margin: 0;
         padding: 0;
         top: 12px;
     }
+
     button,
-        html [type="button"],
-        [type="reset"],
-        [type="submit"] {
-            outline: medium none;
+    html [type="button"],
+    [type="reset"],
+    [type="submit"] {
+        outline: medium none;
     }
+
     .user-dashboard .sales h2 {
         color: #8492af;
         float: left;
@@ -644,59 +670,176 @@ header {
         font-weight: 600;
         margin: 0;
         padding: 13px 0 0;
-}
+    }
+
     .user-dashboard .btn.btn-secondary.btn-lg.dropdown-toggle > span {
         font-size: 11px;
-}
+    }
+
     .user-dashboard .sales button {
         font-size: 11px;
         padding-right: 23px;
-}  
+    }
+
     .user-dashboard .sales h2 {
-    font-size: 12px;
-}
-.gutter{
-    padding: 0;
-}
+        font-size: 12px;
+    }
+
+    .gutter {
+        padding: 0;
+    }
 }
 
 @media only screen and (max-device-width: 992px) {
     header .header-top li {
         padding-left: 20px !important;
         padding-right: 0;
-}
+    }
+
     header .logo img {
         max-width: 125px !important;
-}
+    }
 
 }
 
-@media only screen and (min-device-width: 767px) and (max-device-width: 998px){
-      .user-dashboard .header-top {
+@media only screen and (min-device-width: 767px) and (max-device-width: 998px) {
+    .user-dashboard .header-top {
         padding-top: 5px;
-}
+    }
+
     .user-dashboard .header-rightside {
         display: inline-block;
         float: left;
         width: 100%;
-}
+    }
+
     .user-dashboard .header-rightside .header-top img {
         max-width: 41px !important;
-} 
+    }
+
     .user-dashboard .sales button {
-    font-size: 10px;
-}
+        font-size: 10px;
+    }
+
     .user-dashboard .btn.btn-secondary.btn-lg.dropdown-toggle > span {
-    font-size: 12px;
-}
+        font-size: 12px;
+    }
+
     .user-dashboard .sales h2 {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-device-width: 998px) and (max-device-width: 1350px) {
+    #navigation .logo img {
+        max-width: 130px;
+        padding: 16px 0 17px;
+        width: 100%;
+    }
+}
+
+.emp-profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.profile-img {
+    text-align: center;
+}
+
+.profile-img img {
+    width: 70%;
+    height: 100%;
+}
+
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
     font-size: 15px;
+    background: #212529b8;
 }
+
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
 }
-@media only screen and (min-device-width:998px) and (max-device-width: 1350px){
-        #navigation .logo img {
-    max-width: 130px;
-    padding: 16px 0 17px;
-    width: 100%;
+
+.proile-rating {
+    font-size: 12px;
+    color: #818182;
 }
+
+.proile-rating span {
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 500;
+    border: none;
+    font-size: medium;
+    padding-bottom: 5px;
+}
+.profile-head h6{
+    color: #0062cc;
+    font-style: italic;
+    font-size: small; 
+}
+.profile-head .nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 2px solid #0062cc;
+}
+
+.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+.profile-work p {
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+
+.profile-work a {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.profile-work ul {
+    list-style: none;
+}
+
+.profile-tab label {
+    font-weight: 600;
+}
+.tabContent{
+    padding-top: 2%;
+}
+.tabContent p{
+    font-size: 14px;
+}
+.tabContent label{
+    font-size: 14px;
+    font-weight: 500;
+}
+#upcv{
+    padding-top: 20px;
+    color: red;
+}
+#fileToUpload{
+    padding-bottom: 10px;
 }
