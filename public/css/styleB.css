@@ -801,8 +801,7 @@ header {
 }
 
 .profile-work {
-    padding: 14%;
-    margin-top: -15%;
+    padding: 0% 15%;
 }
 
 .profile-work p {
@@ -835,6 +834,15 @@ header {
 .tabContent label{
     font-size: 14px;
     font-weight: 500;
+}
+.tabContent .row{
+    padding-bottom: 10px;
+}
+.tabContent .col-md-1 {
+    padding-left: 5%;
+}
+.tabContent button{
+    padding: 8px 10px;
 }
 #upcv{
     padding-top: 20px;
