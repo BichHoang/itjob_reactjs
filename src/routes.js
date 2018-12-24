@@ -73,7 +73,12 @@ const routes = [
         path: '/jobs-skill-index',
         exact: true,
         main: ({match}) => <ListSkill match = {match} />
-    }  
+    },
+    {
+        path: '/jobs/:skill/:location',
+        exact: true,
+        main: ({match}) => <JobsList match = {match} />
+    }
 ];
 
 export default routes;

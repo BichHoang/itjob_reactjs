@@ -6,8 +6,7 @@ class ListSkill extends Component {
             <div>
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
-                </div>
-                
+                </div> 
                 <br />
                 <br />
                 <div className="main-content container-fluid" id="homepage">
