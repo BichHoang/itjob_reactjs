@@ -9,6 +9,9 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
+import ListSkill from './components/ListSkill/ListSkill';
+import DetailJob from './components/Jobs/DetailJob/DetailJob';
+import NewJob from './components/Companies/CompanyPost/NewJob';
 
 const routes = [
     {
@@ -17,9 +20,18 @@ const routes = [
         main: ({match}) => <Index match = {match} />
     },
     {
+<<<<<<< HEAD
         path: '/jobss',
+=======
+        path: '/jobs',
+>>>>>>> dd0ff1fe80ff139afa7c0dad9cac58613e6a380e
         exact: true,
         main: ({match}) => <Companies match = {match} />
+    },
+    {
+        path :'/jobs/:id',
+        exact: true,
+        main: ({match}) => <DetailJob match = {match} />
     },
     {
         path: '/cadidate-profile',
@@ -42,11 +54,17 @@ const routes = [
         main: ({match}) => <SignupCompany match = {match} />
     },
     {
+        path: '/company/new-post',
+        exact: true,
+        main: ({match}) => <NewJob match = {match} />
+    },
+    {
         path: '/companies',
         exact: true,
         main: ({match}) => <SearchCompanies match = {match} />
     },
     {
+<<<<<<< HEAD
         path: '/jobs/:id',
         exact: true,
         main: ({match}) => <JobDetails match = {match} />
@@ -61,6 +79,13 @@ const routes = [
         exact: true,
         main: ({match}) => <JobsList match = {match} />
     },
+=======
+        path: '/jobs-skill-index',
+        exact: true,
+        main: ({match}) => <ListSkill match = {match} />
+    },
+    
+>>>>>>> dd0ff1fe80ff139afa7c0dad9cac58613e6a380e
 ];
 
 export default routes;

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SigninCompany extends Component {
     render() {
         return (
-            <div>
+            <div className="paddingTop">
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
@@ -34,6 +34,7 @@ class SigninCompany extends Component {
                                         <input className="form-control" placeholder="Password" required="required" data-rule-minlength={8} data-msg-minlength="Password must be at least 8 characters" data-msg="Please add password" type="password" name="user[password]" />
                                     </div>
                                     <div className="form-group">
+                                        <a className="" rel="nofollow" href="/company-signup">Sign up</a>
                                         <a className="right forgot-password" rel="nofollow" href="/users/password/new">Forgot password?</a>
                                     </div>
                                     <br />

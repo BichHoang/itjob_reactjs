@@ -47,13 +47,13 @@ class Header extends Component {
                                         <a href="/jobs">All Jobs</a>
                                     </li>
                                     <li className="pageMenu__item">
-                                        <a href="/companies/search-companies">Company Reviews</a>
+                                        <a href="/companies">Company Reviews</a>
                                     </li>
                                     <li className="pageMenu__item">
-                                        <a target="_blank" href="/blog/">Blog</a>
+                                        <a target="_blank" href="/blog">Blog</a>
                                     </li>
                                     <li className="pageMenu__item hidden-xs">
-                                        <a className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow" href="#">Sign In</a>
+                                        <a className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow" href="/cadidate-signin">Sign In</a>
                                     </li>
                                     <li className="pageMenu__item pageMenu__language">
                                         <div className="switch-toggle well">
@@ -65,7 +65,7 @@ class Header extends Component {
                                         </div>
                                     </li>
                                     <li className="pageMenu__item">
-                                        <a href="/post_jobs">Employers</a>
+                                        <a href="/company-signin">Employers</a>
                                     </li>
                                 </ul>
                             </div>

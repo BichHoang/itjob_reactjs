@@ -2574,7 +2574,19 @@ output {
   line-height:1.428571429;
   color:#808184;
 }
-
+.search_city{
+  padding: 8px 0px 15px 25px;
+  font-size: 25px;
+  width: 100%;
+}
+#search_text{
+  width:338% !important;
+  height:60px !important;
+}
+#search_companies_text{
+  width:440% !important;
+  height:58px !important;
+}
 .form-control,
 textarea,
 input[type="text"],
@@ -8180,6 +8192,7 @@ ul.tagit input[type="text"] {
 .search-form-wrapper .search_section_wrapper .search_text_wrapper .ion-ios-search:before {
   font-weight:700;
   color:#8B8B8B;
+  padding-right: 15px;
 }
 
 .search-form-wrapper .search_section_wrapper .search_text_wrapper .search_field_wrapper {
@@ -8468,7 +8481,7 @@ ul.tagit input[type="text"] {
 #logo {
   text-align:center;
   background:transparent;
-  padding:0 0 40px 0;
+  padding:0 0 0px 0;
 }
 
 #logo .logo-image {
@@ -9759,11 +9772,6 @@ footer.top-company__footer {
   margin-top:10px;
 }
 
-#footer {
-  margin:100px 0 40px;
-  padding-top:1px;
-}
-
 @media (max-width:768px) {
   #footer {
     margin-top:80px;
@@ -9832,6 +9840,7 @@ footer.top-company__footer {
 
 #footer .content .bottom {
   overflow:hidden;
+  padding-top: 35px;
 }
 
 @media (max-width:768px) {

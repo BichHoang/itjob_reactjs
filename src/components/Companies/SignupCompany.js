@@ -5,13 +5,10 @@ class SignupCompany extends Component {
         return (
             <div>
                 {/* <div className="modal fade" id="contact-form-modal" role="dialog" tabIndex={-1}> */}
-                <div>
+                <div className="paddingTop">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-body text-center">
-                                <button className="modal-body__close" data-dismiss="modal" type="button">
-                                    <span>×</span>
-                                </button>
                                 <div className="modal-body__message">
                                     Contact us!
                                 </div>
