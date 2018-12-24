@@ -9,6 +9,7 @@ import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
+import NewJob from './components/Jobs/NewJob/NewJob';
 
 const routes = [
     {
@@ -37,11 +38,6 @@ const routes = [
         main: ({match}) => <SignupCompany match = {match} />
     },
     {
-        path: '/company/new-post',
-        exact: true,
-        main: ({match}) => <NewJob match = {match} />
-    },
-    {
         path: '/companies',
         exact: true,
         main: ({match}) => <SearchCompanies match = {match} />
@@ -65,6 +61,11 @@ const routes = [
         path: '/companies/axon',
         exact: true,
         main: ({match}) => <DetailCompany match = {match} />
+    },
+    {
+        path: '/new-job',
+        exact: true,
+        main: ({match}) => <NewJob match = {match} />
     },
 ];
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-class EditJob extends Component {
+class NewJob extends Component {
     constructor(props){
         super(props);
         this.state = {
-            id: 0,
             title: "",
             description: "",
             requirement: "",
@@ -16,28 +15,6 @@ class EditJob extends Component {
             isSuccess: 0,
         }
     }
-    
-    componentDidMount(){
-        let { match } = this.props
-        const id = match.params.id;
-        console.log(id)
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + id;
-        console.log(path);
-        Axios.get(path)
-        .then(res => {
-            const post = res.data;
-            this.setState({
-                id: post.id,
-                title: post.title,
-                description: post.description,
-                requirement: post.requirement,
-                salary: post.salary,
-                amount_of_people: post.amount_of_people,
-                start_date: post.start_date,
-                end_date: post.end_date
-            });
-        })
-    }
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value});
@@ -45,7 +22,7 @@ class EditJob extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + this.state.id + '/'
+        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/'
         const post = {
             title: this.state.title,
             description: this.state.description,
@@ -57,7 +34,7 @@ class EditJob extends Component {
         }
 
         console.log(post)
-        Axios.put(path,post)
+        Axios.post(path,post)
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -65,15 +42,14 @@ class EditJob extends Component {
                 isSuccess: res.status
             })
         })
+        console.log(this.state.isSuccess)
     }
 
     componentDidUpdate(){
-        const path = '/jobs/' + this.state.id;
-        if (this.state.isSuccess === 200){
-            window.location.replace(path);
+        if (this.state.isSuccess === 201){
+            window.location.replace('/jobs');
         }
     }
-
     render() {
         return (
             <div className="edit-page">
@@ -100,7 +76,7 @@ class EditJob extends Component {
                                 </div>
                                 <div className="form-item col-lg-12">
                                     <label><b>Amount of People:</b></label>
-                                    <input type="number" name="amount_of_people" value = {this.state.amount_of_people} onChange={this.handleChange} />
+                                    <input type="number" name="amount_of_people" min="1" value = {this.state.amount_of_people} onChange={this.handleChange} />
                                 </div>
                                 <div className="form-item col-lg-12">
                                     <label><b>Start date:</b></label>
@@ -111,7 +87,7 @@ class EditJob extends Component {
                                     <input type="date" name="end_date" value = {this.state.end_date} onChange={this.handleChange} />
                                 </div>                             
                                 <div className="action action-line-top form-item col-lg-12">
-                                    <button type="submit" className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb">Update</button>
+                                    <button type="submit" className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb">Create</button>
                                 </div>
                             </form>
                         </div>
@@ -122,4 +98,4 @@ class EditJob extends Component {
     }
 }
 
-export default EditJob;
+export default NewJob;

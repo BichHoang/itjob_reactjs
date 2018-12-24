@@ -148,7 +148,7 @@ class JobDetails extends Component {
                                             <i className="fa fa-calendar" /> {this.state.start_date} - {this.state.end_date}
                                         </div>
                                         <div className="action action-line-top">
-                                            <a className="jr-apply-trigger apply_now button-red btn-block  " rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb" href="/job/senior-software-engineer-axon-3056/job_applications/new?source=an_jd_top">Apply Now</a>
+                                            <a className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb" href="/job/senior-software-engineer-axon-3056/job_applications/new?source=an_jd_top">Apply Now</a>
                                         </div>
                                         <div className="space-btn" />
                                         <div className="clearfix" />
