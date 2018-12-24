@@ -30,6 +30,32 @@ $(document).ready(function () {
             $('#aboutContent').css("display", "none");
             $('#skillContent').css("display", "none");
             $('#saveContent').css("display", "block");
-        });  
+        }); 
+    document.getElementById('divNameEdit').style.display = 'none'; 
+    $('#btnEditName').click(
+        function () {
+            document.getElementById('divName').style.display = 'none'; 
+            document.getElementById('divNameEdit').style.display = 'block'; 
+        }
+    ); 
+    $('#btnCancelName').click(
+        function () {
+            document.getElementById('divName').style.display = 'block'; 
+            document.getElementById('divNameEdit').style.display = 'none'; 
+        }
+    ); 
+    document.getElementById('divEmailEdit').style.display = 'none'; 
+    $('#btnEditEmail').click(
+        function () {
+            document.getElementById('divEmail').style.display = 'none'; 
+            document.getElementById('divEmailEdit').style.display = 'block'; 
+        }
+    ); 
+    $('#btnCancelEmail').click(
+        function () {
+            document.getElementById('divEmail').style.display = 'block'; 
+            document.getElementById('divEmailEdit').style.display = 'none'; 
+        }
+    ); 
 });
  
