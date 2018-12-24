@@ -24,8 +24,7 @@ class Search extends Component {
                                     <div className="ion-ios-location-outline" />
                                     <div className="city_field_wrapper">
                                         <select name="city" id="city" className="search_city">
-                                            <option value>City</option>
-                                            <option value="ho-chi-minh-hcm">Ho Chi Minh</option>
+                                            <option value="ho-chi-minh">Ho Chi Minh</option>
                                             <option value="ha-noi">Ha Noi</option>
                                             <option value="da-nang">Da Nang</option>
                                             <option value="others">Others</option>

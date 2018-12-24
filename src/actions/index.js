@@ -125,6 +125,14 @@ export const getJobsEmployer = (jobs) =>{
         jobs
     }
 }
+export const getJobsAPI = () => {
+    return (dispatch) => {
+        return callApi('/posts', 'GET', null).then(res => {
+            dispatch(getJobs(res.data))
+        });
+    }
+}
+
 export const getJobs = (jobs) => {
     return {
         type: Types.GET_JOBS,
