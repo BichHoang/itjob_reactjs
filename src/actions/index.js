@@ -50,6 +50,46 @@ export const getAllSkills = (skills) => {
     }
 }
 
+export const getJobs = (jobs) => {
+    return {
+        type: Types.GET_JOBS,
+        jobs
+    }
+}
+
+// edit post
+export const editJobAPI = () => {
+    return (dispatch) => {
+        return callApi('/posts', 'PUT', null).then(res => {
+            dispatch(editJob(res.data));
+        })
+    }
+}
+
+export const editJob = (job) => {
+    return {
+        type: Types.EDIT_JOB,
+        job
+    }
+}
+
+// new post
+export const newJobAPI = () => {
+    return (dispatch) => {
+        return callApi('/post', 'POST', null).then(res => {
+            dispatch(newJob(res.data));
+        })
+    }
+}
+
+export const newJob = (job) => {
+    return {
+        type: Types.NEW_JOB,
+        job
+    }
+}
+
+//
 export const openTab = () => {
     return {
         type : Types.OPEN_TAB

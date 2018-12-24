@@ -1,6 +1,5 @@
 import React from 'react';
 import Index from './components/Index/Index'
-import Companies from './components/Companies/Companies';
 import CadidateProfile from './components/Cadidate/CadidateProfile';
 import SigninCadidate from './components/Cadidate/SigninCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
@@ -12,17 +11,14 @@ import JobsList from './components/Jobs/JobsList/JobsList';
 import ListSkill from './components/ListSkill/ListSkill';
 import DetailJob from './components/Jobs/DetailJob/DetailJob';
 import NewJob from './components/Companies/CompanyPost/NewJob';
+import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
+
 
 const routes = [
     {
         path: '/',
         exact: true,
         main: ({match}) => <Index match = {match} />
-    },
-    {
-        path :'/jobs/:id',
-        exact: true,
-        main: ({match}) => <DetailJob match = {match} />
     },
     {
         path: '/cadidate-profile',
@@ -43,11 +39,6 @@ const routes = [
         path: '/company-signup',
         exact: true,
         main: ({match}) => <SignupCompany match = {match} />
-    },
-    {
-        path: '/company/new-post',
-        exact: true,
-        main: ({match}) => <NewJob match = {match} />
     },
     {
         path: '/companies',
@@ -72,7 +63,12 @@ const routes = [
     {
         path: '/jobs-skill-index',
         exact: true,
-        main: ({match}) => <ListSkill match = {match} />
+        main: ({match}) => <DetailCompany match = {match} />
+    },
+    {
+        path: '/new-job',
+        exact: true,
+        main: ({match}) => <NewJob match = {match} />
     },
     {
         path: '/jobs/:skill/:location',

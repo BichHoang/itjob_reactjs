@@ -9,3 +9,24 @@
 .paddingTop150 {
     padding-top: 100px;
 }
+
+.icon-color {
+    color: #6aa0f7;
+}
+
+.edit-page {
+    width: 50%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.edit-page h1 {
+    text-align: center;
+    color: #586882;
+}
+
+.form-item {
+    margin-top: 15px;
+    color: #4286f4;
+}

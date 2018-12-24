@@ -6,6 +6,8 @@ export default function callApi(endpoint, method = 'GET', body) {
         method,
         //url: `${Config.API_URL}/${endpoint}`,
         url: `${Config.API_URL_TRONG}/${endpoint}`,
+        // url: `${Config.API_URL}/${endpoint}`,
+        //url: `${Config.MY_API}/${endpoint}`,
         data: body
     }).catch(err => {
         console.log(err);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import callApi from '../../../utils/apiCaller';
+import { editJobAPI, getJobsAPI } from '../../../actions';
 
 class EditJob extends Component {
     constructor(props){
@@ -21,11 +23,17 @@ class EditJob extends Component {
         let { match } = this.props
         const id = match.params.id;
         console.log(id)
+<<<<<<< HEAD
         const path = 'http://localhost/it_job_admin/public/api/posts/' + id;
         console.log(path);
         try {
         Axios.get(path)
         .then(res => {
+=======
+        const path = 'posts/' + id;
+        console.log(path);
+        callApi(path, 'GET', null).then(res => {
+>>>>>>> 60a43d9f5fa9638d03135dcc54e552bc8a29a91a
             const post = res.data;
             console.log(post);
             this.setState({
@@ -51,13 +59,18 @@ class EditJob extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+<<<<<<< HEAD
         const path = 'http://localhost/it_job_admin/public/api/employers/edit/' + this.state.id;
+=======
+        const path = 'posts/' + this.state.id + '/'
+>>>>>>> 60a43d9f5fa9638d03135dcc54e552bc8a29a91a
         const post = {
             title: this.state.title,
             description: this.state.description,
             requirement: this.state.requirement,
             salary: this.state.salary,
             amount_of_people: this.state.amount_of_people,
+<<<<<<< HEAD
             start_day: this.state.start_day,
             end_day: this.state.end_day
         }
@@ -65,6 +78,14 @@ class EditJob extends Component {
         console.log(post)
         Axios.put(path, post)
         .then(res => {
+=======
+            start_date: this.state.start_date,
+            end_date: this.state.end_date
+        }
+
+        console.log(post)
+        callApi(path, 'PUT', post).then(res => {
+>>>>>>> 60a43d9f5fa9638d03135dcc54e552bc8a29a91a
             console.log(res);
             this.setState({
                 isSuccess: res.status
@@ -81,13 +102,46 @@ class EditJob extends Component {
 
     render() {
         return (
-            <div className="paddingTop150">
-                <div className="content">
-                    <form onSubmit={this.handleSubmit}>
-                        <div>
-                            <label>Title</label>
-                            <input type="text" name="title" value = {this.state.title} onChange={this.handleChange} />
+            <div className="edit-page">
+                <div className="show_content" id="job_45037">
+                    <div className="main-content">
+                        <div className="content">
+                            <form onSubmit={this.handleSubmit}>
+                                <h1><b>{this.state.title}</b></h1>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Title:</b></label>
+                                    <input type="text" name="title" value = {this.state.title} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Description:</b></label>
+                                    <textarea rows="5" name="description" value = {this.state.description} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Requirement:</b></label>
+                                    <textarea rows="5" name="requirement" value = {this.state.requirement} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Salary:</b></label>
+                                    <input type="text" name="salary" value = {this.state.salary} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Amount of People:</b></label>
+                                    <input type="number" name="amount_of_people" value = {this.state.amount_of_people} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">
+                                    <label><b>Start date:</b></label>
+                                    <input type="date" name="start_date" value = {this.state.start_date} onChange={this.handleChange} />
+                                </div>
+                                <div className="form-item col-lg-12">    
+                                    <label><b>End date:</b></label>
+                                    <input type="date" name="end_date" value = {this.state.end_date} onChange={this.handleChange} />
+                                </div>                             
+                                <div className="action action-line-top form-item col-lg-12">
+                                    <button type="submit" className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb">Update</button>
+                                </div>
+                            </form>
                         </div>
+<<<<<<< HEAD
                         <div>
                             <label>Description</label>
                             <input type="text" name="description" value = {this.state.description} onChange={this.handleChange} />
@@ -116,10 +170,24 @@ class EditJob extends Component {
                             <button type="submit">Update</button>
                         </div>
                     </form>
+=======
+                    </div>
+>>>>>>> 60a43d9f5fa9638d03135dcc54e552bc8a29a91a
                 </div>
             </div>
         );
     }
 }
 
-export default EditJob;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        editJob: () => {
+            dispatch(editJobAPI());
+        },
+        getJobs: () => {
+            dispatch(getJobsAPI());
+        }
+    }
+}
+
+export default connect(mapDispatchToProps)(EditJob);
