@@ -15,7 +15,7 @@ class SigninCadidate extends Component {
             const target = event.target;
             const value = target.type === 'checkbox' ? target.checked : target.value;
             const name = target.name;
-        
+            console.log(target.name);   
             this.setState({
               [name]: value
             });
@@ -38,7 +38,7 @@ class SigninCadidate extends Component {
                     <div className="top-arrow" />
                 </div>
                 <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
+                    <a className="uservoice_link">FEEDBACK</a>
                 </div>
                 <div className="user-sessions">
                     <div className="main-content">
@@ -46,7 +46,7 @@ class SigninCadidate extends Component {
                             <div className="col-md-6 col-md-offset-3 col-xs-12">
                                 <div className="content">
                                     <div className="robby-image">
-                                        <img src="assets/roby-jrjdyeah-f5e8849eaf88be88c054a7c6c66cf82c841d0d40aa04bfc725c574f8716d736d.png" />
+                                        <img src="" alt="img" />
                                     </div>
                                     <div className="message">
                                         Sign in now to access your account on ITviec.
@@ -54,7 +54,7 @@ class SigninCadidate extends Component {
                                     <br />
                                     <div className="sign-in-action-wrapper">
                                         <div className="sign-in-button gplus button">
-                                            <a id="gplus-signin" rel="nofollow" href="/users/auth/google_oauth2">
+                                            <a id="gplus-signin" rel="nofollow">
                                                 <div className="icon gplus-icon">
                                                     <i className="fa fa-google-plus" />
                                                 </div>
@@ -64,7 +64,7 @@ class SigninCadidate extends Component {
                                             </a>
                                         </div>
                                         <div className="sign-in-button facebook button">
-                                            <a id="facebook-signin" rel="nofollow" onclick="Login(this); return false;" href>
+                                            <a>
                                                 <div className="icon">
                                                     <i className="fa fa-facebook" />
                                                 </div>
@@ -80,7 +80,7 @@ class SigninCadidate extends Component {
                                     </div>
                                     <form role="form" data-controller="users--sign-in" data-remote="true" action="/sign_in" acceptCharset="UTF-8" method="post">
                                         <input name="utf8" type="hidden" defaultValue="✓" />
-                                        <input type="hidden" name="authenticity_token" defaultValue="nfnmNyHWlaG/wzlhyAGNTZP3cbPPw84Sp+bSWT5ctYMzXde7y0Fh3tlXCVp3ZOziMUCL7r0wOQq8MUSxfJZi5Q==" />
+                                        <input type="hidden" name="authenticity_token" defaultValue="" />
                                         <div className="form-group">
                                             <div className="form-error text-left" data-target="users--sign-in.error" />
                                         </div>
