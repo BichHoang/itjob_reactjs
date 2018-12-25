@@ -6,3 +6,4 @@ export const EDIT_JOB = 'EDIT_JOB';
 export const NEW_JOB = 'NEW_JOB';
 export const OPEN_TAB = 'OPEN_TAB';
 export const CLOSE_TAB = 'CLOSE_TAB';
+export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';

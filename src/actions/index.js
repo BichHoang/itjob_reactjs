@@ -1,11 +1,18 @@
 import callApi from './../utils/apiCaller';
+import callLoginApi from './../utils/apiLoginCaller';
 import * as Types from '../constants/ActionType';
 
+export const login = () => {
+    return (dispatch) => {
+        return callLoginApi('/login', 'POST', null).then(res => {
+            dispatch(getAllJobs(res.data))
+        });
+    }
+}
 export const getAllJobsAPI = () => {
     return (dispatch) => {
         return callApi('/admin_post', 'GET', null).then(res => {
             dispatch(getAllJobs(res.data))
-            //Bichs ngu
         });
     }
 }
@@ -14,6 +21,14 @@ export const getAllJobs = (jobs) => {
     return {
         type: Types.GET_ALL_JOBS,
         jobs
+    }
+}
+
+export const getJobsAPI = () => {
+    return (dispatch) => {
+        return callApi('/posts', 'GET', null).then(res => {
+            dispatch(getJobs(res.data))
+        });
     }
 }
 

@@ -1,6 +1,36 @@
 import React, { Component } from 'react';
-
+import callLoginApi from '../../utils/apiLoginCaller';
 class SigninCadidate extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+        }
+        this.onChange = this.onChange.bind(this);
+        this.onSave = this.onSave.bind(this);
+    }
+        onChange(event) {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+        
+            this.setState({
+              [name]: value
+            });
+            console.log(this.state.email)
+            console.log(this.state.password)
+        }
+        onSave(event) {
+            event.preventDefault();
+            let {email} = this.state;
+            let {password} = this.state;
+            console.log(email + ' - ' +password);
+            callLoginApi('user/login', email, password).then(res => {
+                console.log(res)
+            })
+        }
     render() {
         return (
             <div className="paddingTop">
@@ -55,10 +85,14 @@ class SigninCadidate extends Component {
                                             <div className="form-error text-left" data-target="users--sign-in.error" />
                                         </div>
                                         <div className="form-group">
-                                            <input className="form-control" placeholder="Email" required="required" data-rule-email="true" data-msg-email="Please correct the email address" data-msg="Please add email" type="email" defaultValue name="user[email]" />
+                                            <input className="form-control" placeholder="Email" 
+                                            required="required" data-rule-email="true" onChange={this.onChange}
+                                            data-msg-email="Please correct the email address" 
+                                            data-msg="Please add email" type="email" 
+                                            value={this.state.email} name="email" />
                                         </div>
                                         <div className="form-group">
-                                            <input className="form-control" placeholder="Password" required="required" data-rule-minlength={8} data-msg-minlength="Password must be at least 8 characters" data-msg="Please add password" type="password" name="user[password]" />
+                                            <input className="form-control"  value={this.state.password} onChange={this.onChange} placeholder="Password" required="required" data-rule-minlength={8} data-msg-minlength="Password must be at least 8 characters" data-msg="Please add password" type="password" name="password" />
                                         </div>
                                         <div className="form-group">
                                             <a className="right forgot-password" rel="nofollow" href="/users/password/new">Forgot password?</a>
@@ -66,7 +100,7 @@ class SigninCadidate extends Component {
                                         <br />
                                         <div className="form-group text-center">
                                             <input type="hidden" name="sign_in_then_review" defaultValue="false" />
-                                            <input type="submit" name="commit" defaultValue="Sign in" className="button-red space ibutton x-large" data-disable-with="Sign in" />
+                                            <input type="submit" name="commit"  onClick={this.onSave} defaultValue="Sign in" className="button-red space ibutton x-large" data-disable-with="Sign in" />
                                         </div>
                                     </form>
                                 </div>
@@ -82,5 +116,5 @@ class SigninCadidate extends Component {
             </div>
         );
     }
-}
-export default SigninCadidate;
+}       
+ export default SigninCadidate;

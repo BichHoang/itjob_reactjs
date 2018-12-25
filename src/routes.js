@@ -76,5 +76,4 @@ const routes = [
         main: ({match}) => <JobsList match = {match} />
     }
 ];
-
 export default routes;
