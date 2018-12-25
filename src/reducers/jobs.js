@@ -10,6 +10,8 @@ const jobs = (state = initialState, action) => {
             return [...action.jobs];
         case Types.GET_JOBS_EMPLOYER:
             return action.jobs;
+        case Types.GET_JOBS_SEARCH:
+            return [...action.jobs];
         default: return [...state];
     }
 };

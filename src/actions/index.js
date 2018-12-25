@@ -127,7 +127,7 @@ export const getJobsEmployer = (jobs) =>{
 }
 export const getJobsAPI = () => {
     return (dispatch) => {
-        return callApi('/posts', 'GET', null).then(res => {
+        return callApi('posts', 'GET', null).then(res => {
             dispatch(getJobs(res.data))
         });
     }
@@ -169,5 +169,36 @@ export const newJob = (job) => {
     return {
         type: Types.NEW_JOB,
         job
+    }
+}
+
+//
+export const openTab = () => {
+    return {
+        type : Types.OPEN_TAB
+    }
+}
+export const closeTab = () => {
+    return {
+        type : Types.CLOSE_TAB
+    }
+}
+
+//search jobs
+export const getJobsSearchAPI = (order_by) => {
+    return (dispatch) => {
+        // return callApi('admin_employer_api', 'GET', null).then(res => {
+        //     dispatch(getAllEmployers(res.data))
+        // });
+        return callApi('posts', 'GET', order_by).then(res => {
+            dispatch(getJobsSearch(res.data))
+        });
+    }
+}
+
+export const getJobsSearch = (jobs) => {
+    return {
+        type: Types.GET_JOBS_SEARCH,
+        jobs
     }
 }
