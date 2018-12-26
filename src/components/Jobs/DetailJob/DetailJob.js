@@ -18,17 +18,6 @@ class DetailJob extends Component {
         callApi(url, 'GET', null).then(res => {
             this.setState({ job: res.data })
         })
-        console.log(url)
-        url = 'admin_employer_api/' + this.state.job.id_employer;
-        callApi(url, 'GET', null).then(res => {
-            this.setState({ company: res.data })
-        })
-        console.log(this.state.job)
-        console.log("ok")
-        url = 'admin_employer_detail_api/' + this.state.company.id_employer_detail;
-        callApi(url, 'GET', null).then(res => {
-            this.setState({ detailCompany: url })
-        })
     }
     render() {
         if(this.state.company === ''){
@@ -69,7 +58,7 @@ class DetailJob extends Component {
                 <div className="address">
                     <div className="fas fa-map-marker-alt" />
                     <div className="address__full-address">
-                        <span>{detailCompany.address}</span>
+                        <span>DC</span>
                     </div>
                     <a target="_blank" className="address__map" href="https://www.google.com/maps?q=11 Doan Van Bo District 4 Ho Chi Minh">
                         <div className="address__text">See map</div>

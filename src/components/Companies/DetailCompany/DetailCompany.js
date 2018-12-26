@@ -9,11 +9,9 @@ class DetailCompany extends Component {
                 </div>
                 <div className="company-content">
                     <div className="company-page">
-                        {/* Headline Photo */} {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
                         <div className="cover-images-desktop cover-images-cropped">
                             <img width="100%" alt="FPT Software Headline Photo" src="https://cdn.itviec.com/photos/33899/processed_headline_photo/fpt-software-headline_photo.jpg?ixK2EznohcYi7kxnTTkiszFC" />
                         </div>
-                        {/* Header Information */}
                         <div className="headers hidden-xs">
                             <div className="logo-container">
                                 <div className="has-overtime logo">
@@ -27,7 +25,7 @@ class DetailCompany extends Component {
                                 <span>
                                     <i className="fa fa-map-marker" />
                                     Ho Chi Minh, Ha Noi, Da Nang
-                                </span> {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
+                                </span>
                                 <div className="company-info">
                                     <span>
                                     <i className="fa fa-cog" />

@@ -21,11 +21,11 @@ class CadidateProfile extends Component {
                             <div className="col-md-4">
                                 <div className="profile-img">
                                     <img
-                                        src={cadidate.image} alt="" />
-                                    <div className="file btn btn-lg btn-primary">
+                                        src={cadidate.image} alt="img" />
+                                    <button className="file btn btn-lg btn-primary">
                                         Change Photo
                                         <input type="file" name="file" />
-                                    </div>
+                                    </button>
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -59,26 +59,26 @@ class CadidateProfile extends Component {
                             <div className="col-md-4">
                                 <div className="profile-work">
                                     <p>WORK LINK</p>
-                                    <a href>Website Link</a>
+                                    <a>Website Link</a>
                                     <br />
-                                    <a href>Bootsnipp Profile</a>
+                                    <a>Bootsnipp Profile</a>
                                     <br />
-                                    <a href>Bootply Profile</a>
+                                    <a>Bootply Profile</a>
                                     <p>SKILLS</p>
-                                    <a href>Web Designer</a>
+                                    <a>Web Designer</a>
                                     <br />
-                                    <a href>Web Developer</a>
+                                    <a>Web Developer</a>
                                     <br />
-                                    <a href>WordPress</a>
+                                    <a>WordPress</a>
                                     <br />
-                                    <a href>PHP, .Net</a>
+                                    <a>PHP, .Net</a>
                                     <br />
                                 </div>
                             </div>
                             <div className="col-md-8">
                                 <div className="tabContent">
                                     <div className="hideContent" id="aboutContent">
-                                        <div className="row">
+                                        <div className="row" id="divName" >
                                             <div className="col-md-3">
                                                 <label>Name</label>
                                             </div>
@@ -86,10 +86,25 @@ class CadidateProfile extends Component {
                                                 <p>{cadidate.name}</p>
                                             </div>
                                             <div className="col-md-1">
-                                                <button type="button" class="btn btn-outline-success">Edit</button>
+                                                <button type="button" className="btn btn-outline-secondary" id="btnEditName">Edit</button>
                                             </div>
                                         </div>
-                                        <div className="row">
+                                        <div className="row" id="divNameEdit" >
+                                            <div className="col-md-3">
+                                                <label>Name</label>
+                                            </div>
+                                            <div className="col-md-5">
+                                                <input type="text" placeholder={cadidate.name} />
+                                            </div>
+                                            <div className="col-md-1">
+                                                <button type="button" className="btn btn-outline-success" id="btnSubmitName">Submit</button>
+                                            </div>
+                                            <div className="col-md-1">
+                                                <button type="button" className="btn btn-outline-danger" id="btnCancelName">Cancel</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="row" id="divEmail" >
                                             <div className="col-md-3">
                                                 <label>Email</label>
                                             </div>
@@ -97,18 +112,21 @@ class CadidateProfile extends Component {
                                                 <p>{cadidate.email}</p>
                                             </div>
                                             <div className="col-md-1">
-                                                <button type="button" class="btn btn-outline-success">Edit</button>
+                                                <button type="button" className="btn btn-outline-secondary" id="btnEditEmail">Edit</button>
                                             </div>
                                         </div>
-                                        <div className="row">
+                                        <div className="row" id="divEmailEdit" >
                                             <div className="col-md-3">
-                                                <label>Phone</label>
+                                                <label>Email</label>
                                             </div>
                                             <div className="col-md-5">
-                                                <p>123 456 7890</p>
+                                                <input type="text" placeholder={cadidate.email} />
                                             </div>
                                             <div className="col-md-1">
-                                                <button type="button" class="btn btn-outline-success">Edit</button>
+                                                <button type="button" className="btn btn-outline-success" id="btnSubmitEmail">Submit</button>
+                                            </div>
+                                            <div className="col-md-1">
+                                                <button type="button" className="btn btn-outline-danger" id="btnCancelEmail">Cancel</button>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -119,7 +137,7 @@ class CadidateProfile extends Component {
                                                 <p>Web Developer and Designer</p>
                                             </div>
                                             <div className="col-md-1">
-                                                <button type="button" class="btn btn-outline-success">Edit</button>
+                                                <button type="button" className="btn btn-outline-success">Edit</button>
                                             </div>
                                         </div>
                                     </div>

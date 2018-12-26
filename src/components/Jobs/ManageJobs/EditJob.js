@@ -13,8 +13,8 @@ class EditJob extends Component {
             requirement: "",
             salary: "",
             amount_of_people: 0,
-            start_date: "",
-            end_date: "",
+            start_day: "",
+            end_day: "",
             isSuccess: 0,
         }
     }
@@ -27,6 +27,7 @@ class EditJob extends Component {
         console.log(path);
         callApi(path, 'GET', null).then(res => {
             const post = res.data;
+            console.log(post);
             this.setState({
                 id: post.id,
                 title: post.title,
@@ -34,10 +35,11 @@ class EditJob extends Component {
                 requirement: post.requirement,
                 salary: post.salary,
                 amount_of_people: post.amount_of_people,
-                start_date: post.start_date,
-                end_date: post.end_date
+                start_day: post.start_day,
+                end_day: post.end_day
             });
-        })
+        }) 
+        console.log(this.state);
     }
 
     handleChange = event => {
@@ -60,7 +62,6 @@ class EditJob extends Component {
         console.log(post)
         callApi(path, 'PUT', post).then(res => {
             console.log(res);
-            console.log(res.data);
             this.setState({
                 isSuccess: res.status
             })
