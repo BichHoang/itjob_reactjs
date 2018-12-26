@@ -13,7 +13,7 @@ class JobsList extends Component {
     }
 
     componentDidMount(){
-        callApi('posts', 'GET', null).then(res => {
+        callApi('admin_post_api', 'GET', null).then(res => {
             const jobs = res.data;
             this.setState({jobs});
         })

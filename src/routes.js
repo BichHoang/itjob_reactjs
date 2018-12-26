@@ -46,6 +46,11 @@ const routes = [
         main: ({match}) => <SearchCompanies match = {match} />
     },
     {
+        path: '/company/:id',
+        exact: true,
+        main: ({match}) => <DetailCompany match = {match} />
+    },
+    {
         path: '/jobs/:id',
         exact: true,
         main: ({match}) => <JobDetails match = {match} />

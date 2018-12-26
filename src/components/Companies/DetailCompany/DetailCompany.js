@@ -1,56 +1,149 @@
 import React, { Component } from 'react';
+import callApi from '../../../utils/apiCaller';
+import { Link } from 'react-router-dom';
 
 class DetailCompany extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            company: '',
+            employer_id: '',
+            jobs: [],
+        }
+
+    }
+    componentDidMount(){
+        let id = 0;
+        let { match } = this.props;
+        id = match.params.id;
+        let url = 'admin_employer_api/' + id;
+        let rs = '';
+        callApi(url, 'GET', null).then(res => {
+            rs = res.data[0];
+            console.log(res)
+            console.log(rs.id_employer)
+            // this.setState({
+            //     company: res.data[0]
+            // })
+            console.log(rs)
+            this.setState({
+                company: rs,
+                employer_id: rs.id_employer
+            })
+        })
+        
+        
+    }
+    getOurSkills(id){
+        let url = 'admin_employer_detail_according_id/' + id;
+        callApi(url, 'GET', null).then(res => {
+           console.log(res)
+        })
+    }
+    componentDidUpdate() {
+        let {employer_id} = this.state;
+        let url = 'admin_posts_according_IDemployer/' + employer_id;
+        return callApi(url, 'GET', null).then(res => {
+            console.log(res)
+            //return res.data;
+            this.setState({jobs: res.data})
+         })
+    }
+
     render() {
-        return (
-            <div>    
-                <div className="hidden-xs" id="scrolltop">
-                    <div className="top-arrow" />
+        let { match } = this.props
+        console.log(match.url)
+        let { jobs } = this.state;
+        let {company} = this.state;
+        let result;
+        console.log(jobs);
+        if(jobs.length>0){
+        result = jobs.map((job,index) => {
+            return(
+                <div key={index}>
+                        <div className="company">
+                            <div className="logo">
+                                <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
+                                    <a><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} /></a>
+                                </div>
+                            </div>
+                            <div className="company__description">
+                                <div className="company__body">
+                                    <div className="details">
+                                        <div className="title-info">
+                                            <div className="title">
+                                                {job.Title}
+                                                {/* <Link to={`${url}/${job.id}`}>{job.title}</Link> */}
+                                            </div>
+                                            <div className="info">
+                                                <span className="gear-icon">Product</span>
+                                                <span className="group-icon">301-500</span>
+                                            <span className="globe-icon">Germany</span>
+                                            </div>
+                                        </div>
+                                    <div className="city">
+                                        <div className="text">Ho Chi Minh</div>
+                                        <div className="text">Tan Binh</div>
+                                    </div>
+                                </div>
+                                <div className="tag-list">
+                                    <div className="tag">Java</div>
+                                    <div className="tag">SAP</div>
+                                    <div className="tag">.NET</div>
+                                </div>
+                            </div>
+                            <div className="current-jobs">
+                                <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions#our-jobs">9 Job</a>
+                                <i className="fa fa-caret-right" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            )
+        })}else result = "";
+        return (
+            <div>
                 <div className="company-content">
                     <div className="company-page">
                         <div className="cover-images-desktop cover-images-cropped">
-                            <img width="100%" alt="FPT Software Headline Photo" src="https://cdn.itviec.com/photos/33899/processed_headline_photo/fpt-software-headline_photo.jpg?ixK2EznohcYi7kxnTTkiszFC" />
+                            <img width="100%" alt="img" src={company.url_bia} />
                         </div>
                         <div className="headers hidden-xs">
                             <div className="logo-container">
                                 <div className="has-overtime logo">
-                                    <img alt="FPT Software Vietnam Big Logo" src="https://cdn.itviec.com/employers/fpt-software/logo/w170/3reFYvb7XKV1a8g4aKiDDke8/fpt-software-logo.png" />
+                                    <img alt="img" src={company.url_avatar} />
                                 </div>
                             </div>
                             <div className="name-and-info">
                                 <h1 className="title">
-                                    FPT Software
+                                    {company.name}
                                 </h1>
                                 <span>
                                     <i className="fa fa-map-marker" />
-                                    Ho Chi Minh, Ha Noi, Da Nang
+                                    {company.address}
                                 </span>
                                 <div className="company-info">
                                     <span>
-                                    <i className="fa fa-cog" />
-                                          Outsourcing
+                                    <i className="fa fa-cog" />Outsourcing
                                     </span>
                                     <span>
                                     <i className="fa fa-users" />
-                                          1000+
+                                        {company.employees}
                                     </span>
                                     <div className="country">
                                         <i className="flag-icon flag-icon-vn" />
-                                        <span className="name">Viet Nam</span>
+                                        <span className="name">{company.country}</span>
                                     </div>
                                 </div>
                                 <div className="working-date">
                                     <i className="fa fa-calendar" />
-                                    <span>
-                                        Monday - Friday
-                                </span>
+                                    <span>{company.woking_time}</span>
                                 </div>
                                 <div className="overtime">
-                                    <i className="fa fa-clock-o" />
-                                    <span>
-                                        Extra salary for OT
-                                </span>
+                                    <span>Website: </span><a target="_blank" href={company.website}>{company.website}</a>
+                                </div>
+                                <div className="overtime">
+                                    <span>Facebook:</span><a target="_blank" href= {company.link_facebook}>{company.link_facebook}</a>
                                 </div>
                             </div>
                             <div className="headers__actions text-right">
@@ -63,31 +156,6 @@ class DetailCompany extends Component {
                     </div>
                     <div className="row company-container">
                         <div className="col-md-8 col-left">
-                            
-                                
-                            <ul className="active navigation">
-                                <li className="navigation__item">
-                                    <a href="/nha-tuyen-dung/fpt-software">Tổng quan</a>
-                                    <div className="corner-bottom-right-overlay" />
-                                    <div className="corner-bottom-right-curve" />
-                                </li>
-                                <li className="navigation__item">
-                                    <a href="/nha-tuyen-dung/fpt-software/danh-gia">615 Đánh giá</a>
-                                    <div className="corner-bottom-right-overlay" />
-                                    <div className="corner-bottom-right-curve" />
-                                    <div className="corner-bottom-left-overlay" />
-                                    <div className="corner-bottom-left-curve" />
-                                </li>
-                                <li className="text social-icon navigation__item navigation__item--right hidden-sm hidden-xs">
-                                    <a target="_blank" title="Đến Facebook" rel="nofollow" v-tooltip="true" href="https://www.facebook.com/FPTSoftwareCareers/"><i className="fab fa-facebook fa-2x" />
-                                    </a>
-                                </li>
-                                <li className="ionicon navigation__item navigation__item--right hidden-sm hidden-xs">
-                                    <a target="_blank" title="Đến trang web" className="fas fa-external-link-square-alt fa-2x" rel="nofollow" v-tooltip="true" href="https://career.fpt-software.com/vi/" />
-                                </li>
-                            </ul>
-                           
-                
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                     <h3 className="panel-title headline">
@@ -96,8 +164,7 @@ class DetailCompany extends Component {
                                 </div>
                                 <div className="panel-body">
                                     <div className="paragraph">
-                                        <p>“ <i>FPT Software is part of FPT Corporation (FPT – HoSE) – the global leading technology, outsourcing and IT services group headquartered in Vietnam with nearly US$2 billion in revenue and more than 13,000 employees. Qualified with CMMI Level 5 &amp; ISO 27001:2013, ASPICE LEVEL 3, FPT Software delivers world-class services in Smart factory, Digital platform, RPA, AI, IoT, Enterprise Mobilization, Cloud, AR/VR, Embedded System, Managed service, Testing, Platform modernization, Business Applications, Application Service, BPO and more services globally from delivery centers across the United States, Japan, Europe, Korea, China, Australia, Vietnam and the Asia Pacific. <br /><br />In 2017, FPT Software has been placed in top 10 of the ranking for three consecutive years. Among top 10, FPT Software is the only IT Company.&nbsp;</i>
-                                        </p>
+                                        <p>{company.overview}</p>
                                     </div>
                                     <h3 className="panel-title">Our Key Skills</h3>
                                     <ul className="employer-skills">
@@ -119,109 +186,14 @@ class DetailCompany extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {/* Jobs */}
                             <div className="panel panel-default jobs">
                                 <div className="panel-heading">
-                                    <h2 className="panel-title">Jobs</h2>
+                                    <h2 className="panel-title">Ours Jobs</h2>
                                 </div>
                                 <div className="panel-body">
-                                    <div className="job super-hot-job" id="job_42848">
-                                        <div className="job_content">
-                                            <div className="logo">
-                                                {/* Last updated: "2018-10-23 13:03:46 +0700"*/}
-                                                <div className="logo-wrapper" title="The leading provider of software outsourcing services in Vietnam">
-                                                    <a target="_blank" href="/companies/fpt-software"><img alt="FPT Software Vietnam Small Logo" src="https://cdn.itviec.com/employers/fpt-software/logo/s65/3reFYvb7XKV1a8g4aKiDDke8/fpt-software-logo.png" width={65} height={65} />
-                                                    </a>
-                                                </div>
-                                                <div className="clearfix" />
-                                            </div>
-                                            <div className="job__description">
-                                                <div className="job__body">
-                                                    <div className="details">
-                                                        <h4 className="title"><a target="_blank" href="/it-jobs/10-senior-java-developer-singing-bonus-fpt-software-1948">10 Senior Java Developer – singing bonus</a>
-                                                        </h4>
-                                                        <div className="salary not-signed-in">
-                                                            <span className="salary-icon-stack">
-                                                                
-                                                                <i className="fas fa-dollar-sign" />
-                                                            </span>
-                                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >Sign in to view</a>
-                                                            <div className="address__arrow" />
-                                                        </div>
-                                                        <div className="hidden-xs">
-                                                            <ul className="benefits">
-                                                                <li>
-                                                                    Onsite in other countries
-                                                        </li>
-                                                                <li>
-                                                                    Signing bonus 01 month salary
-                                                        </li>
-                                                                <li>
-                                                                    Work with best developers
-                                                        </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div className="description hidden-xs">
-                                                            Tham gia phát triển một hệ thống lớn của khách hàng từ giai đoạn requirement, design đến deployment Dự án khoảng 250 MM , môi trường làm việc mở, member...
-                                                </div>
-                                                        <div className="visible-xs">
-                                                            <div className="city">
-                                                                <div className="text">Ha Noi</div>
-                                                                <div className="text">Ho Chi Minh</div>
-                                                            </div>
-                                                            <ul className="benefits">
-                                                                <li>
-                                                                    Onsite in other countries
-                                                        </li>
-                                                                <li>
-                                                                    Signing bonus 01 month salary
-                                                        </li>
-                                                                <li>
-                                                                    Work with best developers
-                                                        </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="job-bottom">
-                                                    <div className="tag-list">
-                                                        <a className="job__skill ilabel mkt-track" href="/it-jobs/java">
-                                                            <span>
-                                                                Java
-                                                            </span>
-                                                        </a><a className="job__skill ilabel mkt-track" href="/it-jobs/spring"><span>
-                                                            Spring
-                                                            </span>
-                                                        </a><a className="job__skill ilabel mkt-track" href="/it-jobs/cloud"><span>
-                                                            Cloud
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="city_and_posted_date hidden-xs">
-                                                <div className="feature new text" title="This job is urgent. Apply today!">Hot Job</div>
-                                                <div className="city">
-                                                    <div className="address">
-                                                        <div className="text">
-                                                            Ha Noi
-                                                        </div>
-                                                        <div className="text other-address">
-                                                            Ho Chi Minh
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="distance-time-job-posted">
-                                                    <span className="distance-time">
-                                                        4 days ago
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {result}
                                 </div>
                             </div>
-                            {/* Last Updated at: 2018-10-23 10:31:41 +0700 */}
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                     <h3 className="panel-title">Why You'll Love Working Here</h3>
@@ -241,55 +213,8 @@ class DetailCompany extends Component {
                                             <span className="content paragraph">Diversified Jobs &amp; Technologies</span>
                                         </li>
                                     </ul>
-                                    {/* Slider Photos */}
                                     <div className="environment">
-                                        <div className="content carousel slide" data-interval="false" id="slider-photos">
-                                            <div className="carousel-inner">
-                                                <div className="active item">
-                                                    <div className="img" data-slide-to={0} data-target="#job_description_photos" style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/2859/profile_slideshow/profile_slideshow.jpg?DG9kkmhjbNBrkaefrqWdix9H)' }} />
-                                                </div>
-                                                <div className="item">
-                                                    <div className="img" data-slide-to={1} data-target="#job_description_photos" style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/2860/profile_slideshow/profile_slideshow.jpg?iDez5qwWZdGDo5bcy1UMUq9A)' }} />
-                                                </div>
-                                                <div className="item">
-                                                    <div className="img" data-slide-to={2} data-target="#job_description_photos">
-                                                        <iframe width="100%" height={444} src="https://www.youtube.com/embed/IjRZrcsmcTs?enablejsapi=1&version=3&playerapiid=ytplayer" frameBorder={0} allowFullScreen />
-                                                    </div>
-                                                </div>
-                                                <div className="item">
-                                                    <div className="img" data-slide-to={3} data-target="#job_description_photos" style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/5784/profile_slideshow/profile_slideshow.jpg?PVwf9Bd1A9gzFc2YLzeqkEwy)' }} />
-                                                </div>
-                                                <div className="item">
-                                                    <div className="img" data-slide-to={4} data-target="#job_description_photos" style={{ backgroundImage: 'url(https://cdn.itviec.com/photos/5785/profile_slideshow/profile_slideshow.jpg?K2jbQpTPFKCGHCpScZ6VbKmd)' }} />
-                                                </div>
-                                            </div>
-                                            <div className="carousel__control-outer carousel__control-outer--left">
-                                                <a className="carousel__control" data-slide="prev" href="#slider-photos"><i className="fa fa-angle-left" />
-                                                </a>
-                                            </div>
-                                            <div className="carousel__control-outer carousel__control-outer--right">
-                                                <a className="carousel__control" data-slide="next" href="#slider-photos"><i className="fa fa-angle-right" />
-                                                </a>
-                                            </div>
-                                            <ol className="carousel-indicators">
-                                                <li className="active carousel-indicators__item" data-slide-to={0} data-target="#slider-photos">
-                                                    <img height={50} src="https://cdn.itviec.com/photos/2859/thumb/thumb.jpg?DG9kkmhjbNBrkaefrqWdix9H" />
-                                                </li>
-                                                <li className="carousel-indicators__item" data-slide-to={1} data-target="#slider-photos">
-                                                    <img height={50} src="https://cdn.itviec.com/photos/2860/thumb/thumb.jpg?iDez5qwWZdGDo5bcy1UMUq9A" />
-                                                </li>
-                                                <li className="carousel-indicators__item" data-slide-to={2} data-target="#slider-photos">
-                                                    <img height={50} src="https://img.youtube.com/vi/IjRZrcsmcTs/0.jpg" />
-                                                </li>
-                                                <li className="carousel-indicators__item" data-slide-to={3} data-target="#slider-photos">
-                                                    <img height={50} src="https://cdn.itviec.com/photos/5784/thumb/thumb.jpg?PVwf9Bd1A9gzFc2YLzeqkEwy" />
-                                                </li>
-                                                <li className="carousel-indicators__item" data-slide-to={4} data-target="#slider-photos">
-                                                    <img height={50} src="https://cdn.itviec.com/photos/5785/thumb/thumb.jpg?K2jbQpTPFKCGHCpScZ6VbKmd" />
-                                                </li>
-                                            </ol>
-                                        </div>
-                                        <br />
+                                        <img width="100%" alt="img" src={company.url_bia} />  
                                     </div>
                                     <div className="paragraph">
                                         <p>Join FPT Software – You can make it too!
@@ -306,7 +231,6 @@ class DetailCompany extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {/* Our People */} {/* Location */}
                             <div className="panel panel-default" data-controller="employers--location" data-employers--location-key="AIzaSyAMccvlWFDk8E9b5Bk6YdPh1ZUht-JPcqU" data-employers--location-url="https://www.google.com/maps/embed/v1/place">
                                 <div className="panel-heading">
                                     <h3 className="panel-title">
@@ -315,48 +239,15 @@ class DetailCompany extends Component {
                                 </div>
                                 <div className="panel-body location">
                                     <div className="row">
-                                        <div className="col-md-3 col-xs-12 hidden-xs">
-                                            <div className="full-address" data-location="FPT+Software+%C4%90%C6%B0%E1%BB%9Dng+D1+Ph%C6%B0%E1%BB%9Dng+T%C3%A2n+Ph%C3%BA+%2C+District+9%2C+Ho+Chi+Minh" data-target="employers--location.place">
-                                                FPT Software Đường D1 Phường Tân Phú
-                                        <br />District 9
-                                        <br />Ho Chi Minh
-                                    </div>
-                                            <div className="map-address">
-                                                FPT Software Đường D1 Phường Tân Phú , District 9, Ho Chi Minh
-                                    </div>
-                                            <div className="full-address" data-location="Duy+Tan%2C+Cau+Giay%2C+Ha+Noi" data-target="employers--location.place">
-                                                Duy Tan
-                                        <br />Cau Giay
-                                        <br />Ha Noi
-                                    </div>
-                                            <div className="map-address">
-                                                Duy Tan, Cau Giay, Ha Noi
-                                    </div>
-                                            <div className="full-address" data-location="Nam+Ky+Khoi+Nghia%2C+Ngu+Hanh+Son%2C+Da+Nang" data-target="employers--location.place">
-                                                Nam Ky Khoi Nghia
-                                        <br />Ngu Hanh Son
-                                        <br />Da Nang
-                                    </div>
-                                            <div className="map-address">
-                                                Nam Ky Khoi Nghia, Ngu Hanh Son, Da Nang
-                                    </div>
-                                            <img className="triangle" src="assets/left-arrow-3a3141fb7ccd0f375c3b92c8368f122a2aed47ae1b01c7bc38b4d246bb0dea96.png" width={10} height={18} />
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8065412332803!2d108.15146261400956!3d16.075525788877083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218d68dff9545%3A0x714561e9f3a7292c!2sDanang+University+of+Technology!5e0!3m2!1svi!2s!4v1516807397758" width="100%" height={450} frameBorder={0} style={{border: 0}} allowFullScreen />
+                                        <br></br>
+                                        <div className="col-md-6">
+                                            <p>Address: {company.address}</p>
                                         </div>
-                                        <div className="col-xs-12 visible-xs">
-                                            <div className="full-address-mobile">
-                                                FPT Software Đường D1 Phường Tân Phú , District 9, Ho Chi Minh
-                                    </div>
-                                            <div className="map-address">
-                                                FPT Software Đường D1 Phường Tân Phú , District 9, Ho Chi Minh
-                                    </div>
+                                        <div className="col-md-6">
+                                            <p className="text-right">Total views: 111,641</p>
                                         </div>
-                                        <div className="col-md-9 col-xs-12">
-                                            <iframe allowFullScreen className="map" data-target="employers--location.map" frameBorder={0} height="100%" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMccvlWFDk8E9b5Bk6YdPh1ZUht-JPcqU&q=FPT+Software+%C4%90%C6%B0%E1%BB%9Dng+D1+Ph%C6%B0%E1%BB%9Dng+T%C3%A2n+Ph%C3%BA+%2C+District+9%2C+Ho+Chi+Minh" style={{ border: 0 }} width="100%" />
-                                            <div className="counter-page-view">
-                                                <p>Total views: 111,641</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   </div>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +257,6 @@ class DetailCompany extends Component {
                                     <h2 className="panel-title">Ratings</h2>
                                 </div>
                                 <div className="panel-body disable-user-select">
-                                    {/* Last updated: "2018-10-23 10:31:41 +0700"*/}
                                     <span className="rating-stars-box">
                                         <i className="default icon ion-ios-star {:size=>&quot;&quot;}" />
                                         <i className="default icon ion-ios-star {:size=>&quot;&quot;}" />
@@ -400,13 +290,11 @@ class DetailCompany extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {/* Follow card */} {/* Have you worked? */}
                             <div className="panel panel-default company-ratings">
                                 <div className="panel-heading">
                                     <h3 className="panel-title">Feature Reviews</h3>
                                 </div>
                                 <div className="panel-body disable-user-select">
-                                    {/* Last updated: "2018-10-22 22:20:23 +0700"*/}
                                     <div className="review featured">
                                         <a className="title" href="/companies/fpt-software/review">''Sếp tốt, Lead giỏi học hỏi được nhiều kinh nghiệm ''</a><br/>
                                         <span className="round-rate-rating-stars-box">
@@ -454,7 +342,6 @@ class DetailCompany extends Component {
                                     Oops! You can only submit 1 review per company per year.
                         </div>
                                 <div className="modal__logo">
-                                    <a href="/" />
                                 </div>
                                 <div className="actions">
                                     <button className="submit button-light" data-dismiss="modal" type="button">
@@ -477,7 +364,7 @@ class DetailCompany extends Component {
                             <br /> Why not introduce this company to your co-worker?
                         </div>
                                 <div className="actions">
-                                    <a className="social button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/companies/fpt-software">Share on my Facebook
+                                    <a className="social button" target="_blank">Share on my Facebook
                                     </a>
                                 </div>
                             </div>
