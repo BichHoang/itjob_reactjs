@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import callLoginApi from '../../utils/apiLoginCaller';
 import Axios from 'axios';
+import {login} from './../../actions/user';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+
 class SigninCadidate extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            email: '',
-            password: '',
-            error : null,
-            isLoggedIn: false,
-            curUser : null,
+            email : '',
+            password: ''
         }
-        this.onChange = this.onChange.bind(this);
-        this.onSave = this.onSave.bind(this);
     }
-        onChange(event) {
+        onChange = (event) => {
             const target = event.target;
             const value = target.type === 'checkbox' ? target.checked : target.value;
             const name = target.name;
@@ -25,26 +24,6 @@ class SigninCadidate extends Component {
             });
             console.log(this.state.email)
             console.log(this.state.password)
-        }
-        onSave(event) {
-            event.preventDefault();
-            let {email} = this.state;
-            let {password} = this.state;
-            let token = "";
-            console.log(email + ' - ' +password);
-            callLoginApi('user/login', email, password).then(res => {
-                localStorage.setItem('token', res.data.access_token);
-                // this.setState({
-                //     authenticity_token: res.data.access_token,
-                // })
-                token = "Bearer " + res.data.access_token;
-                // let token = "Bearer " + this.state.authenticity_token;
-                console.log(token)
-                this.getAccount(token);
-                this.setState({
-                    curUser : localStorage.getItem('userCur'),
-                })
-            })
         }
         getAccount(token){
             Axios.defaults.headers.common['Authorization'] = token;
@@ -61,21 +40,25 @@ class SigninCadidate extends Component {
             });
         }
         handleSubmit = event => {
-            //event.preventDefault();
-            console.log(this.state.curUser)
-            if (this.state.curUser){            
-                this.setState(prevState => ({
-                    isLoggedIn: !prevState.isLoggedIn
-                }))
-                window.location.replace("/");
-            }
-            else
-            {
-                this.setState({error: 'Invalid email or password'});
+            event.preventDefault();
+            const { email, password } = this.state;
+            console.log('Logging');
+            if (email && password) {
+                this.props.login(email,password);
             }
         }
     
     render() {
+        let {loggedIn} = this.props;
+        console.log(loggedIn)
+            if (loggedIn){            
+                return (
+                <Redirect
+                    to={{
+                    pathname: "/"
+                    }}
+                />)
+            }
         return (
             <div className="paddingTop">
                 <div className="hidden-xs" id="scrolltop">
@@ -143,8 +126,9 @@ class SigninCadidate extends Component {
                                         </div>
                                         <br />
                                         <div className="form-group text-center">
-                                            <input type="hidden" name="sign_in_then_review" defaultValue="false" />
-                                            <input type="submit" name="commit"  onClick={this.onSave} defaultValue="Sign in" className="button-red space ibutton x-large" data-disable-with="Sign in" />
+                                            <button className="button-red space ibutton x-large">
+                                            Sign In
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -160,5 +144,20 @@ class SigninCadidate extends Component {
             </div>
         );
     }
-}       
- export default SigninCadidate;
+}     
+
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.authentication.loggedIn
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        login: (email, password) => {
+            dispatch(login(email, password));
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SigninCadidate);

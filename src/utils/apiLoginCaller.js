@@ -16,8 +16,5 @@ export default function callLoginApi(endpoint, email, password) {
           }), 
         data: form
        
-    }).catch(error => {
-        console.log(error.response.status);
-        return error;
-    });
+    })
 }

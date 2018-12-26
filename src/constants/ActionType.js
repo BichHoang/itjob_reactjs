@@ -7,3 +7,4 @@ export const NEW_JOB = 'NEW_JOB';
 export const OPEN_TAB = 'OPEN_TAB';
 export const CLOSE_TAB = 'CLOSE_TAB';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
+export const LOGGING_IN = 'LOGGING_IN';
