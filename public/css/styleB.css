@@ -843,3 +843,9 @@ header {
 #fileToUpload{
     padding-bottom: 10px;
 }
+#btnsubCv{
+    width: -webkit-fill-available;
+}
+.job_info h1 {
+    text-align: left !important;
+}

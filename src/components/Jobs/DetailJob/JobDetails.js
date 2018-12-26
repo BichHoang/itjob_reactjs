@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class JobDetails extends Component {
     constructor(props){
         super(props);
         this.state = {
+            job_id: 0,
             title: "",
             description: "",
             requirement: "",
@@ -13,6 +14,8 @@ class JobDetails extends Component {
             amount_of_people: 0,
             start_date: "",
             end_date: "",
+            is_redirect: false,
+            alert: "",
         }
     }
 
@@ -20,8 +23,8 @@ class JobDetails extends Component {
         let { match } = this.props
         let url = match.url
         const id = url.substring(url.lastIndexOf('/') + 1)
-        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + id
-        console.log(this.state.id)
+        this.setState({ job_id: id });
+        const path = 'http://5c0e9da8e1498a00133648b9.mockapi.io/posts/' + id   
         Axios.get(path)
         .then(res => {
             const job = res.data
@@ -36,11 +39,30 @@ class JobDetails extends Component {
             });
         });
     }
+
+    onApplyJob = () => {
+        this.setState({ is_redirect: true })
+        
+    }
     render() {
+        if (this.state.is_redirect === true){
+            var location = this.props;
+            let { match } = this.props;
+            let url = match.url;
+            const new_url = url + '/apply-job';
+            return <Redirect to={{
+                pathname: new_url,
+                state: {
+                    from: location,
+                    job_name: this.state.title,
+                    job_id: this.state.job_id
+                }
+            }}/>        
+        }
         let { match } = this.props
         let url = match.url
         return (
-            <div className="paddingTop150">
+            <div className="edit-page">
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
@@ -117,9 +139,9 @@ class JobDetails extends Component {
                                         <h1 className="job_title">
                                             <b>{this.state.title}&nbsp;&nbsp;</b>
                                             <Link to={`${url}/edit`}> 
-                                                <i class="fas fa-edit icon-color"></i>
+                                                <i className="fas fa-edit icon-color"></i>
                                             </Link>&nbsp;&nbsp;
-                                            <i class="fas fa-trash-alt icon-color"></i>
+                                            <i className="fas fa-trash-alt icon-color"></i>
                                         </h1>
                                         <div className="tag-list">
                                             <a className="big ilabel mkt-track" href="/it-jobs/html5"><span>HTML5</span>
@@ -148,7 +170,14 @@ class JobDetails extends Component {
                                             <i className="fa fa-calendar" /> {this.state.start_date} - {this.state.end_date}
                                         </div>
                                         <div className="action action-line-top">
-                                            <a className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb" href="/job/senior-software-engineer-axon-3056/job_applications/new?source=an_jd_top">Apply Now</a>
+                                            <button id="btnsubCv" className="jr-apply-trigger apply_now button-red btn-block" 
+                                                rel="nofollow" 
+                                                data-position="top" 
+                                                data-session="e82c17faa9000d3f4123a414911570eb"
+                                                onClick={this.onApplyJob}
+                                            >
+                                                Apply Now
+                                            </button>
                                         </div>
                                         <div className="space-btn" />
                                         <div className="clearfix" />
@@ -181,9 +210,6 @@ class JobDetails extends Component {
                                         <p><strong>Requirements</strong>
                                         </p>{this.state.requirement}<p />
                                     </div>
-                                </div>
-                                <div className="action-line-bottom">
-                                    <a className="jr-apply-trigger apply_now button-red btn-block  " rel="nofollow" data-position="bottom" data-session="e82c17faa9000d3f4123a414911570eb" href="/job/senior-software-engineer-axon-3056/job_applications/new?source=an_jd_bottom">Apply Now</a>
                                 </div>
                                 <div className="space-bottom" />
                             </div>

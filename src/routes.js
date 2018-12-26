@@ -10,6 +10,7 @@ import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
 import NewJob from './components/Jobs/NewJob/NewJob';
+import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
 
 const routes = [
     {
@@ -45,7 +46,7 @@ const routes = [
     {
         path: '/jobs/:id',
         exact: true,
-        main: ({match}) => <JobDetails match = {match} />
+        main: ({match, location}) => <JobDetails match = {match} location = {location} />
     },
     {
         path: '/jobs/:id/edit',
@@ -66,6 +67,11 @@ const routes = [
         path: '/new-job',
         exact: true,
         main: ({match}) => <NewJob match = {match} />
+    },
+    {
+        path: '/jobs/:id/apply-job',
+        exact: true,
+        main: ({match, location}) => <ApplyJob match = {match} location= {location} />
     },
 ];
 

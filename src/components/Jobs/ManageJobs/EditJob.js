@@ -80,8 +80,8 @@ class EditJob extends Component {
                 <div className="show_content" id="job_45037">
                     <div className="main-content">
                         <div className="content">
+                            <h1><b>Edit Job</b></h1>
                             <form onSubmit={this.handleSubmit}>
-                                <h1><b>{this.state.title}</b></h1>
                                 <div className="form-item col-lg-12">
                                     <label><b>Title:</b></label>
                                     <input type="text" name="title" value = {this.state.title} onChange={this.handleChange} />

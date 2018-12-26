@@ -15,8 +15,6 @@
 }
 
 .edit-page {
-    width: 50%;
-    margin: auto;
     padding-top: 80px;
     padding-bottom: 20px;
 }
@@ -29,4 +27,19 @@
 .form-item {
     margin-top: 15px;
     color: #4286f4;
+}
+
+.apply-page {
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.apply-page h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #586882;
+}
+
+.mg-25 {
+    margin-top: 25px;
 }
