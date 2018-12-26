@@ -19,3 +19,10 @@ export const login_reducer = (token) => {
         token
     }
 }
+
+export const logout = () => {
+    return {
+        type: Types.LOG_OUT
+    }
+}
+

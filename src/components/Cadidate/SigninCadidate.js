@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import callLoginApi from '../../utils/apiLoginCaller';
-import Axios from 'axios';
 import {login} from './../../actions/user';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import {getAccountLogged} from './../../helpers/getAccountLogged';
 
 class SigninCadidate extends Component {
 
@@ -25,20 +24,7 @@ class SigninCadidate extends Component {
             console.log(this.state.email)
             console.log(this.state.password)
         }
-        getAccount(token){
-            Axios.defaults.headers.common['Authorization'] = token;
-            Axios.post("http://it-job-login.herokuapp.com/public/api/user/me", {
-                headers: new Headers({
-                    'Accept': 'application/json',
-                    'Content-Type': 'text/html; charset=utf-8'   
-                  }), 
-            }).then((res) => {
-                console.log(res);   
-                localStorage.setItem('userCur', res.data.data);
-            }).catch((error) => {
-                this.setState({error: 'Invalid email or password'});
-            });
-        }
+        
         handleSubmit = event => {
             event.preventDefault();
             const { email, password } = this.state;
@@ -47,11 +33,12 @@ class SigninCadidate extends Component {
                 this.props.login(email,password);
             }
         }
-    
+
     render() {
         let {loggedIn} = this.props;
         console.log(loggedIn)
-            if (loggedIn){            
+            if (loggedIn){
+                getAccountLogged();
                 return (
                 <Redirect
                     to={{

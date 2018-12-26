@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import logo from'./logo.png';
+import {getCurrentAccount} from './../../../helpers/getCurrentAccount';
+import {connect} from 'react-redux';
+import {logout} from './../../../actions/user';
+import {Link, withRouter} from 'react-router-dom';
+
 class Header extends Component {
     render() {
+        let {loggedIn} = this.props; 
+        let signin = "";
+        if(loggedIn) {
+            signin = <Link  to="/" onClick={this.props.handleLogOut} className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow">
+                        Sign Out
+                     </Link> }
+        else {
+            signin = <Link to="/cadidate-signin" className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow">
+                        Sign In
+                     </Link>
+        }
         return (
             <div className="pageHeader">
                 <div className="page-header__inner">
@@ -53,7 +69,7 @@ class Header extends Component {
                                         <a target="_blank" href="/blog">Blog</a>
                                     </li>
                                     <li className="pageMenu__item hidden-xs">
-                                        <a className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow" href="/cadidate-signin">Sign In</a>
+                                         {signin}
                                     </li>
                                     <li className="pageMenu__item pageMenu__language">
                                         <div className="switch-toggle well">
@@ -77,4 +93,19 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.authentication.loggedIn
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleLogOut: () => {
+            dispatch(logout());
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Header));
