@@ -5,7 +5,6 @@ export default function callLoginApi(endpoint, email, password) {
     var form = new FormData();
     form.append("email", email);
     form.append("password", password);
-
     return axios({
         async: true,
         crossDomain: true,
@@ -19,5 +18,6 @@ export default function callLoginApi(endpoint, email, password) {
        
     }).catch(error => {
         console.log(error.response.status);
+        return error;
     });
 }

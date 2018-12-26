@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import callLoginApi from '../../utils/apiLoginCaller';
+import Axios from 'axios';
 class SigninCadidate extends Component {
 
     constructor(props){
@@ -7,6 +8,9 @@ class SigninCadidate extends Component {
         this.state = {
             email: '',
             password: '',
+            error : null,
+            isLoggedIn: false,
+            curUser : null,
         }
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
@@ -26,11 +30,51 @@ class SigninCadidate extends Component {
             event.preventDefault();
             let {email} = this.state;
             let {password} = this.state;
+            let token = "";
             console.log(email + ' - ' +password);
             callLoginApi('user/login', email, password).then(res => {
-                console.log(res)
+                localStorage.setItem('token', res.data.access_token);
+                // this.setState({
+                //     authenticity_token: res.data.access_token,
+                // })
+                token = "Bearer " + res.data.access_token;
+                // let token = "Bearer " + this.state.authenticity_token;
+                console.log(token)
+                this.getAccount(token);
+                this.setState({
+                    curUser : localStorage.getItem('userCur'),
+                })
             })
         }
+        getAccount(token){
+            Axios.defaults.headers.common['Authorization'] = token;
+            Axios.post("http://it-job-login.herokuapp.com/public/api/user/me", {
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'text/html; charset=utf-8'   
+                  }), 
+            }).then((res) => {
+                console.log(res);   
+                localStorage.setItem('userCur', res.data.data);
+            }).catch((error) => {
+                this.setState({error: 'Invalid email or password'});
+            });
+        }
+        handleSubmit = event => {
+            //event.preventDefault();
+            console.log(this.state.curUser)
+            if (this.state.curUser){            
+                this.setState(prevState => ({
+                    isLoggedIn: !prevState.isLoggedIn
+                }))
+                window.location.replace("/");
+            }
+            else
+            {
+                this.setState({error: 'Invalid email or password'});
+            }
+        }
+    
     render() {
         return (
             <div className="paddingTop">
@@ -78,7 +122,7 @@ class SigninCadidate extends Component {
                                         <hr />
                                         <span>or</span>
                                     </div>
-                                    <form role="form" data-controller="users--sign-in" data-remote="true" action="/sign_in" acceptCharset="UTF-8" method="post">
+                                    <form role="form" onSubmit={this.handleSubmit} >
                                         <input name="utf8" type="hidden" defaultValue="✓" />
                                         <input type="hidden" name="authenticity_token" defaultValue="" />
                                         <div className="form-group">
