@@ -19,6 +19,8 @@ class ApplyJob extends Component {
     }
 
     componentDidMount(){
+        const current_user = localStorage.getItem('userCur');
+        console.log(current_user);
         this.setState({
             job_title: this.props.location.state.job_name,
             job_id: this.props.location.state.job_id,

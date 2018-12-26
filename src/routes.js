@@ -8,7 +8,6 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
-import NewJob from './components/Companies/CompanyPost/NewJob';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
 import NewJob from './components/Jobs/NewJob/NewJob';
 import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
