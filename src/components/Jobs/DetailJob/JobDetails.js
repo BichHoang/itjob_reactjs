@@ -61,6 +61,7 @@ class JobDetails extends Component {
         }
         let { match } = this.props
         let url = match.url
+        let new_url = url + '/candidates-list'
         return (
             <div className="edit-page">
                 <div className="hidden-xs" id="scrolltop">
@@ -117,6 +118,15 @@ class JobDetails extends Component {
                                             <div className="employer-profile links">
                                                 <a href="/companies/axon">View our company page</a>
                                             </div>
+                                            <div className="employer-profile links">
+                                                <Link to={{
+                                                    pathname: new_url,
+                                                    state: {
+                                                    from: location,
+                                                    job_name: this.state.title
+                                                    }
+                                                }}>View all applied candidates</Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +138,7 @@ class JobDetails extends Component {
                                                 <div className="saved-text saved-text-default">
                                                     <span className="save-job">Save Job</span>
                                                 </div>
-                                                </a>
+                                            </a>
                                             </div>
                                         </div>
                                     </div>
@@ -149,20 +159,14 @@ class JobDetails extends Component {
                                             </a><a className="big ilabel mkt-track" href="/it-jobs/reactjs"><span>ReactJS</span></a>
                                         </div>
                                         <div className="clearfix" />
-                                        <div className="salary not-signed-in">
-                                            <span className="salary-icon-stack">
-                                                <i className="fas fa-dollar-sign" />
-                                            </span>
-                                            <a className="view-salary" data-toggle="modal" data-target="#sign-in-modal" >{this.state.salary}</a>
-                                            <div className="address__arrow" />
-                                        </div>
+                                        <a className="view-salary salary not-signed-in" data-toggle="modal" data-target="#sign-in-modal" ><b>{this.state.salary}</b></a>
                                         <div className="address">
                                             <div className="fas fa-map-marker-alt" />
                                             <div className="address__full-address">
                                                 <span>     Doan Van Bo, District 4, Ho Chi Minh</span>
                                             </div>
                                             <a target="_blank" className="address__map" href="https://www.google.com/maps?q=11 Doan Van Bo District 4 Ho Chi Minh">
-                                                <div className="address__text">See map</div>
+                                                <div className="address__text">See map</div>&nbsp;
                                                 <div className="address__arrow" />
                                             </a>
                                         </div>

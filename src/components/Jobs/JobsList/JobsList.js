@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getJobsAPI } from '../../../actions';
-import callApi from '../../../utils/apiCaller';
+import callApi_Song from '../../../utils/apiCaller_Song';
 import { Link } from 'react-router-dom';
 
 class JobsList extends Component {
@@ -13,7 +13,7 @@ class JobsList extends Component {
     }
 
     componentDidMount(){
-        callApi('posts', 'GET', null).then(res => {
+        callApi_Song('posts', 'GET', null).then(res => {
             const jobs = res.data;
             this.setState({jobs});
         })

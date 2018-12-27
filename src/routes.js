@@ -11,7 +11,7 @@ import JobsList from './components/Jobs/JobsList/JobsList';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
 import NewJob from './components/Jobs/NewJob/NewJob';
 import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
-
+import CandidatesList from './components/Jobs/AcceptCV/CandidatesList';
 
 const routes = [
     {
@@ -53,6 +53,12 @@ const routes = [
         path: '/jobs/:id/edit',
         exact: false,
         main: ({match, history}) => <EditJob match = {match} history= {history} />
+    },
+    ,
+    {
+        path: '/jobs/:id/candidates-list',
+        exact: true,
+        main: ({match, location}) => <CandidatesList match = {match} location = {location} />
     },
     {
         path: '/jobs',

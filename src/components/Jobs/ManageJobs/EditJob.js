@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import callApi from '../../../utils/apiCaller';
+import callApi_Song from '../../../utils/apiCaller_Song';
 import { editJobAPI, getJobsAPI } from '../../../actions';
 
 class EditJob extends Component {
@@ -25,7 +25,7 @@ class EditJob extends Component {
         console.log(id)
         const path = 'posts/' + id;
         console.log(path);
-        callApi(path, 'GET', null).then(res => {
+        callApi_Song(path, 'GET', null).then(res => {
             const post = res.data;
             console.log(post);
             this.setState({
@@ -60,7 +60,7 @@ class EditJob extends Component {
         }
 
         console.log(post)
-        callApi(path, 'PUT', post).then(res => {
+        callApi_Song(path, 'PUT', post).then(res => {
             console.log(res);
             this.setState({
                 isSuccess: res.status

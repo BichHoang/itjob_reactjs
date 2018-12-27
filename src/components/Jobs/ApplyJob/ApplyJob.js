@@ -86,12 +86,12 @@ class ApplyJob extends Component {
                                 </div>
                                 <div className="row col-lg-12 form-item">
                                     <label className="col-lg-2"><b>Your CV:</b></label>
-                                    <div className="col-lg-7">
+                                    <div className="col-lg-8">
                                         <input type="file" name="cv" value={this.state.cv} onChange={this.handleChange} />
                                         <small>We accept .doc .docx, .pdf files up to 1MB</small>
                                     </div>
-                                    <div className="col-lg-3">
-                                        <button className="jr-apply-trigger apply_now button-red btn-block" 
+                                    <div className="col-lg-2">
+                                        <button className="jr-apply-trigger apply_now button-red bgr-green btn-block" 
                                                 rel="nofollow" data-position="top" 
                                                 data-session="e82c17faa9000d3f4123a414911570eb"
                                                 onClick={this.handleOnClick}>
