@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import callApi from '../../../utils/apiCaller';
 import { Link } from 'react-router-dom';
+import { getEmployerAPI, getSkillsEmployerAPI, getJobsEmployerAPI } from '../../../actions/index';
+import {connect} from 'react-redux';
 
 class DetailCompany extends Component {
     constructor(props){
         super(props);
         this.state = {
-            company: '',
-            employer_id: '',
-            jobs: [],
+            job: [],
+            skillofEmployer: '',
         }
 
     }
@@ -16,46 +17,36 @@ class DetailCompany extends Component {
         let id = 0;
         let { match } = this.props;
         id = match.params.id;
-        let url = 'admin_employer_api/' + id;
-        let rs = '';
-        callApi(url, 'GET', null).then(res => {
-            rs = res.data[0];
-            console.log(res)
-            console.log(rs.id_employer)
-            // this.setState({
-            //     company: res.data[0]
-            // })
-            console.log(rs)
-            this.setState({
-                company: rs,
-                employer_id: rs.id_employer
-            })
-        })
-        
-        
+        console.log(id)
+        this.props.getEmployer(id);
+        console.log(this.props.employer)
+        this.props.getSkills(2);
+        this.props.getJobs(this.props.employer.);
     }
-    getOurSkills(id){
-        let url = 'admin_employer_detail_according_id/' + id;
-        callApi(url, 'GET', null).then(res => {
-           console.log(res)
-        })
-    }
-    componentDidUpdate() {
-        let {employer_id} = this.state;
-        let url = 'admin_posts_according_IDemployer/' + employer_id;
-        return callApi(url, 'GET', null).then(res => {
-            console.log(res)
-            //return res.data;
-            this.setState({jobs: res.data})
-         })
-    }
+
+    // getOurSkills(id){
+    //     let url = 'admin_employer_detail_according_id/' + id;
+    //     callApi(url, 'GET', null).then(res => {
+    //        console.log(res)
+    //     })
+    // }
+    // componentDidUpdate() {
+    //     let {employer_id} = this.state;
+    //     let url = 'admin_posts_according_IDemployer/' + employer_id;
+    //     return callApi(url, 'GET', null).then(res => {
+    //         console.log(res)
+    //         //return res.data;
+    //         this.setState({jobs: res.data})
+    //      })
+    // }
 
     render() {
         let { match } = this.props
         console.log(match.url)
-        let { jobs } = this.state;
-        let {company} = this.state;
-        let result;
+        let { jobs } = this.props;
+        let {employer} = this.props;
+        console.log(employer)
+         let result = "";
         console.log(jobs);
         if(jobs.length>0){
         result = jobs.map((job,index) => {
@@ -100,27 +91,27 @@ class DetailCompany extends Component {
                     </div>
                 </div>
             )
-        })}else result = "";
+        })}
         return (
-            <div>
+            <div className="paddingTop70">
                 <div className="company-content">
                     <div className="company-page">
                         <div className="cover-images-desktop cover-images-cropped">
-                            <img width="100%" alt="img" src={company.url_bia} />
+                            <img width="100%" alt="img" src={employer.url_bia} />
                         </div>
                         <div className="headers hidden-xs">
                             <div className="logo-container">
                                 <div className="has-overtime logo">
-                                    <img alt="img" src={company.url_avatar} />
+                                    <img alt="img" src={employer.url_avatar} />
                                 </div>
                             </div>
                             <div className="name-and-info">
                                 <h1 className="title">
-                                    {company.name}
+                                    {employer.name}
                                 </h1>
                                 <span>
                                     <i className="fa fa-map-marker" />
-                                    {company.address}
+                                    {employer.address}
                                 </span>
                                 <div className="company-info">
                                     <span>
@@ -128,22 +119,22 @@ class DetailCompany extends Component {
                                     </span>
                                     <span>
                                     <i className="fa fa-users" />
-                                        {company.employees}
+                                        {employer.employees}
                                     </span>
                                     <div className="country">
                                         <i className="flag-icon flag-icon-vn" />
-                                        <span className="name">{company.country}</span>
+                                        <span className="name">{employer.country}</span>
                                     </div>
                                 </div>
                                 <div className="working-date">
                                     <i className="fa fa-calendar" />
-                                    <span>{company.woking_time}</span>
+                                    <span>{employer.woking_time}</span>
                                 </div>
                                 <div className="overtime">
-                                    <span>Website: </span><a target="_blank" href={company.website}>{company.website}</a>
+                                    <span>Website: </span><a target="_blank" href={employer.website}>{employer.website}</a>
                                 </div>
                                 <div className="overtime">
-                                    <span>Facebook:</span><a target="_blank" href= {company.link_facebook}>{company.link_facebook}</a>
+                                    <span>Facebook:</span><a target="_blank" href= {employer.link_facebook}>{employer.link_facebook}</a>
                                 </div>
                             </div>
                             <div className="headers__actions text-right">
@@ -164,7 +155,7 @@ class DetailCompany extends Component {
                                 </div>
                                 <div className="panel-body">
                                     <div className="paragraph">
-                                        <p>{company.overview}</p>
+                                        <p>{employer.overview}</p>
                                     </div>
                                     <h3 className="panel-title">Our Key Skills</h3>
                                     <ul className="employer-skills">
@@ -214,7 +205,7 @@ class DetailCompany extends Component {
                                         </li>
                                     </ul>
                                     <div className="environment">
-                                        <img width="100%" alt="img" src={company.url_bia} />  
+                                        <img width="100%" alt="img" src={employer.url_bia} />  
                                     </div>
                                     <div className="paragraph">
                                         <p>Join FPT Software – You can make it too!
@@ -242,7 +233,7 @@ class DetailCompany extends Component {
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8065412332803!2d108.15146261400956!3d16.075525788877083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218d68dff9545%3A0x714561e9f3a7292c!2sDanang+University+of+Technology!5e0!3m2!1svi!2s!4v1516807397758" width="100%" height={450} frameBorder={0} style={{border: 0}} allowFullScreen />
                                         <br></br>
                                         <div className="col-md-6">
-                                            <p>Address: {company.address}</p>
+                                            <p>Address: {employer.address}</p>
                                         </div>
                                         <div className="col-md-6">
                                             <p className="text-right">Total views: 111,641</p>
@@ -251,7 +242,7 @@ class DetailCompany extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 col-right">
+                        {/* <div className="col-md-4 col-right">
                             <div className="panel panel-default company-ratings">
                                 <div className="panel-heading">
                                     <h2 className="panel-title">Ratings</h2>
@@ -327,7 +318,7 @@ class DetailCompany extends Component {
                                     <a className="button ibutton full-width ibutton-red big add-review-when-not-sign-in" rel="nofollow" data-add-review="true" data-toggle="modal" data-target="#sign-in-modal" >Add a review</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             
@@ -484,4 +475,27 @@ class DetailCompany extends Component {
         );
     }
 }
-export default DetailCompany;
+
+const mapStateToProps = (state) => {
+    return {
+        employer: state.employer,
+        jobs : state.jobs,
+        // skills: state.skills
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        getEmployer: (id) => {
+            dispatch(getEmployerAPI(id));
+        },
+        getSkills: (id) => {
+            dispatch(getSkillsEmployerAPI(id));
+        },
+        getJobs: (id) => {
+            dispatch(getJobsEmployerAPI(id));
+        },
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DetailCompany);
