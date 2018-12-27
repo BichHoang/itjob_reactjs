@@ -8,13 +8,7 @@ export function getAccountLogged() {
             'Content-Type': 'text/html; charset=utf-8'   
           }), 
     }).then((res) => {
-        console.log(res.data.data.account.id);
-        let account = {
-            account_id: res.data.data.account.id,
-            remember_token: 'sonoi'
-        }   
-        localStorage.setItem('current_account', JSON.stringify(account));
+        console.log(res.data.data.account);
     }).catch((error) => {
-       
     });
 }
