@@ -134,8 +134,9 @@ class SigninCadidate extends Component {
 }     
 
 const mapStateToProps = (state) => {
+    const loggedIn = state.authentication.loggedIn;
     return {
-        loggedIn: state.authentication.loggedIn
+        loggedIn
     }
 }
 

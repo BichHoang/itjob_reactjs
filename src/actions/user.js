@@ -4,14 +4,14 @@ import * as Types from '../constants/ActionType';
 export const login = (email, password) => {
     return (dispatch) => {
         return callLoginApi('user/login', email, password).then(res => {
-            let access_token = "Bearer " + res.data.access_token;
+            //handle login
             let current_account = {
+                access_token: "Bearer " + res.data.access_token,
                 account_id: res.data.account_id,
                 remember_token: res.data.remember_token
             }
-            // localStorage.setItem('access_token',access_token);
-            // if(current_account) localStorage.setItem('current_account',current_account);
-            dispatch(login_reducer(access_token, current_account));
+            console.log(JSON.stringify(current_account));
+            dispatch(login_reducer(current_account));
             console.log(res.data);
         }).catch(error => {
             console.log(error.response.status);
@@ -20,10 +20,9 @@ export const login = (email, password) => {
     }
 }
 
-export const login_reducer = (token, account) => {
+export const login_reducer = (account) => {
     return {
         type: Types.LOG_IN_SUCCESS,
-        token,
         account
     }
 }

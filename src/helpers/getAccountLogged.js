@@ -1,6 +1,7 @@
 import Axios from 'axios';
 export function getAccountLogged() {
-    let token = localStorage.getItem('access_token');
+    let current_account = JSON.parse(localStorage.getItem('current_account'));
+    const token = current_account.access_token;
     Axios.defaults.headers.common['Authorization'] = token;
     Axios.post("http://it-job-login.herokuapp.com/public/api/user/me", {
         headers: new Headers({

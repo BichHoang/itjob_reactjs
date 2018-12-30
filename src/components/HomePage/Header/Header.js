@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from'./logo.png';
-import {getCurrentAccount} from './../../../helpers/getCurrentAccount';
 import {connect} from 'react-redux';
 import {logout} from './../../../actions/user';
 import {Link, withRouter} from 'react-router-dom';
@@ -8,6 +6,7 @@ import {Link, withRouter} from 'react-router-dom';
 class Header extends Component {
     render() {
         let {loggedIn} = this.props; 
+        console.log("Header: ", loggedIn);
         let signin = "";
         if(loggedIn) {
             signin = <Link  to="/" onClick={this.props.handleLogOut} className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow">
@@ -95,8 +94,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const {loggedIn} = state.authentication;
     return {
-        loggedIn: state.authentication.loggedIn
+        loggedIn
     }
 }
 
