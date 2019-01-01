@@ -128,7 +128,7 @@ export const getJobsEmployer = (jobs) =>{
 }
 export const getJobsAPI = (data) => {
     return (dispatch) => {
-        return callApiSon('post/filter', 'GET', data).then(res => {
+        return callApi('admin_post_api', 'GET', data).then(res => {
             dispatch(getJobs(res.data))
         });
     }
@@ -191,6 +191,7 @@ export const getJobsSearchAPI = (data) => {
         // return callApi('admin_employer_api', 'GET', null).then(res => {
         //     dispatch(getAllEmployers(res.data))
         // });
+        console.log("search");
         return callApiSon('post/filter', 'GET', data).then(res => {
             console.log(res);
             //dispatch(getJobsSearch(res.data))

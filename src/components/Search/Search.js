@@ -155,8 +155,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        getJobsSearch: () => {
-            dispatch(getJobsSearchAPI());
+        getJobsSearch: (data) => {
+            dispatch(getJobsSearchAPI(data));
         },
         getAllSkills: () => {
             dispatch(getAllSkillsAPI());
