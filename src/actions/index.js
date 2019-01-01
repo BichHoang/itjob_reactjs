@@ -1,5 +1,6 @@
 import callApi from './../utils/apiCaller';
 import callLoginApi from './../utils/apiLoginCaller';
+import callApiSon from './../utils/apiCallerSon';
 import * as Types from '../constants/ActionType';
 
 export const login = () => {
@@ -125,9 +126,9 @@ export const getJobsEmployer = (jobs) =>{
         jobs
     }
 }
-export const getJobsAPI = () => {
+export const getJobsAPI = (data) => {
     return (dispatch) => {
-        return callApi('posts', 'GET', null).then(res => {
+        return callApiSon('post/filter', 'GET', data).then(res => {
             dispatch(getJobs(res.data))
         });
     }
@@ -185,13 +186,14 @@ export const closeTab = () => {
 }
 
 //search jobs
-export const getJobsSearchAPI = (order_by) => {
+export const getJobsSearchAPI = (data) => {
     return (dispatch) => {
         // return callApi('admin_employer_api', 'GET', null).then(res => {
         //     dispatch(getAllEmployers(res.data))
         // });
-        return callApi('posts', 'GET', order_by).then(res => {
-            dispatch(getJobsSearch(res.data))
+        return callApiSon('post/filter', 'GET', data).then(res => {
+            console.log(res);
+            //dispatch(getJobsSearch(res.data))
         });
     }
 }

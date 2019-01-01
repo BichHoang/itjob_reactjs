@@ -69,6 +69,13 @@ class Search extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
+        const data = {
+            location: 'all',
+            skill: 'all',
+            order_by: 'Description',
+            order_dir: 'desc'
+        }
+        this.props.getJobsSearch(data);
         this.setState({isSearch: true})
     }
     configSeacrh = (regex) => {
