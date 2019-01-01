@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {login} from './../../actions/user';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {getAccountLogged} from './../../helpers/getAccountLogged';
 
 class SigninCadidate extends Component {
 
@@ -38,7 +37,6 @@ class SigninCadidate extends Component {
         let {loggedIn} = this.props;
         console.log(loggedIn)
             if (loggedIn){
-                getAccountLogged();
                 return (
                 <Redirect
                     to={{

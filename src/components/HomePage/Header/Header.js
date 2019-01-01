@@ -4,12 +4,36 @@ import {logout} from './../../../actions/user';
 import {Link, withRouter} from 'react-router-dom';
 
 class Header extends Component {
+    componentDidMount(){
+        window.addEventListener('beforeunload', this.handleWindowClose);
+    }
+    
+    componentWillUnmount() {
+        window.removeEventListener('beforeunload', this.handleWindowClose);
+    }
+    handleWindowClose = (ev) => {
+        let tabs = JSON.parse(localStorage.getItem('tabs'));
+        if(tabs.length === 1) {
+            localStorage.setItem('tabs',JSON.stringify([1]));
+            if(!this.props.remember){
+                localStorage.removeItem('current_account');   
+                this.props.logout();
+           }
+            return '';
+        }
+        const session = JSON.parse(sessionStorage.getItem('session'));
+        const index = tabs.indexOf(session);
+        tabs.splice(index,1);
+        sessionStorage.removeItem('session');
+        localStorage.setItem('tabs',JSON.stringify(tabs));
+    }
     render() {
-        let {loggedIn} = this.props; 
+        let {loggedIn, remember} = this.props; 
         console.log("Header: ", loggedIn);
+        console.log("remember: ", remember);
         let signin = "";
         if(loggedIn) {
-            signin = <Link  to="/" onClick={this.props.handleLogOut} className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow">
+            signin = <Link  to="/" onClick={this.props.logout} className="pageMenu__link" data-toggle="modal" data-target="#sign-in-modal" rel="nofollow">
                         Sign Out
                      </Link> }
         else {
@@ -94,15 +118,16 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {loggedIn} = state.authentication;
+    const {loggedIn, remember} = state.authentication;
     return {
-        loggedIn
+        loggedIn,
+        remember
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleLogOut: () => {
+        logout: () => {
             dispatch(logout());
         }
     }

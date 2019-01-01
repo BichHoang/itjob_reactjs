@@ -1,10 +1,13 @@
 import callLoginApi from './../utils/apiLoginCaller';
 import * as Types from '../constants/ActionType';
+import {getAccountLogged} from './../helpers/getAccountLogged';
+import {getCurrentAccount} from './../helpers/getCurrentAccount';
+import {handleLogout} from './../helpers/handleLogout';
 
 export const login = (email, password) => {
     return (dispatch) => {
         return callLoginApi('user/login', email, password).then(res => {
-            //handle login
+            //handle login 
             let current_account = {
                 access_token: "Bearer " + res.data.access_token,
                 account_id: res.data.account_id,
@@ -28,6 +31,21 @@ export const login_reducer = (account) => {
 }
 
 export const logout = () => {
+    const current_account = getCurrentAccount();
+    if(current_account){
+        const access_token = current_account.access_token;
+        return (dispatch) => {
+        return handleLogout(access_token).then((res) => {
+            console.log(res);
+            dispatch(logout_reducer());
+        }).catch((error) => {
+           
+        });
+    }
+    }
+}
+
+export const logout_reducer = () => {
     return {
         type: Types.LOG_OUT
     }
