@@ -3,6 +3,7 @@ import * as Types from '../constants/ActionType';
 import {getAccountLogged} from './../helpers/getAccountLogged';
 import {getCurrentAccount} from './../helpers/getCurrentAccount';
 import {handleLogout} from './../helpers/handleLogout';
+import {handleRegister} from './../helpers/handleRegister';
 
 export const login = (email, password) => {
     return (dispatch) => {
@@ -51,3 +52,26 @@ export const logout_reducer = () => {
     }
 }
 
+export const register = (new_account) => {
+    return (dispatch) => {
+        return handleRegister(new_account).then((res) => {
+            let current_account = {
+                access_token: "Bearer " + res.data.access_token,
+                account_id: res.data.account_id,
+                remember_token: res.data.remember_token
+            }
+            console.log(JSON.stringify(current_account));
+            console.log("Register: ",res);
+            dispatch(register_reducer(current_account));
+        }).catch((error) => {
+            
+        });
+    }
+}
+
+export const register_reducer = (account) => {
+    return {
+        type: Types.REGISTER,
+        account
+    }
+}

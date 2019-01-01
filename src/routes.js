@@ -2,6 +2,7 @@ import React from 'react';
 import Index from './components/Index/Index'
 import CadidateProfile from './components/Cadidate/CadidateProfile';
 import SigninCadidate from './components/Cadidate/SigninCadidate';
+import SignupCadidate from './components/Cadidate/SignupCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
 import SignupCompany from './components/Companies/SignupCompany';
 import SearchCompanies from './components/Companies/SearchCompanies/SearchCompanies';
@@ -29,6 +30,11 @@ const routes = [
         path: '/cadidate-signin',
         exact: true,
         main: ({match}) => <SigninCadidate match = {match} />
+    },
+    {
+        path: '/cadidate-signup',
+        exact: true,
+        main: ({match}) => <SignupCadidate match = {match} />
     },
     {
         path: '/company-signin',
