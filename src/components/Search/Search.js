@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getJobsSearchAPI, getAllSkillsAPI} from './../../actions/index';
 import {Link, Redirect} from 'react-router-dom';
-import {withRouter} from 'react-router'
+import {withRouter} from 'react-router';
 
 class Search extends Component {
     constructor(props){
@@ -15,6 +15,7 @@ class Search extends Component {
     }   
     componentDidMount() {
         this.props.getAllSkills();
+        console.log("Search did mount");
     }
     mapSkills(skills) {
         let {match} = this.props;
@@ -44,6 +45,9 @@ class Search extends Component {
         return result;
     }
     handleChangeSkill = (skill_name) => {
+        let {isSearch} = this.state;
+        console.log("isSearch:", isSearch);
+        if(isSearch === false) {
         let {skill} = this.state;
         let index = skill.indexOf(skill_name);
         if(index === -1) 
@@ -56,16 +60,27 @@ class Search extends Component {
             this.setState({
                 skill: new_skill
             })
+        } 
+        }
+        else {
+            this.setState({isSearch: false});
         }
     }
     handleChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        console.log("select",value);
-        this.setState({
-          [name]: value
-        });
+        let {isSearch} = this.state;
+        console.log("isSearch:", isSearch);
+        if(isSearch === false) {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+            console.log("select",value);
+            this.setState({
+              [name]: value
+            });
+        }
+        else {
+            this.setState({isSearch: false});
+        }
     }
     handleSubmit = (event) => {
         event.preventDefault();
@@ -82,6 +97,7 @@ class Search extends Component {
         return this.state.skill.toString().replace(/,/gi,regex);
     }
     render() {
+        console.log("Search render");
         let {skills, match} = this.props;
         let {isSearch} = this.state;
         let url = match.url;
@@ -92,15 +108,18 @@ class Search extends Component {
             let skill_url = 'all';
             if(skill.length !== 0)
                 skill_url = this.configSeacrh('-');
-            return (
-                <Redirect
-                    to={{
-                        pathname: "/jobs/"+skill_url+"/"+location
-                    }}
-                />
-            )
+            let new_url = "/jobs/"+skill_url+"/"+location;
+            console.log(new_url);
+            if(new_url !== url) {
+                return (
+                    <Redirect
+                        to={{
+                            pathname: "/jobs/"+skill_url+"/"+location
+                        }}
+                    />
+                )
+            }      
         }
-        console.log(this.state.skill.toString());
         let txtSearch = this.configSeacrh(' ');
         return ( 
             <div>

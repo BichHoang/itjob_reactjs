@@ -4,6 +4,7 @@ import { getJobsAPI, getAllSkillsAPI } from '../../../actions';
 import callApi from '../../../utils/apiCaller';
 import { Link } from 'react-router-dom';
 import Search from './../../Search/Search';
+import {withRouter} from 'react-router';
 
 class JobsList extends Component {
     constructor(props){
@@ -15,7 +16,7 @@ class JobsList extends Component {
         this.props.getJobs();
     }
 
-    mapJobs = (jobs, url) => {
+    configJobs = (jobs, url) => {
         if (url !== "/jobs"){
             url = "/jobs"
         }
@@ -24,8 +25,14 @@ class JobsList extends Component {
                 <div key={index}>
                         <div className="company" id="company_374">
                             <div className="logo">
-                                <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
-                                    <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions"><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} /></a>
+                                <div className="logo-wrapper" title="Song">
+                                    <Link target="_blank" to={`${url}/${job.id}`}>
+                                        <img 
+                                            alt="Robert Bosch Engineering And Business Solutions" 
+                                            src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg"
+                                            width={65} height={65} 
+                                        />
+                                    </Link>
                                 </div>
                             </div>
                             <div className="company__description">
@@ -33,23 +40,20 @@ class JobsList extends Component {
                                     <div className="details">
                                         <div className="title-info">
                                             <div className="title">
-                                                <Link to={`${url}/${job.id}`}>hihi{job.title}</Link>
+                                                <Link target="_blank" to={`${url}/${job.id}`}>{job.Title}</Link>
                                             </div>
                                             <div className="info">
-                                                <span className="gear-icon">Product</span>
-                                                <span className="group-icon">301-500</span>
-                                            <span className="globe-icon">Germany</span>
+                                                <span className="gear-icon">{job.Description}</span>
+                                                <span className="group-icon">{job.Amount_of_people}</span>
+                                                <span className="globe-icon">${job.Salary}</span>
                                             </div>
                                         </div>
                                     <div className="city">
-                                        <div className="text">Ho Chi Minh</div>
-                                        <div className="text">Tan Binh</div>
+                                        <div className="text">Location</div>
                                     </div>
                                 </div>
                                 <div className="tag-list">
-                                    <div className="tag">Java</div>
-                                    <div className="tag">SAP</div>
-                                    <div className="tag">.NET</div>
+                                    <div className="tag">{job.id_skill}</div>
                                 </div>
                             </div>
                             <div className="current-jobs">
@@ -74,7 +78,7 @@ class JobsList extends Component {
                     <div className="hidden-xs" id="scrolltop">
                         <div className="top-arrow"></div>
                     </div>
-                    <Search match={match} />
+                    <Search match={match}/>
                     <div className="search main-content" id="search-results">
                     <div className="right side-content stickybar hidden-xs hidden-sm" id="right_side">
                         <h3>Company Spotlight</h3>
@@ -120,7 +124,7 @@ class JobsList extends Component {
                             2,062 IT companies in Vietnam for you
                         </h1>
                         <div className="first-group">
-                            {this.mapJobs(jobs, url)}
+                            {this.configJobs(jobs, url)}
                         </div>
                         <div id="show-more-wrapper">
                             <div id="show_more">
@@ -156,4 +160,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(JobsList);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(JobsList));

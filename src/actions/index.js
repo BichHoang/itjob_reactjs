@@ -194,7 +194,7 @@ export const getJobsSearchAPI = (data) => {
         console.log("search");
         return callApiSon('post/filter', 'GET', data).then(res => {
             console.log(res);
-            //dispatch(getJobsSearch(res.data))
+            dispatch(getJobsSearch(res.data.data))
         });
     }
 }
