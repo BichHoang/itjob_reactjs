@@ -2,6 +2,7 @@ import React from 'react';
 import Index from './components/Index/Index'
 import CadidateProfile from './components/Cadidate/CadidateProfile';
 import SigninCadidate from './components/Cadidate/SigninCadidate';
+import SignupCadidate from './components/Cadidate/SignupCadidate';
 import SigninCompany from './components/Companies/SigninCompany';
 import SignupCompany from './components/Companies/SignupCompany';
 import SearchCompanies from './components/Companies/SearchCompanies/SearchCompanies';
@@ -14,6 +15,11 @@ import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
 import CandidatesList from './components/Jobs/AcceptCV/CandidatesList';
 
 const routes = [
+    {
+        path: '/test',
+        exact: true,
+        main: ({match}) => <Employer match = {match} />
+    },
     {
         path: '/',
         exact: true,
@@ -30,6 +36,11 @@ const routes = [
         main: ({match}) => <SigninCadidate match = {match} />
     },
     {
+        path: '/cadidate-signup',
+        exact: true,
+        main: ({match}) => <SignupCadidate match = {match} />
+    },
+    {
         path: '/company-signin',
         exact: true,
         main: ({match}) => <SigninCompany match = {match} />
@@ -43,6 +54,11 @@ const routes = [
         path: '/companies',
         exact: true,
         main: ({match}) => <SearchCompanies match = {match} />
+    },
+    {
+        path: '/company/:id',
+        exact: true,
+        main: ({match}) => <DetailCompany match = {match} />
     },
     {
         path: '/jobs/:id',

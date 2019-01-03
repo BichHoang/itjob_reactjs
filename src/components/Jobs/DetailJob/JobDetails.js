@@ -133,7 +133,7 @@ class JobDetails extends Component {
                                 <div className="outside-jr">
                                     <div className="saved-wrapper">
                                         <div className="saved-body">
-                                            <a data-toggle="modal" data-target="#sign-in-modal" >
+                                            <a data-toggle="modal" data-target="#sign-in-modal" href="/">
                                                 <div className="big saved saved-default" />
                                                 <div className="saved-text saved-text-default">
                                                     <span className="save-job">Save Job</span>

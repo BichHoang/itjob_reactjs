@@ -7,21 +7,18 @@ class SigninCompany extends Component {
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
-                <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
-                </div>
                 <div className="user-sessions">
                     <div className="main-content">
                         <div className="row">
                             <div className="col-md-6 col-md-offset-3 col-xs-12">
                                 <div className="content">
                                     <div className="robby-image">
-                                        <img src="assets/roby-jrjdyeah-f5e8849eaf88be88c054a7c6c66cf82c841d0d40aa04bfc725c574f8716d736d.png" />
+                                        <img alt="img" src="assets/roby-jrjdyeah-f5e8849eaf88be88c054a7c6c66cf82c841d0d40aa04bfc725c574f8716d736d.png" />
                                     </div>
                                     <div className="message">
                                         Sign in now to access your account on ITviec.
                                 </div>
-                                <form role="form" data-controller="users--sign-in" data-remote="true" action="/sign_in" acceptCharset="UTF-8" method="post">
+                                <form data-controller="users--sign-in" data-remote="true" action="/sign_in" acceptCharset="UTF-8" method="post">
                                     <input name="utf8" type="hidden" defaultValue="✓" />
                                     <input type="hidden" name="authenticity_token" defaultValue="nfnmNyHWlaG/wzlhyAGNTZP3cbPPw84Sp+bSWT5ctYMzXde7y0Fh3tlXCVp3ZOziMUCL7r0wOQq8MUSxfJZi5Q==" />
                                     <div className="form-group">

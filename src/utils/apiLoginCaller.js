@@ -14,10 +14,6 @@ export default function callLoginApi(endpoint, email, password) {
             'Accept': 'application/json',
             'Content-Type': 'text/html; charset=utf-8'   
           }), 
-        data: form
-       
-    }).catch(error => {
-        console.log(error.response.status);
-        return error;
-    });
+        data: form    
+    })
 }

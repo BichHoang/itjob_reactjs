@@ -99,10 +99,10 @@ class JobsList extends Component {
                         <div className="inside">
                             <div className="photos">
                                 <div className="headline-photo">
-                                    <img alt="FPT Software Headline Photo" src="https://cdn.itviec.com/photos/33899/tiny_headline_photo/fpt-software-tiny_headline_photo.jpg?6rAvo1Rp6H5WJr88a3VpuJFQ" width={256} height={125} />
+                                    <img alt="img" src="https://cdn.itviec.com/photos/33899/tiny_headline_photo/fpt-software-tiny_headline_photo.jpg?6rAvo1Rp6H5WJr88a3VpuJFQ" width={256} height={125} />
                                 </div>
                                 <div className="logo">
-                                    <img src="https://cdn.itviec.com/employers/fpt-software/logo/s65/3reFYvb7XKV1a8g4aKiDDke8/fpt-software-logo.png" width={68} height={68} />
+                                    <img alt="img" src="https://cdn.itviec.com/employers/fpt-software/logo/s65/3reFYvb7XKV1a8g4aKiDDke8/fpt-software-logo.png" width={68} height={68} />
                                 </div>
                                 <div className="info">
                                     <span className="name">
@@ -113,7 +113,7 @@ class JobsList extends Component {
                                     </span>
                                     <p>The leading provider of software outsourcing services in Vietnam</p>
                                 </div>
-                                <a className="mkt-track link" rel="nofollow" data-method="PUT" href="/companies/fpt-software?track_action=Click+Branding" />
+                                <a className="mkt-track link" rel="nofollow" data-method="PUT" href="/companies/fpt-software?track_action=Click+Branding" >a tag</a>
                             </div>
                             <div className="border-around">
                                 <div className="jobs">

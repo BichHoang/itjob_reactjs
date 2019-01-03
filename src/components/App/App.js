@@ -5,7 +5,7 @@ import Header from '../HomePage/Header/Header';
 import Footer from '../HomePage/Footer/Footer';
 import Modal_Fade from '../HomePage/Modal_Fade/Modal_Fade';
 import routes from '../../routes';
-
+import {Prompt} from 'react-router-dom';
 
 class App extends Component {
     render() {
