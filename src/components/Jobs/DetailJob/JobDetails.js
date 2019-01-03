@@ -159,7 +159,7 @@ class JobDetails extends Component {
                                             </a><a className="big ilabel mkt-track" href="/it-jobs/reactjs"><span>ReactJS</span></a>
                                         </div>
                                         <div className="clearfix" />
-                                        <a className="view-salary salary not-signed-in" data-toggle="modal" data-target="#sign-in-modal" ><b>{this.state.salary}</b></a>
+                                        <div className="view-salary salary not-signed-in" data-toggle="modal" data-target="#sign-in-modal" ><b>{this.state.salary}</b></div>
                                         <div className="address">
                                             <div className="fas fa-map-marker-alt" />
                                             <div className="address__full-address">

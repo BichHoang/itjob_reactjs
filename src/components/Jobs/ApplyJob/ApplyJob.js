@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import {getAccountLogged} from './../../../helpers/getAccountLogged';
 
 class ApplyJob extends Component {
     constructor(props){
@@ -19,13 +20,23 @@ class ApplyJob extends Component {
     }
 
     componentDidMount(){
-        const current_user = localStorage.getItem('userCur');
-        console.log(current_user);
+        const current_account = JSON.parse(localStorage.getItem('current_account'));
+        console.log(current_account);
+        console.log(current_account.account_id);
+        this.setState({user_id: current_account.account_id});
+        const token = current_account.access_token;
+        console.log(token);
+        const data = getAccountLogged(token);
+        Axios.post('http://it-job-login.herokuapp.com/public/api/user/me', token)
+        .then(res => {
+            const current_user = res.data;
+            console.log(current_user.data.name);
+            this.setState({username: current_user.data.name});
+        })
         this.setState({
             job_title: this.props.location.state.job_name,
-            job_id: this.props.location.state.job_id,
-            user_id: 1 //Call API to get user id
-        })
+            job_id: this.props.location.state.job_id
+        }) 
     }
 
     handleChange = event => {
@@ -81,7 +92,7 @@ class ApplyJob extends Component {
                                 <div className="row col-lg-12 form-item">
                                     <label className="col-lg-2"><b>Your name:</b></label>
                                     <div className="col-lg-10">
-                                        <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+                                        <input type="text" name="username" value={this.state.username} disabled onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div className="row col-lg-12 form-item">
