@@ -2,14 +2,7 @@ import axios from 'axios';
 import * as Config from './../constants/Config';
 
 export default function callApiSon(endpoint, method = 'GET', body) {
-    const data = {
-        location: 'all',
-        skill: 'all',
-        order_by: 'Description',
-        order_dir: 'desc',
-        page: '2'
-    }
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(body));
     return axios({
         method,
         // url: `${Config.API_URL}/${endpoint}`,
@@ -18,7 +11,7 @@ export default function callApiSon(endpoint, method = 'GET', body) {
         // url: `${Config.MY_API}/${endpoint}`,
         url: `${Config.API_URL_SON}/${endpoint}`,
         headers: { 'Content-Type': 'application/json'},
-        params: data
+        params: body
     }).catch(err => {
         console.log(err);
     });

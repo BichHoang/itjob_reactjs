@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getJobsSearchAPI, getAllSkillsAPI} from './../../actions/index';
+import {getJobsSearchAPI, getAllSkillsAPI, getAllLocationsAPI} from './../../actions/index';
 import {Link, Redirect} from 'react-router-dom';
 import {withRouter} from 'react-router';
 
@@ -8,23 +8,19 @@ class Search extends Component {
     constructor(props){
         super(props);
         this.state = {
-            location: 'ho-chi-minh',
+            location: 1,
             skill: [],
+            skill_id: [],
             isSearch: false
         }
     }   
     componentDidMount() {
         this.props.getAllSkills();
+        this.props.getAllLocations();
         console.log("Search did mount");
     }
     mapSkills(skills) {
-        let {match} = this.props;
-        let url = match.url;
-        if (url !== "/jobs"){
-            url = "/jobs"
-        }
         console.log(skills);
-        let {location} = this.state;
         let result = skills.map((skill, index) => {
             return ( 
                 // <Link 
@@ -36,7 +32,7 @@ class Search extends Component {
                 // </Link>
                 <a
                     key={index} 
-                    onClick={() => this.handleChangeSkill(skill.name)}
+                    onClick={() => this.handleChangeSkill(skill.name, skill.id)}
                     className="head no-border ilabel popular-keyword" >
                         {skill.name}
                 </a>
@@ -44,21 +40,34 @@ class Search extends Component {
         })
         return result;
     }
-    handleChangeSkill = (skill_name) => {
+    mapLocations = (locations) => {
+        console.log(locations);
+        let result = locations.map((location, index) => {
+            return ( 
+                <option key={index} value={location.id}>{location.name}</option>
+            )
+        })
+        return result;
+    }
+    handleChangeSkill = (skill_name, id) => {
         let {isSearch} = this.state;
         console.log("isSearch:", isSearch);
         if(isSearch === false) {
-        let {skill} = this.state;
+        let {skill, skill_id} = this.state;
         let index = skill.indexOf(skill_name);
         if(index === -1) 
             this.setState({
-                skill: this.state.skill.concat(skill_name)
+                skill: this.state.skill.concat(skill_name),
+                skill_id: this.state.skill_id.concat(id)
             })
         else {
             let new_skill = [...this.state.skill];
             new_skill.splice(index,1);
+            let new_skill_id = [...this.state.skill_id];
+            new_skill_id.splice(index,1);
             this.setState({
-                skill: new_skill
+                skill: new_skill,
+                skill_id: new_skill_id
             })
         } 
         }
@@ -84,9 +93,11 @@ class Search extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
+        const {location, skill_id, skill} = this.state;
+        console.log(skill_id);
         const data = {
-            location: 'all',
-            skill: 'all',
+            location,
+            skill: skill_id,
             order_by: 'Description',
             order_dir: 'desc'
         }
@@ -96,25 +107,35 @@ class Search extends Component {
     configSeacrh = (regex) => {
         return this.state.skill.toString().replace(/,/gi,regex);
     }
+    getLocationName = (id) => {
+        const {locations} = this.props;
+        const name = locations.map((location, index) => {
+            if(location.id === id) return location.name;
+        })
+        console.log(name);
+        return name;
+    }
     render() {
         console.log("Search render");
-        let {skills, match} = this.props;
+        let {skills, match, locations} = this.props;
         let {isSearch} = this.state;
         let url = match.url;
         console.log(skills);
         console.log(match);
+        console.log(locations);
         if(isSearch) {
             let {skill,location} = this.state;
             let skill_url = 'all';
+            let location_name = this.getLocationName(location);
             if(skill.length !== 0)
                 skill_url = this.configSeacrh('-');
-            let new_url = "/jobs/"+skill_url+"/"+location;
+            let new_url = "/jobs/"+skill_url+"/"+location_name;
             console.log(new_url);
             if(new_url !== url) {
                 return (
                     <Redirect
                         to={{
-                            pathname: "/jobs/"+skill_url+"/"+location
+                            pathname: "/jobs/"+skill_url+"/"+location_name
                         }}
                     />
                 )
@@ -142,9 +163,7 @@ class Search extends Component {
                                 <div className="ion-ios-location-outline" />
                                 <div className="city_field_wrapper">
                                     <select onChange={this.handleChange} value={this.state.location} name="location" id="city" className="search_city">
-                                        <option value="ho-chi-minh">Ho Chi Minh</option>
-                                        <option value="ha-noi">Ha Noi</option>
-                                        <option value="da-nang">Da Nang</option>
+                                       { this.mapLocations(locations)}
                                     </select>
                                 </div>
                             </div>
@@ -168,7 +187,8 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        skills: state.skills
+        skills: state.skills,
+        locations: state.locations
     }
 }
 
@@ -179,6 +199,9 @@ const mapDispatchToProps = (dispatch) =>{
         },
         getAllSkills: () => {
             dispatch(getAllSkillsAPI());
+        },
+        getAllLocations: () => {
+            dispatch(getAllLocationsAPI());
         }
     }
 }

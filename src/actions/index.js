@@ -126,6 +126,21 @@ export const getJobsEmployer = (jobs) =>{
         jobs
     }
 }
+export const getAllLocationsAPI = () => {
+    return (dispatch) => {
+        return callApi('admin_location_api', 'GET', null).then(res => {
+            dispatch(getAllLocations(res.data))
+        });
+    }
+}
+
+export const getAllLocations = (locations) => {
+    return {
+        type: Types.GET_ALL_LOCATIONS,
+        locations
+    }
+}
+
 export const getJobsAPI = (data) => {
     return (dispatch) => {
         return callApi('admin_post_api', 'GET', data).then(res => {
