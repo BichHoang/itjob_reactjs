@@ -76,7 +76,7 @@ class Index extends Component {
                     <h1 className="slogan">
                         1,424 IT Jobs For Chất Developers
                     </h1>
-                    <Search match={match} />
+                    
                 </div>
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />

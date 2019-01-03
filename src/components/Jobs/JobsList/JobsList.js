@@ -14,7 +14,7 @@ class JobsList extends Component {
     }
 
     componentDidMount(){
-        this.props.getJobs();
+        //this.props.getJobs();
         callApi_Song('posts', 'GET', null).then(res => {
             const jobs = res.data;
             this.setState({jobs});

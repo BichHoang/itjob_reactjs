@@ -54,7 +54,7 @@ class Header extends Component {
                                         <span className="icon-bar" />
                                     </div>
                                 </button>
-                                <a className="pageMenu__logo" href="/"><img className="logo-itviec" alt="itjob" src={process.env.PUBLIC_URL + 'images/logo.png'} width={108} height={42} />
+                                <a className="pageMenu__logo" href="/"><img className="logo-itviec" alt="itjob" src="https://i.imgur.com/NGYxnlG.png" width={108} height={42} />
                                 </a>
                                 <div className="user-menu visible-xs">
                                     <div className="pageMenu__headerItem">
