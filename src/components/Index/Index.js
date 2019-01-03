@@ -37,7 +37,6 @@ class Index extends Component {
         let result = employers.map((employer, index) => {
             return ( 
                     <div key={index} className="col-md-4 col-xs-12">
-                            {/* Last updated: "2018-10-23 11:35:25 +0700"*/}
                             <Link className="top-company" to={`${url}/${employer.id}`} >
                                 <div className="top-company__logo text-center">
                                     <div className="placeholder" data-large="https://cdn.itviec.com/employers/lg-development-center-vietnam/logo/w170/kb3U11PfmJFtdPgCEMaUJMNn/lg-development-center-vietnam-logo.png">
@@ -109,7 +108,6 @@ class Index extends Component {
                     <div className="title">Top Employers</div>
                     <div className="row">
                         {this.getEmployers(employers,url)}
-                        {/* Last updated: "2018-10-23 12:00:44 +0700"*/}
                     </div>
                 </div>
                 <div className="clearfix" />

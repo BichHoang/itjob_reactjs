@@ -9,13 +9,17 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
-import ListSkill from './components/ListSkill/ListSkill';
-import DetailJob from './components/Jobs/DetailJob/DetailJob';
 import NewJob from './components/Companies/CompanyPost/NewJob';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
+import Employer from './components/Companies/DetailCompany/Employer';
 
 
 const routes = [
+    {
+        path: '/test',
+        exact: true,
+        main: ({match}) => <Employer match = {match} />
+    },
     {
         path: '/',
         exact: true,
@@ -50,6 +54,11 @@ const routes = [
         path: '/companies',
         exact: true,
         main: ({match}) => <SearchCompanies match = {match} />
+    },
+    {
+        path: '/company/:id',
+        exact: true,
+        main: ({match}) => <DetailCompany match = {match} />
     },
     {
         path: '/jobs/:id',

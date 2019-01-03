@@ -97,7 +97,7 @@ class SignupCompany extends Component {
                                     An ITviec Customer Value Specialist will reach out to you soon.
                                 </div>
                                 <div className="modal__logo">
-                                    <a href="/" />
+                                    
                                 </div>
                             </div>
                         </div>
