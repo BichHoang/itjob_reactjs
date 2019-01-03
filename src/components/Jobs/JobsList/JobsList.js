@@ -25,11 +25,11 @@ class JobsList extends Component {
                 <div key={index}>
                         <div className="company" id="company_374">
                             <div className="logo">
-                                <div className="logo-wrapper" title="Song">
+                                <div className="logo-wrapper" title={`${job.employer_name}`}>
                                     <Link target="_blank" to={`${url}/${job.id}`}>
                                         <img 
                                             alt="Robert Bosch Engineering And Business Solutions" 
-                                            src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg"
+                                            src="http://itjob-heroku.herokuapp.com/public/images/employers/Framgia-Logo.png"
                                             width={65} height={65} 
                                         />
                                     </Link>
@@ -49,7 +49,7 @@ class JobsList extends Component {
                                             </div>
                                         </div>
                                     <div className="city">
-                                        <div className="text">Location</div>
+                                        <div className="text">{job.location_name}</div>
                                     </div>
                                 </div>
                                 <div className="tag-list">
