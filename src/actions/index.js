@@ -53,8 +53,23 @@ export const getAllEmployers = (employers) => {
 export const getEmployerAPI = (id) => {
     return (dispatch) => {
         let url = 'admin_employer_api/' + id;
+        let employer = '';
+        let jobs = [];
+        let skills = [];
+        let reviews = [];
         return callApi(url, 'GET', null).then(res => {
-            dispatch(getEmployer(res.data[0]))
+            employer = res.data[0];
+            let id_employer = employer.id_employer;
+            callApi('admin_posts_according_IDemployer/'+ id_employer, 'GET', null).then(res =>{
+                jobs = res.data;
+                callApi('admin_employer_detail_according_id/' + id_employer, 'GET', null).then(res => {
+                    skills = res.data;
+                    callApi('admin_reviews_according_IDemployer/' + id_employer, 'GET', null).then(res =>{
+                        reviews = res.data;
+                        dispatch(getEmployer({employer,jobs, skills, reviews}))
+                    })
+                })
+            })
         });
     }
 }
@@ -146,17 +161,5 @@ export const newJob = (job) => {
     return {
         type: Types.NEW_JOB,
         job
-    }
-}
-
-//
-export const openTab = () => {
-    return {
-        type : Types.OPEN_TAB
-    }
-}
-export const closeTab = () => {
-    return {
-        type : Types.CLOSE_TAB
     }
 }

@@ -10,7 +10,7 @@ export const employers = (state = initialState, action) => {
     }
 };
 
-export const employer = (state = initialState, action) => {
+export const employer = (state = null, action) => {
     switch (action.type) {
         case Types.GET_EMPLOYER:
             return action.employer;

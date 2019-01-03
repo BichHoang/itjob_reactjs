@@ -9,7 +9,7 @@ const jobs = (state = initialState, action) => {
         case Types.GET_JOBS:
             return [...action.jobs];
         case Types.GET_JOBS_EMPLOYER:
-            return [...action.jobs];
+            return action.jobs;
         default: return [...state];
     }
 };
