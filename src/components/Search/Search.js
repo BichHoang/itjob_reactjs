@@ -8,7 +8,7 @@ class Search extends Component {
     constructor(props){
         super(props);
         this.state = {
-            location: 1,
+            location: '1',
             skill: [],
             skill_id: [],
             isSearch: false
@@ -33,7 +33,8 @@ class Search extends Component {
                 <a
                     key={index} 
                     onClick={() => this.handleChangeSkill(skill.name, skill.id)}
-                    className="head no-border ilabel popular-keyword" >
+                    className="head no-border ilabel popular-keyword"
+                    style={{'color' : 'red'}} >
                         {skill.name}
                 </a>
             )
@@ -93,11 +94,13 @@ class Search extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        const {location, skill_id, skill} = this.state;
+        const {location, skill_id} = this.state;
         console.log(skill_id);
+        let new_skill = [...skill_id];
+        if(skill_id.length === 0) new_skill = 'all'; 
         const data = {
             location,
-            skill: skill_id,
+            skill: new_skill,
             order_by: 'Description',
             order_dir: 'desc'
         }
@@ -109,9 +112,11 @@ class Search extends Component {
     }
     getLocationName = (id) => {
         const {locations} = this.props;
-        const name = locations.map((location, index) => {
-            if(location.id === id) return location.name;
-        })
+        let name = '';
+        for(let i = 0; i< locations.length; i++) {
+            if(locations[i].id === Number(id)) name = locations[i].name;
+            console.log("for ", i);
+        }
         console.log(name);
         return name;
     }
@@ -177,8 +182,7 @@ class Search extends Component {
                 </div>
                 <div className="page-header__tag-list hidden-xs">
                     {this.mapSkills(skills,url)}
-                    <a className="head no-border ilabel popular-keyword" href="/it-jobs/tester">Tester</a>
-                    <a className="head no-border ilabel" href="/jobs-skill-index">All jobs by skill</a>
+                    <a className="head no-border ilabel" href="/jobs-skill-index" style={{'color' : 'red'}} >All jobs by skill</a>
                 </div>
             </div>
         );

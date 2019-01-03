@@ -3,6 +3,7 @@ import {getAllEmployersAPI, getAllSkillsAPI} from './../../actions/index';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Search from '../Search/Search';
+import Axios from 'axios';
 
 class Index extends Component {
     constructor(props) {
@@ -33,21 +34,26 @@ class Index extends Component {
         //         return includes(tour.name.toLocaleLowerCase(), strSearch.toLocaleLowerCase());
         //     });
         // }
+        let localtion = Axios.get("http://itjob-heroku.herokuapp.com/public/api/admin_location_api", {}).then((res) => {
+                    return res.data;
+                }).catch((error) => {
+                    return null;
+                });
+        console.log(localtion)
         let result = employers.map((employer, index) => {
             return ( 
                     <div key={index} className="col-md-4 col-xs-12">
                             <Link className="top-company" to={`${url}/${employer.id}`} >
                                 <div className="top-company__logo text-center">
-                                    <div className="placeholder" data-large="https://cdn.itviec.com/employers/lg-development-center-vietnam/logo/w170/kb3U11PfmJFtdPgCEMaUJMNn/lg-development-center-vietnam-logo.png">
-                                        <img className="img-small" />
-                                        <div style={{ paddingBottom: '100%', backgroundColor: 'white' }} />
+                                    <div>
+                                        <img alt="img" src={employer.url_avatar} />  
                                     </div>
                                 </div>
-                                <div className="top-company__name text-center">LG Development Center Vietnam</div>
+                                <div className="top-company__name text-center">{employer.name}</div>
                                 <footer className="top-company__footer text-center">
                                     <span className="top-company__footer-jobs">
                                                     <span className="red link">
-                                                        1 Job
+                                                        {index+1} Job
                                   </span>
                                     <span>&nbsp;-&nbsp;</span>
                                     </span>

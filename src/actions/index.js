@@ -25,14 +25,6 @@ export const getAllJobs = (jobs) => {
     }
 }
 
-export const getJobsAPI = () => {
-    return (dispatch) => {
-        return callApi('/posts', 'GET', null).then(res => {
-            dispatch(getJobs(res.data))
-        });
-    }
-}
-
 export const getAllEmployersAPI = () => {
     return (dispatch) => {
         // return callApi('admin_employer_api', 'GET', null).then(res => {

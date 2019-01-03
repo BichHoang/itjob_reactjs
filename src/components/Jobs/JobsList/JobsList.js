@@ -29,7 +29,7 @@ class JobsList extends Component {
                                     <Link target="_blank" to={`${url}/${job.id}`}>
                                         <img 
                                             alt="Robert Bosch Engineering And Business Solutions" 
-                                            src="http://itjob-heroku.herokuapp.com/public/images/employers/Framgia-Logo.png"
+                                            src={job.employer_avatar}
                                             width={65} height={65} 
                                         />
                                     </Link>
@@ -53,12 +53,8 @@ class JobsList extends Component {
                                     </div>
                                 </div>
                                 <div className="tag-list">
-                                    <div className="tag">{job.id_skill}</div>
+                                    <div className="tag">{job.skill_name}</div>
                                 </div>
-                            </div>
-                            <div className="current-jobs">
-                                <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions#our-jobs">9 Job</a>
-                                <i className="fa fa-caret-right" />
                             </div>
                         </div>
                     </div>
