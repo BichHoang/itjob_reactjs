@@ -852,6 +852,13 @@ header {
     padding-bottom: 10px;
 }
 
+#btnsubCv{
+    width: -webkit-fill-available;
+}
+.job_info h1 {
+    text-align: left !important;
+}
+
 /* Rating Star Widgets Style */
 .rating-stars ul {
   list-style-type:none;

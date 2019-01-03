@@ -7,7 +7,18 @@ export default function callApi(endpoint, method = 'GET', body) {
             url: `${Config.API_URL}/${endpoint}`,
         //url: `${Config.API_URL_TRONG}/${endpoint}`,
         // url: `${Config.API_URL}/${endpoint}`,
-        //url: `${Config.MY_API}/${endpoint}`,
+        data: body
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+export function callApi_Song(endpoint, method = 'GET', body) {
+    return axios({
+        method,
+        //url: `${Config.API_URL}/${endpoint}`,
+        url: `${Config.API_URL_SONG}/${endpoint}`,
+        // url: `${Config.API_URL}/${endpoint}`,
         data: body
     }).catch(err => {
         console.log(err);

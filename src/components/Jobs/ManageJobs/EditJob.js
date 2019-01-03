@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import callApi from '../../../utils/apiCaller';
+import callApi_Song from '../../../utils/apiCaller_Song';
 import { editJobAPI, getJobsAPI } from '../../../actions';
 
 class EditJob extends Component {
@@ -25,7 +25,7 @@ class EditJob extends Component {
         console.log(id)
         const path = 'posts/' + id;
         console.log(path);
-        callApi(path, 'GET', null).then(res => {
+        callApi_Song(path, 'GET', null).then(res => {
             const post = res.data;
             console.log(post);
             this.setState({
@@ -60,7 +60,7 @@ class EditJob extends Component {
         }
 
         console.log(post)
-        callApi(path, 'PUT', post).then(res => {
+        callApi_Song(path, 'PUT', post).then(res => {
             console.log(res);
             this.setState({
                 isSuccess: res.status
@@ -81,8 +81,8 @@ class EditJob extends Component {
                 <div className="show_content" id="job_45037">
                     <div className="main-content">
                         <div className="content">
+                            <h1><b>Edit Job</b></h1>
                             <form onSubmit={this.handleSubmit}>
-                                <h1><b>{this.state.title}</b></h1>
                                 <div className="form-item col-lg-12">
                                     <label><b>Title:</b></label>
                                     <input type="text" name="title" value = {this.state.title} onChange={this.handleChange} />

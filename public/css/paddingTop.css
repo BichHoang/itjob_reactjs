@@ -19,8 +19,6 @@
 }
 
 .edit-page {
-    width: 50%;
-    margin: auto;
     padding-top: 80px;
     padding-bottom: 20px;
 }
@@ -33,4 +31,78 @@
 .form-item {
     margin-top: 15px;
     color: #4286f4;
+}
+
+.apply-page {
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.apply-page h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #586882;
+}
+
+.mg-25 {
+    margin-top: 25px;
+}
+
+.bgr-green {
+    background-color: #0cc96a;
+}
+
+.bgr-green:hover {
+    background-color: #48c486;
+}
+
+.cddl-title h1 {
+    font-size: 28px;
+    color: #07749b;
+}
+
+.edit-page table {
+    margin: auto;
+}
+
+.cl-blue {
+    color: #4087dd;
+}
+
+.cl-red {
+    color: #ea3838;
+}
+
+.cl-green {
+    color: #18ce46;
+}
+
+input[type=checkbox].css-checkbox {
+    position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:23px;
+    height:18px; 
+    display:inline-block;
+    line-height:18px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:18px;
+    vertical-align:middle;
+    cursor:pointer;
+    margin-top: 6px;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -18px;
+}
+label.css-label {
+background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_e6364785bfe886ff49a404b90dfce30f.png);
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }

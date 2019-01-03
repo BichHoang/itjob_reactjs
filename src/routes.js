@@ -9,10 +9,11 @@ import SearchCompanies from './components/Companies/SearchCompanies/SearchCompan
 import EditJob from './components/Jobs/ManageJobs/EditJob';
 import JobDetails from './components/Jobs/DetailJob/JobDetails';
 import JobsList from './components/Jobs/JobsList/JobsList';
-import NewJob from './components/Companies/CompanyPost/NewJob';
 import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
+import NewJob from './components/Jobs/NewJob/NewJob';
+import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
+import CandidatesList from './components/Jobs/AcceptCV/CandidatesList';
 import Employer from './components/Companies/DetailCompany/Employer';
-
 
 const routes = [
     {
@@ -63,12 +64,18 @@ const routes = [
     {
         path: '/jobs/:id',
         exact: true,
-        main: ({match}) => <JobDetails match = {match} />
+        main: ({match, location}) => <JobDetails match = {match} location = {location} />
     },
     {
         path: '/jobs/:id/edit',
         exact: false,
         main: ({match, history}) => <EditJob match = {match} history= {history} />
+    },
+    ,
+    {
+        path: '/jobs/:id/candidates-list',
+        exact: true,
+        main: ({match, location}) => <CandidatesList match = {match} location = {location} />
     },
     {
         path: '/jobs',
@@ -84,6 +91,11 @@ const routes = [
         path: '/new-job',
         exact: true,
         main: ({match}) => <NewJob match = {match} />
+    },
+    {
+        path: '/jobs/:id/apply-job',
+        exact: true,
+        main: ({match, location}) => <ApplyJob match = {match} location= {location} />
     },
     {
         path: '/jobs/:skill/:location',
