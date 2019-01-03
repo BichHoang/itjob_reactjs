@@ -14,7 +14,6 @@ export default function callLoginApi(endpoint, email, password) {
             'Accept': 'application/json',
             'Content-Type': 'text/html; charset=utf-8'   
           }), 
-        data: form
-       
+        data: form    
     })
 }

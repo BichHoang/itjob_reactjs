@@ -8,6 +8,7 @@ import {skillofEmployer} from './skills';
 import editjob from './editjob';
 import newjob from './newjob';
 import authentication from './authentication';
+import num_of_tabs from './num_of_tabs';
 
 const appReducers = combineReducers({
     jobs,
@@ -17,7 +18,8 @@ const appReducers = combineReducers({
     skillofEmployer,
     editjob,
     newjob,
-    authentication
+    authentication,
+    num_of_tabs
 });
 
 export default appReducers;

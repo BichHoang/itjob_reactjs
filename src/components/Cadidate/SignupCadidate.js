@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import {login} from './../../actions/user';
+import {register} from './../../actions/user';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
-class SigninCadidate extends Component {
+class SignupCadidate extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            name: '',
             email : '',
-            password: ''
+            password: '',
+            confirm_password: ''
         }
     }
         onChange = (event) => {
@@ -26,10 +28,18 @@ class SigninCadidate extends Component {
         
         handleSubmit = event => {
             event.preventDefault();
-            const { email, password } = this.state;
-            console.log('Logging');
-            if (email && password) {
-                this.props.login(email,password);
+            const { name, email, password, confirm_password } = this.state;
+            if (name && email && password && confirm_password) 
+            if(password === confirm_password) {
+               console.log("Dang ky:");
+               console.log("email: ",email);
+               console.log("pass:", password);
+               const new_account = {
+                   name,
+                   email,
+                   password
+               }
+               this.props.register(new_account);
             }
         }
 
@@ -97,22 +107,30 @@ class SigninCadidate extends Component {
                                             <div className="form-error text-left" data-target="users--sign-in.error" />
                                         </div>
                                         <div className="form-group">
+                                            <input className="form-control" placeholder="Name" 
+                                            required="required" onChange={this.onChange}
+                                            type="text" 
+                                            value={this.state.name} name="name" />
+                                        </div>
+                                        <div className="form-group">
                                             <input className="form-control" placeholder="Email" 
-                                            required="required" data-rule-email="true" onChange={this.onChange}
-                                            data-msg-email="Please correct the email address" 
-                                            data-msg="Please add email" type="email" 
+                                            required="required" onChange={this.onChange}
+                                            type="email" 
                                             value={this.state.email} name="email" />
                                         </div>
                                         <div className="form-group">
                                             <input className="form-control"  value={this.state.password} onChange={this.onChange} placeholder="Password" required="required" data-rule-minlength={8} data-msg-minlength="Password must be at least 8 characters" data-msg="Please add password" type="password" name="password" />
                                         </div>
                                         <div className="form-group">
-                                            <a className="right forgot-password" rel="nofollow" href="/users/password/new">Forgot password?</a>
+                                            <input className="form-control"  value={this.state.confirm_password} onChange={this.onChange} placeholder="Confirm Password" required="required" data-rule-minlength={8} data-msg-minlength="Password must be at least 8 characters" data-msg="Please add password" type="password" name="confirm_password" />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="right forgot-password" rel="nofollow" href="/users/password/new">Back to sign in!</a>
                                         </div>
                                         <br />
                                         <div className="form-group text-center">
                                             <button className="button-red space ibutton x-large">
-                                            Sign In
+                                            Sign Up
                                             </button>
                                         </div>
                                     </form>
@@ -140,10 +158,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        login: (email, password) => {
-            dispatch(login(email, password));
+        register: (new_account) => {
+            dispatch(register(new_account));
         }
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SigninCadidate);
+export default connect(mapStateToProps,mapDispatchToProps)(SignupCadidate);
