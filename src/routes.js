@@ -13,6 +13,7 @@ import DetailCompany from './components/Companies/DetailCompany/DetailCompany';
 import NewJob from './components/Jobs/NewJob/NewJob';
 import ApplyJob from './components/Jobs/ApplyJob/ApplyJob';
 import CandidatesList from './components/Jobs/AcceptCV/CandidatesList';
+import Employer from './components/Companies/DetailCompany/Employer';
 
 const routes = [
     {
