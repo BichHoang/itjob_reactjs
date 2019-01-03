@@ -57,8 +57,8 @@ class NewJob extends Component {
                 <div className="show_content" id="job_45037">
                     <div className="main-content">
                         <div className="content">
+                            <h1>Create new Job</h1>
                             <form onSubmit={this.handleSubmit}>
-                                <h1><b>{this.state.title}</b></h1>
                                 <div className="form-item col-lg-12">
                                     <label><b>Title:</b></label>
                                     <input type="text" name="title" value = {this.state.title} onChange={this.handleChange} />
@@ -87,7 +87,7 @@ class NewJob extends Component {
                                     <label><b>End date:</b></label>
                                     <input type="date" name="end_date" value = {this.state.end_date} onChange={this.handleChange} />
                                 </div>                             
-                                <div className="action action-line-top form-item col-lg-12">
+                                <div className="action action-line-top mg-25 col-lg-12">
                                     <button type="submit" className="jr-apply-trigger apply_now button-red btn-block" rel="nofollow" data-position="top" data-session="e82c17faa9000d3f4123a414911570eb">Create</button>
                                 </div>
                             </form>

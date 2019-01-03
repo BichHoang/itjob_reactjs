@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getJobsAPI, getAllSkillsAPI } from '../../../actions';
 import callApi from '../../../utils/apiCaller';
+import callApi_Song from '../../../utils/apiCaller_Song';
 import { Link } from 'react-router-dom';
 import Search from './../../Search/Search';
 import {withRouter} from 'react-router';
@@ -14,6 +15,10 @@ class JobsList extends Component {
 
     componentDidMount(){
         this.props.getJobs();
+        callApi_Song('posts', 'GET', null).then(res => {
+            const jobs = res.data;
+            this.setState({jobs});
+        })
     }
 
     configJobs = (jobs, url) => {
