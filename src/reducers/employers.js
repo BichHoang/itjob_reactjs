@@ -2,7 +2,7 @@ import * as Types from '../constants/ActionType';
 
 var initialState = [];
 
-const employers = (state = initialState, action) => {
+export const employers = (state = initialState, action) => {
     switch (action.type) {
         case Types.GET_ALL_EMPLOYERS:
             return [...action.employers];
@@ -10,4 +10,10 @@ const employers = (state = initialState, action) => {
     }
 };
 
-export default employers;
+export const employer = (state = null, action) => {
+    switch (action.type) {
+        case Types.GET_EMPLOYER:
+            return action.employer;
+        default: return state;
+    }
+};

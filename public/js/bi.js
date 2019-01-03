@@ -57,5 +57,11 @@ $(document).ready(function () {
             document.getElementById('divEmailEdit').style.display = 'none'; 
         }
     ); 
+    $('#btnAddReview').click(
+        function () {
+            document.getElementById('divReviews').style.display = 'block'; 
+        }
+    ); 
+    
 });
  

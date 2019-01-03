@@ -1,44 +1,71 @@
 import React, { Component } from 'react';
 import callLoginApi from '../../utils/apiLoginCaller';
+import Axios from 'axios';
+import {login} from './../../actions/user';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+
 class SigninCadidate extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            email: '',
-            password: '',
+            email : '',
+            password: ''
         }
-        this.onChange = this.onChange.bind(this);
-        this.onSave = this.onSave.bind(this);
     }
-        onChange(event) {
+        onChange = (event) => {
             const target = event.target;
             const value = target.type === 'checkbox' ? target.checked : target.value;
             const name = target.name;
-        
+            console.log(target.name);   
             this.setState({
               [name]: value
             });
             console.log(this.state.email)
             console.log(this.state.password)
         }
-        onSave(event) {
-            event.preventDefault();
-            let {email} = this.state;
-            let {password} = this.state;
-            console.log(email + ' - ' +password);
-            callLoginApi('user/login', email, password).then(res => {
-                console.log(res)
-            })
+        getAccount(token){
+            Axios.defaults.headers.common['Authorization'] = token;
+            Axios.post("http://it-job-login.herokuapp.com/public/api/user/me", {
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'text/html; charset=utf-8'   
+                  }), 
+            }).then((res) => {
+                console.log(res);   
+                localStorage.setItem('userCur', res.data.data);
+            }).catch((error) => {
+                this.setState({error: 'Invalid email or password'});
+            });
         }
+        handleSubmit = event => {
+            event.preventDefault();
+            const { email, password } = this.state;
+            console.log('Logging');
+            if (email && password) {
+                this.props.login(email,password);
+            }
+        }
+    
     render() {
+        let {loggedIn} = this.props;
+        console.log(loggedIn)
+            if (loggedIn){            
+                return (
+                <Redirect
+                    to={{
+                    pathname: "/"
+                    }}
+                />)
+            }
         return (
             <div className="paddingTop">
                 <div className="hidden-xs" id="scrolltop">
                     <div className="top-arrow" />
                 </div>
                 <div className="hidden-xs hidden-sm" id="feedback">
-                    <a href="https://itviec.uservoice.com/forums/207426-general/filters/new" className="uservoice_link" target="_blank">FEEDBACK</a>
+                    <a className="uservoice_link">FEEDBACK</a>
                 </div>
                 <div className="user-sessions">
                     <div className="main-content">
@@ -46,7 +73,7 @@ class SigninCadidate extends Component {
                             <div className="col-md-6 col-md-offset-3 col-xs-12">
                                 <div className="content">
                                     <div className="robby-image">
-                                        <img src="assets/roby-jrjdyeah-f5e8849eaf88be88c054a7c6c66cf82c841d0d40aa04bfc725c574f8716d736d.png" />
+                                        <img src="" alt="img" />
                                     </div>
                                     <div className="message">
                                         Sign in now to access your account on ITviec.
@@ -54,7 +81,7 @@ class SigninCadidate extends Component {
                                     <br />
                                     <div className="sign-in-action-wrapper">
                                         <div className="sign-in-button gplus button">
-                                            <a id="gplus-signin" rel="nofollow" href="/users/auth/google_oauth2">
+                                            <a id="gplus-signin" rel="nofollow">
                                                 <div className="icon gplus-icon">
                                                     <i className="fa fa-google-plus" />
                                                 </div>
@@ -64,7 +91,7 @@ class SigninCadidate extends Component {
                                             </a>
                                         </div>
                                         <div className="sign-in-button facebook button">
-                                            <a id="facebook-signin" rel="nofollow" onclick="Login(this); return false;" href>
+                                            <a>
                                                 <div className="icon">
                                                     <i className="fa fa-facebook" />
                                                 </div>
@@ -78,9 +105,9 @@ class SigninCadidate extends Component {
                                         <hr />
                                         <span>or</span>
                                     </div>
-                                    <form role="form" data-controller="users--sign-in" data-remote="true" action="/sign_in" acceptCharset="UTF-8" method="post">
+                                    <form role="form" onSubmit={this.handleSubmit} >
                                         <input name="utf8" type="hidden" defaultValue="✓" />
-                                        <input type="hidden" name="authenticity_token" defaultValue="nfnmNyHWlaG/wzlhyAGNTZP3cbPPw84Sp+bSWT5ctYMzXde7y0Fh3tlXCVp3ZOziMUCL7r0wOQq8MUSxfJZi5Q==" />
+                                        <input type="hidden" name="authenticity_token" defaultValue="" />
                                         <div className="form-group">
                                             <div className="form-error text-left" data-target="users--sign-in.error" />
                                         </div>
@@ -99,8 +126,9 @@ class SigninCadidate extends Component {
                                         </div>
                                         <br />
                                         <div className="form-group text-center">
-                                            <input type="hidden" name="sign_in_then_review" defaultValue="false" />
-                                            <input type="submit" name="commit"  onClick={this.onSave} defaultValue="Sign in" className="button-red space ibutton x-large" data-disable-with="Sign in" />
+                                            <button className="button-red space ibutton x-large">
+                                            Sign In
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -116,5 +144,20 @@ class SigninCadidate extends Component {
             </div>
         );
     }
-}       
- export default SigninCadidate;
+}     
+
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.authentication.loggedIn
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        login: (email, password) => {
+            dispatch(login(email, password));
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SigninCadidate);
