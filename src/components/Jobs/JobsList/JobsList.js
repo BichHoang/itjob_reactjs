@@ -1,40 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getJobsAPI } from '../../../actions';
+import { getJobsAPI, getAllSkillsAPI } from '../../../actions';
+import callApi from '../../../utils/apiCaller';
 import callApi_Song from '../../../utils/apiCaller_Song';
 import { Link } from 'react-router-dom';
+import Search from './../../Search/Search';
+import {withRouter} from 'react-router';
 
 class JobsList extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            jobs: []
-        }
+        this.state = {}
     }
 
     componentDidMount(){
+        //this.props.getJobs();
         callApi_Song('posts', 'GET', null).then(res => {
             const jobs = res.data;
             this.setState({jobs});
         })
     }
 
-    render() {
-        let { match } = this.props
-        let { jobs } = this.state
-        console.log(match)
-        let url = match.url;
-        if (url === "/"){
+    configJobs = (jobs, url) => {
+        if (url !== "/jobs"){
             url = "/jobs"
         }
-
         let result = jobs.map((job,index) => {
             return(
                 <div key={index}>
                         <div className="company" id="company_374">
                             <div className="logo">
-                                <div className="logo-wrapper" title="The Bosch Group is a leading global supplier of technology and services">
-                                    <a target="_blank" href="/nha-tuyen-dung/robert-bosch-engineering-and-business-solutions"><img alt="Robert Bosch Engineering And Business Solutions" src="https://cdn.itviec.com/employers/robert-bosch-engineering-and-business-solutions/logo/s65/ZzW1myNnUVsoAuRfMz4yNYqx/robert-bosch-engineering-and-business-solutions-logo.jpg" width={65} height={65} /></a>
+                                <div className="logo-wrapper" title={`${job.employer_name}`}>
+                                    <Link target="_blank" to={`${url}/${job.id}`}>
+                                        <img 
+                                            alt="Robert Bosch Engineering And Business Solutions" 
+                                            src={job.employer_avatar}
+                                            width={65} height={65} 
+                                        />
+                                    </Link>
                                 </div>
                             </div>
                             <div className="company__description">
@@ -42,57 +45,41 @@ class JobsList extends Component {
                                     <div className="details">
                                         <div className="title-info">
                                             <div className="title">
-                                                <Link to={`${url}/${job.id}`}>{job.title}</Link>
+                                                <Link target="_blank" to={`${url}/${job.id}`}>{job.Title}</Link>
                                             </div>
                                             <div className="info">
-                                                <span className="gear-icon">Product</span>
-                                                <span className="group-icon">301-500</span>
-                                            <span className="globe-icon">Germany</span>
+                                                <span className="gear-icon">{job.Description}</span>
+                                                <span className="group-icon">{job.Amount_of_people}</span>
+                                                <span className="globe-icon">${job.Salary}</span>
                                             </div>
                                         </div>
                                     <div className="city">
-                                        <div className="text">Ho Chi Minh</div>
-                                        <div className="text">Tan Binh</div>
+                                        <div className="text">{job.location_name}</div>
                                     </div>
                                 </div>
                                 <div className="tag-list">
-                                    <div className="tag">Java</div>
-                                    <div className="tag">SAP</div>
-                                    <div className="tag">.NET</div>
+                                    <div className="tag">{job.skill_name}</div>
                                 </div>
-                            </div>
-                            <div className="current-jobs">
-                                <a target="_blank" href="/companies/robert-bosch-engineering-and-business-solutions#our-jobs">9 Job</a>
-                                <i className="fa fa-caret-right" />
                             </div>
                         </div>
                     </div>
                 </div>
             )
         })
+        return result;
+    }
 
+    render() {
+        let { match, jobs } = this.props
+        console.log(match)
+        let url = match.url;
         return (
             <div>
                 <div className="paddingTop">
                     <div className="hidden-xs" id="scrolltop">
                         <div className="top-arrow"></div>
                     </div>
-                    <div className="search-form-wrapper clearfix">
-                        <form id="search_companies_form" className="search-form" action="/companies" acceptCharset="UTF-8" method="get">
-                            <input name="utf8" type="hidden" defaultValue="✓" />
-                            <div className="search_section_wrapper">
-                                <div className="search_text_wrapper">
-                                    <div className="ion-ios-search" />
-                                    <div className="search_field_wrapper">
-                                        <input type="text" name="query" id="search_companies_text" defaultValue className="search_text hide" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="search_button_wrapper">
-                                <input type="submit" name="commit" defaultValue="Search" className="search_button button-red left" data-disable-with="Search" />
-                            </div>
-                        </form>
-                    </div>
+                    <Search match={match}/>
                     <div className="search main-content" id="search-results">
                     <div className="right side-content stickybar hidden-xs hidden-sm" id="right_side">
                         <h3>Company Spotlight</h3>
@@ -138,7 +125,7 @@ class JobsList extends Component {
                             2,062 IT companies in Vietnam for you
                         </h1>
                         <div className="first-group">
-                            {result}
+                            {this.configJobs(jobs, url)}
                         </div>
                         <div id="show-more-wrapper">
                             <div id="show_more">
@@ -160,6 +147,11 @@ class JobsList extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return{
+        jobs : state.jobs
+    };
+}
 
 const mapDispatchToProps = (dispatch) => {
     return{
@@ -169,4 +161,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapDispatchToProps)(JobsList);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(JobsList));

@@ -120,8 +120,8 @@ class EditJob extends Component {
                 </div>
             </div>
         );
-    }
-}
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {

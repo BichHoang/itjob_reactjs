@@ -54,7 +54,7 @@ class Header extends Component {
                                         <span className="icon-bar" />
                                     </div>
                                 </button>
-                                <a className="pageMenu__logo" href="/"><img className="logo-itviec" alt="itjob" src={process.env.PUBLIC_URL + 'images/logo.png'} width={108} height={42} />
+                                <a className="pageMenu__logo" href="/"><img className="logo-itviec" alt="itjob" src="https://i.imgur.com/NGYxnlG.png" width={108} height={42} />
                                 </a>
                                 <div className="user-menu visible-xs">
                                     <div className="pageMenu__headerItem">
@@ -88,20 +88,8 @@ class Header extends Component {
                                     <li className="pageMenu__item">
                                         <a href="/companies">Company Reviews</a>
                                     </li>
-                                    <li className="pageMenu__item">
-                                        <a target="_blank" href="/blog">Blog</a>
-                                    </li>
                                     <li className="pageMenu__item hidden-xs">
                                          {signin}
-                                    </li>
-                                    <li className="pageMenu__item pageMenu__language">
-                                        <div className="switch-toggle well">
-                                            <input defaultChecked id="en" name="language" type="radio" />
-                                            <label className="change-language" htmlFor="en">EN</label>
-                                            <input id="vn" name="language" type="radio" />
-                                            <label className="change-language" htmlFor="vn">VN</label>
-                                            <a className="btn btn-default" />
-                                        </div>
                                     </li>
                                     <li className="pageMenu__item">
                                         <a href="/company-signin">Employers</a>

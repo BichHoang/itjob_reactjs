@@ -1,5 +1,6 @@
 import callApi from './../utils/apiCaller';
 import callLoginApi from './../utils/apiLoginCaller';
+import callApiSon from './../utils/apiCallerSon';
 import * as Types from '../constants/ActionType';
 
 export const login = () => {
@@ -21,14 +22,6 @@ export const getAllJobs = (jobs) => {
     return {
         type: Types.GET_ALL_JOBS,
         jobs
-    }
-}
-
-export const getJobsAPI = () => {
-    return (dispatch) => {
-        return callApi('/posts', 'GET', null).then(res => {
-            dispatch(getJobs(res.data))
-        });
     }
 }
 
@@ -125,6 +118,29 @@ export const getJobsEmployer = (jobs) =>{
         jobs
     }
 }
+export const getAllLocationsAPI = () => {
+    return (dispatch) => {
+        return callApi('admin_location_api', 'GET', null).then(res => {
+            dispatch(getAllLocations(res.data))
+        });
+    }
+}
+
+export const getAllLocations = (locations) => {
+    return {
+        type: Types.GET_ALL_LOCATIONS,
+        locations
+    }
+}
+
+export const getJobsAPI = (data) => {
+    return (dispatch) => {
+        return callApi('admin_post_api', 'GET', data).then(res => {
+            dispatch(getJobs(res.data))
+        });
+    }
+}
+
 export const getJobs = (jobs) => {
     return {
         type: Types.GET_JOBS,
@@ -161,5 +177,38 @@ export const newJob = (job) => {
     return {
         type: Types.NEW_JOB,
         job
+    }
+}
+
+//
+export const openTab = () => {
+    return {
+        type : Types.OPEN_TAB
+    }
+}
+export const closeTab = () => {
+    return {
+        type : Types.CLOSE_TAB
+    }
+}
+
+//search jobs
+export const getJobsSearchAPI = (data) => {
+    return (dispatch) => {
+        // return callApi('admin_employer_api', 'GET', null).then(res => {
+        //     dispatch(getAllEmployers(res.data))
+        // });
+        console.log("search");
+        return callApiSon('post/filter', 'GET', data).then(res => {
+            console.log(res);
+            dispatch(getJobsSearch(res.data.data))
+        });
+    }
+}
+
+export const getJobsSearch = (jobs) => {
+    return {
+        type: Types.GET_JOBS_SEARCH,
+        jobs
     }
 }

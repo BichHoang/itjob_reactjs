@@ -886,4 +886,8 @@ header {
 /* Selected state of the stars */
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
+.search_field_wrapper input::placeholder { 
+        color: deepskyblue;
+        font-size: 20px;
+
 }
